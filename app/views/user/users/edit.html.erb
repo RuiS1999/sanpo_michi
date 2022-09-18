@@ -1,2 +1,89 @@
-<h1>User::Users#edit</h1>
-<p>Find me in app/views/user/users/edit.html.erb</p>
+<div class="container">
+  <div>
+    <div>
+      <h1>新規会員登録</h1>
+    </div>
+    <%= form_with model: @user do |f| %>
+      <%= render "user/shared/error_messages", resource: resource %>
+      <div>
+        <div>
+          <h4>登録情報</h4>
+        </div>
+        <div>
+          <div>
+            <div>
+              <%= f.label :user_name, "ユーザー名" %>(半角英数のみ)<span>必須</span>
+            </div>
+            <div>
+              <%= f.text_field :user_name, autocomplete: "name", class: "w-100" %>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= f.label :email, "メールアドレス" %><span>必須</span>
+            </div>
+            <div>
+              <%= f.email_field :email, autocomplete: "email", placeholder: "sanpo_dou@walk.com", class: "w-100" %>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= f.label :password, "パスワード" %>
+              <% if @minimum_password_length %>
+                (<%= @minimum_password_length %> 文字以上)
+              <% end %>
+              <span>必須</span>
+            </div>
+            <div>
+              <%= f.password_field :password, autocomplete: "new-password", class: "w-100" %>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= f.label :password_confirmationv, "パスワード" %>(確認用)<span>必須</span>
+            </div>
+            <div>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-100" %>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4>アカウント情報</h4>
+        </div>
+        <div>
+          <div>
+            <div>
+              <%= f.label :account_name, "アカウント名" %>
+            </div>
+            <div>
+              <%= f.text_field :account_name, autocomplete: "name", class: "w-100" %>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= f.label :age, "年齢" %>
+            </div>
+            <div>
+              <%= f.text_field :age, autocomplete: "age", class: "w-50" %>歳
+            </div>
+          </div>
+          <div>
+            <div>
+              <%= f.label :sex, "性別" %>
+            </div>
+            <div>
+              <%= f.radio_button :sex, :male %>
+              <%= f.label :sex, "男性", value: 'male' %>
+              <%= f.radio_button :sex, :female %>
+              <%= f.label :sex, "女性", value: 'female' %>
+              <%= f.radio_button :sex, :other %>
+              <%= f.label :sex, "その他", value: 'other' %>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <div><%= f.submit "新規登録" %></div>
+          </div>
+        </div>
+      </div>

@@ -12,6 +12,14 @@
         <div>
           <div>
             <div>
+              <%= f.label :user_name, "ユーザー名" %>(半角英数のみ)<span>必須</span>
+            </div>
+            <div>
+              <%= f.text_field :user_name, autocomplete: "name", class: "w-100" %>
+            </div>
+          </div>
+          <div>
+            <div>
               <%= f.label :email, "メールアドレス" %><span>必須</span>
             </div>
             <div>
@@ -36,40 +44,6 @@
             </div>
             <div>
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-100" %>
-            </div>
-          </div>
-        </div>
-        <div>
-          <h4>アカウント情報</h4>
-        </div>
-        <div>
-          <div>
-            <div>
-              <%= f.label :account_name, "ユーザー名" %><span>必須</span>
-            </div>
-            <div>
-              <%= f.text_field :account_name, autocomplete: "name", class: "w-100" %>
-            </div>
-          </div>
-          <div>
-            <div>
-              <%= f.label :age, "年齢" %><span>必須</span>
-            </div>
-            <div>
-              <%= f.text_field :age, autocomplete: "age", class: "w-50" %>歳
-            </div>
-          </div>
-          <div>
-            <div>
-              <%= f.label :sex, "性別" %><span>必須</span>
-            </div>
-            <div>
-              <%= f.radio_button :sex, :male, checked: "checked" %>
-              <%= f.label :sex, "男性", value: 'male' %>
-              <%= f.radio_button :sex, :female %>
-              <%= f.label :sex, "女性", value: 'female' %>
-              <%= f.radio_button :sex, :other %>
-              <%= f.label :sex, "その他", value: 'other' %>
             </div>
           </div>
         </div>
