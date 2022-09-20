@@ -4,17 +4,18 @@ class User::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(user_name: params[:id])
+    @user = User.find_by(user_name: params[:user_name])
+    @posts = @user.post
   end
 
   def edit
-    @usr = User.find(current_user.id)
+    @user = User.find(current_user.id)
   end
 
   def update
     user = User.find(current_user.id)
     user.update(user_params)
-    redirect_to user_path(user.id)
+    redirect_to user_path(current_user.user_name)
   end
 
   def withdrawal

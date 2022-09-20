@@ -4,7 +4,6 @@
       <h1>新規会員登録</h1>
     </div>
     <%= form_with model: @user do |f| %>
-      <%= render "user/shared/error_messages", resource: resource %>
       <div>
         <div>
           <h4>登録情報</h4>
@@ -12,38 +11,10 @@
         <div>
           <div>
             <div>
-              <%= f.label :user_name, "ユーザー名" %>(半角英数のみ)<span>必須</span>
-            </div>
-            <div>
-              <%= f.text_field :user_name, autocomplete: "name", class: "w-100" %>
-            </div>
-          </div>
-          <div>
-            <div>
               <%= f.label :email, "メールアドレス" %><span>必須</span>
             </div>
             <div>
               <%= f.email_field :email, autocomplete: "email", placeholder: "sanpo_dou@walk.com", class: "w-100" %>
-            </div>
-          </div>
-          <div>
-            <div>
-              <%= f.label :password, "パスワード" %>
-              <% if @minimum_password_length %>
-                (<%= @minimum_password_length %> 文字以上)
-              <% end %>
-              <span>必須</span>
-            </div>
-            <div>
-              <%= f.password_field :password, autocomplete: "new-password", class: "w-100" %>
-            </div>
-          </div>
-          <div>
-            <div>
-              <%= f.label :password_confirmationv, "パスワード" %>(確認用)<span>必須</span>
-            </div>
-            <div>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-100" %>
             </div>
           </div>
         </div>
@@ -87,3 +58,6 @@
           </div>
         </div>
       </div>
+    <% end %>
+  </div>
+</div>

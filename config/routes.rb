@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-    scope module: :user do
+  scope module: :user do
     root to:  'homes#top'
     get '/about' => 'homes#about', as: 'about'
 
     get     'users/retire'
     patch   'users/withdrawal'
 
-    resources  :users, param: :name, only: [:index, :show, :edit, :update] do
+    resources  :users, param: :user_name, only: [:index, :show, :edit, :update] do
       resources :favorites,           only: [:index, :create, :destroy]
     end
     resources  :follows,             only: [:index, :create, :destroy]

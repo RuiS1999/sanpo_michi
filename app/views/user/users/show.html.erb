@@ -1,21 +1,31 @@
 <div class="container">
   <div>
     <div class="row">
-      <div><%= image_tag @user.get_profile_image(100,100), class:"rounded-circle"; %></div>
-      <div>
-        <h4><%= @user.account_name %></h4>
-        <% if user_signed_in? %>
-          <% if @user.id == current_user.id %>
-            <%= link_to "プロフィール編集", edit_users_path(current_user) %>
-          <% else %>
-            フォロー
-          <% end %>
-        <% end %>
+      <div class="col-2">
+        <%= image_tag @user.get_profile_image(100,100), class:"rounded-circle"; %>
       </div>
-    </div>
-    <div>
-
+      <div class="col-10">
+        <div class="row">
+          <h4><%= @user.account_name %></h4><span>@<%= @user.user_name %></span>
+        </div>
+        <div>
+          <% if user_signed_in? %>
+            <% if @user.id == current_user.id %>
+              <%= link_to "プロフィール編集", edit_user_path %>
+            <% else %>
+              フォロー
+            <% end %>
+          <% end %>
+        </div>
+        <div>
+          <%= @user.introduction %>
+        </div>
+        <div>
+          <%= @posts.each do |post| %>
+            
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-Footer

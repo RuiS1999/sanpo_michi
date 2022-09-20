@@ -1,2 +1,20 @@
-<h1>User::Posts#new</h1>
-<p>Find me in app/views/user/posts/new.html.erb</p>
+<div class="container">
+  <div>
+    <div class="center">
+      <h1>新規投稿</h1>
+    </div>
+    <div>
+      <%= form_with model: @post do |f| %>
+        <div>
+          <%= f.file_field :post_image, placeholder: "投稿画像", accept: "image/*" %>
+        </div>
+        <div>
+          <%= f.text_area :body, placeholder: "投稿文" %>
+        </div>
+        <div>
+          <%= f.submit "投稿" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
