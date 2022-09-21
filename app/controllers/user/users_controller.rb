@@ -13,13 +13,16 @@ class User::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(current_user.id)
-    user.update(user_params)
-    redirect_to user_path(current_user.user_name)
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.user_name)
+    else
+      render :edit
+    end
   end
 
   def withdrawal
-    @user = user.find(current_user.id)
+    @user = User.find(current_user.id)
     @user.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"

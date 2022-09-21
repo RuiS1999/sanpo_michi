@@ -14,7 +14,6 @@ class User < ApplicationRecord
   validates :email,           presence: true,   uniqueness: true
   validates :user_name,       presence: true,   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
   validates :account_name,    presence: true
-  validates :sex,             allow_nil: true,  numericality: { only_integer: true }
   validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}
 
