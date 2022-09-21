@@ -24,14 +24,36 @@
               <p><%= image_tag @post.post_image, class:"card-img post_image_show" %></p>
             <% end %>
           </div>
-          <div class="border-top row pt-3">
+          <div class="border-top row px-3">
             <dic>
-              <span><i class="col-3"></i> <%= @post.post_comments.count %>コメント</span>
+              <span><i class=""></i> <%= @post.post_comments.count %>コメント</span>
             </dic>
             <div>
-              <span><i class="col-3"></i> <%= @post.favorites.count %>いいね</span>
+              <span><i class=""></i> <%= @post.favorites.count %>いいね</span>
             </div>
           </div>
+          <div class="border-top row p-3">
+            <% if user_signed_in? %>
+              <%= form_with model:[@post, @post_comment]  do |f| %>
+                <div>
+                  <%= f.text_field :comment, placeholder: "コメント", class: "w-50" %> <%= f.submit "コメント投稿" %>
+                </div>
+              <% end %>
+            <% else %>
+              コメントは会員ユーザーのみ出来ます。
+            <% end %>
+          </div>
+          <div class="border-top row p-3">
+            <% @post_comments.each do |post_comment| %>
+              <div>
+                <%= post_comment.user.account_name %> <%= post_comment.comment %>
+                <% if post_comment.user == current_user %>
+                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <div></div>
         </div>
       </div>
     </div>

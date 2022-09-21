@@ -3,7 +3,7 @@ class User::PostCommentsController < ApplicationController
     post = Post.find(params[:post_id])
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_id = post.id
-    if coment.save(post_coment_params)
+    if comment.save
       redirect_to request.referer
     else
       redirect_to request.referer
