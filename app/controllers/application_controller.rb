@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_root_path
     when User
-      users_path(@user.id)
+      user_path(@user.user_name)
     end
   end
 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     when :admin   # ログアウト時はシンボルが返ってくる
       new_admin_session_path
     when :user  # ログアウト時はシンボルが返ってくる
-      root_path
+      about_path
     end
   end
 

@@ -4,32 +4,49 @@
       投稿詳細
     </div>
     <div class="col-8">
-      <div class="p-3 border">
-        <div>
+      <div class="p-3 border row">
+        <div class="col-1 p-0">
           <%= link_to user_path(@post.user.user_name), class: "a_post_link" do %>
-            <div class="row px-3">
-              <div>
-                <%= image_tag @post.user.get_profile_image(70,70), class:"rounded-circle profile_image_size"; %>
-              </div>
-              <div class="">
-                <%= @post.user.account_name %> <span>@<%= @post.user.user_name %></span>
-              </div>
+            <div>
+              <%= image_tag @post.user.profile_image, class:"rounded-circle w-100" %>
             </div>
           <% end %>
-          <div class="py-4">
+        </div>
+        <div class="col-11">
+          <%= link_to user_path(@post.user.user_name), class: "a_post_link" do %>
+            <div class="">
+              <strong class="h4"><%= @post.user.account_name %></strong> <span>@<%= @post.user.user_name %></span>
+            </div>
+          <% end %>
+          <div class="py-2">
             <%= @post.body %>
           </div>
-          <div class="mt-3">
+          <div class="pt-5">
             <% if @post.post_image.attached? %>
               <p><%= image_tag @post.post_image, class:"card-img post_image_show" %></p>
             <% end %>
           </div>
           <div class="border-top row px-3">
             <dic>
-              <span><i class=""></i> <%= @post.post_comments.count %>コメント</span>
+              <p><i class=""></i> <%= @post.post_comments.count %>コメント</p>
             </dic>
             <div>
-              <span><i class=""></i> <%= @post.favorites.count %>いいね</span>
+              <% if @post.favorited_by?(current_user) %>
+                <p>
+                  <%= link_to post_favorite_path(@post), method: :delete do %>
+                    ♥<%= @post.favorites.count %> いいね
+                  <% end %>
+                </p>
+                <% else %>
+                <p>
+                  <%= link_to post_favorites_path(@post), method: :post do %>
+                    ♡<%= @post.favorites.count %> いいね
+                  <% end %>
+                </p>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to "削除", post_path(@post), method: :delete %>
             </div>
           </div>
           <div class="border-top row p-3">

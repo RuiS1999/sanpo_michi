@@ -1,2 +1,21 @@
-<h1>User::Homes#about</h1>
-<p>Find me in app/views/user/homes/about.html.erb</p>
+<div class="container">
+  <div>
+    <div>
+      <p>
+        新規投稿・コメント・いいね機能などはログインユーザーのみ可能です。
+      </p>
+      <div>
+        <% unless user_signed_in? %>
+          <div>
+            <%= link_to "新規登録", new_user_registration_path %>
+          </div>
+          <div>
+            <%= link_to "ログイン", new_user_session_path %>
+          </div>
+        <% else %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "btn btn-outline-secondary mx-3 my-1" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
