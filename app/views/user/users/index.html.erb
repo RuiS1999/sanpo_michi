@@ -1,2 +1,26 @@
-<h1>User::Users#index</h1>
-<p>Find me in app/views/user/users/index.html.erb</p>
+<div class="container">
+  <div>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ユーザー名</th>
+            <th>投稿数</th>
+            <th>フォロワー数</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.account_name %> <span>@<%= user.user_name %></span></td>
+              <td><%= user.posts.count %></td>
+              <td><%= user.follows.count %></td>
+              <td><%= link_to  %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
