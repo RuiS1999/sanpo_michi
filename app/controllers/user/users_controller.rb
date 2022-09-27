@@ -5,7 +5,7 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find_by(user_name: params[:user_name])
-    @posts = @user.post
+    @posts = @user.posts
   end
 
   def edit

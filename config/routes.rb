@@ -6,13 +6,15 @@ Rails.application.routes.draw do
     get     'users/retire'
     patch   'users/withdrawal'
 
-    resources  :users, param: :user_name, only: [:index, :show, :edit, :update]
-    resources  :follows,             only: [:index, :create, :destroy]
+    resources  :users, param: :user_name, only: [:index, :show, :edit, :update] do
+     resource :relationships, only: [:create, :destroy]
+       get 'relationships/followers' => 'relationships#followers', as: 'followers'
+       get 'relationships/followings' => 'relationships#followings', as: 'followings'
+    end
     resources  :posts,               only: [:new, :show, :index, :edit, :create, :update, :destroy] do
       resources :post_comments,       only: [:create, :destroy]
       resources :favorites,           only: [:create, :destroy]
     end
-    resources :category_relations,  only: [:create, :update, :destroy]
   end
 
   # ユーザー用
@@ -25,5 +27,6 @@ Rails.application.routes.draw do
   devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
