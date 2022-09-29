@@ -1,11 +1,15 @@
 class User::UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
+
+
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show
     @user = User.find_by(user_name: params[:user_name])
     @posts = @user.posts
+    @user_favorites = @user.favorites
   end
 
   def edit
@@ -27,6 +31,16 @@ class User::UsersController < ApplicationController
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
+  end
+
+  def followings
+    user = User.find_by(user_name: params[:user_name])
+    @users = user.followings
+  end
+
+  def followers
+    user = User.find_by(user_name: params[:user_name])
+    @users = user.followers
   end
 
   private

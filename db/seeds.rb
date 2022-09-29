@@ -42,3 +42,27 @@ User.create!(
     }
   ]
 )
+
+Relationship.create!(
+  [
+    {
+      following_id: '2',
+      follower_id: '1'
+    },
+
+    {
+      following_id: '2',
+      follower_id: '3'
+    },
+
+    {
+      following_id: '3',
+      follower_id: '1'
+    },
+
+    {
+      following_id: '3',
+      follower_id: '2'
+    }
+  ]
+)

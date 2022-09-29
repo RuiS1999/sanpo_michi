@@ -1,5 +1,32 @@
-<div class="new-post-icon">
-  <%= link_to new_post_path do %>
-    <i class="fa-regular fa-square-plus fa-6x" style="color: black;"></i>
-  <% end %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary new-post-icon" data-toggle="modal" data-target="#exampleModalLong">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">新規投稿</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with model: Post.new do |f| %>
+        <div class="modal-body">
+          <div>
+            <%= f.text_area :body, placeholder: "投稿文", class: "form-control", rows: 20 %>
+          </div>
+          <div class="py-2">
+            <%= f.file_field :post_image, placeholder: "画像を選択" %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "投稿", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

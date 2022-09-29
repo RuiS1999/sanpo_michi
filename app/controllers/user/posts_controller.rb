@@ -1,7 +1,5 @@
 class User::PostsController < ApplicationController
-  def new
-    @post = Post.new
-  end
+  before_action :authenticate_user!, except: [:show, :index]
 
   def create
     post = Post.new(post_params)

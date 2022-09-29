@@ -23,7 +23,7 @@ class User < ApplicationRecord
   def is_followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?
   end
-
+  # # follow機能終了
 
   validates :email,           presence: true,   uniqueness: true
   validates :user_name,       presence: true,   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }

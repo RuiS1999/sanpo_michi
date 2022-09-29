@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     patch   'users/withdrawal'
 
     resources  :users, param: :user_name, only: [:index, :show, :edit, :update] do
-     resource :relationships, only: [:create, :destroy]
-       get 'relationships/followers' => 'relationships#followers', as: 'followers'
-       get 'relationships/followings' => 'relationships#followings', as: 'followings'
+      resource :relationships, only: [:create, :destroy]
+        get :followings, on: :member
+        get :followers, on: :member
     end
-    resources  :posts,               only: [:new, :show, :index, :edit, :create, :update, :destroy] do
+    resources  :posts,               only: [:show, :index, :edit, :create, :update, :destroy] do
       resources :post_comments,       only: [:create, :destroy]
       resources :favorites,           only: [:create, :destroy]
     end
