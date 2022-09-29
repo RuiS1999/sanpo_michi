@@ -28,7 +28,7 @@ class User < ApplicationRecord
   validates :email,           presence: true,   uniqueness: true
   validates :user_name,       presence: true,   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
   validates :account_name,    presence: true
-  validates :introduction,    length: { maximum: 250 }
+  validates :introduction,    length: { maximum: 500 }
   validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}
 
@@ -42,12 +42,12 @@ class User < ApplicationRecord
     user_name
   end
 
-  def get_profile_image(width, height)
+  def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(gravity: "center", resize:"640x640^", crop:"640x640+0+0").processed
   end
 
 end

@@ -9,7 +9,7 @@
           <div class="col-1 p-0">
             <%= link_to user_path(post.user.user_name), class: "a_post_link" do %>
               <div>
-                <%= image_tag post.user.profile_image, class:"rounded-circle w-100" %>
+                <%= image_tag post.user.get_profile_image, class:"rounded-circle profile_img"; %>
               </div>
             <% end %>
           </div>

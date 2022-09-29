@@ -12,4 +12,8 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
+
+  def get_post_image
+    post_image.variant(gravity: "center", resize:"1000x1000^", crop:"1000x1000+0+0").processed
+  end
 end
