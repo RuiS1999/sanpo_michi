@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       t.string    :user_name,         null: false
       t.string    :account_name,      null: false,    default: "さんぽ家の名無さん"
-      t.string    :introduction
+      t.text      :introduction
       t.integer   :age
       t.integer   :sex
       t.boolean   :is_deleted,        null: false,    default: false

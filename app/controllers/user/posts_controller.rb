@@ -7,7 +7,7 @@ class User::PostsController < ApplicationController
     if post.save
       redirect_to post_path(post.id)
     else
-      render :new
+      
     end
   end
 

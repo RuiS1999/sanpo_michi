@@ -1,13 +1,21 @@
-<div class="container">
-  <div>
-    <div>
+<section>
+  <div class="">
+    <div class="container">
       <h1>会員情報編集</h1>
     </div>
+  </div>
+</section>
+
+<div class="container">
+  <div>
     <%= form_with model: @user, url: user_path do |f| %>
     <%= render "layouts/error_messages", resource: @user %>
       <div>
         <div>
-          <h4>登録情報</h4>
+          <%= image_tag @user.profile_image %>
+        </div>
+        <div>
+          <%= f.file_field :profile_image %>
         </div>
         <div>
           <div>

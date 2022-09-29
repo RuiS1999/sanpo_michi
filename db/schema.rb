@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2022_09_26_062839) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.string "body", null: false
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2022_09_26_062839) do
     t.datetime "remember_created_at"
     t.string "user_name", null: false
     t.string "account_name", default: "さんぽ家の名無さん", null: false
-    t.string "introduction"
+    t.text "introduction"
     t.integer "age"
     t.integer "sex"
     t.boolean "is_deleted", default: false, null: false

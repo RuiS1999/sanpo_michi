@@ -1,9 +1,13 @@
 class User::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:index, :show]
 
 
   def index
-    @users = User.where.not(id: current_user.id)
+    if user_signed_in?
+      @users = User.where.not(id: current_user.id)
+    else
+      @users = User.all
+    end
   end
 
   def show
@@ -46,6 +50,6 @@ class User::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :user_name, :account_name, :introduction, :age, :sex, :is_deleted)
+    params.require(:user).permit(:profile_image, :email, :user_name, :account_name, :introduction, :age, :sex, :is_deleted)
   end
 end
