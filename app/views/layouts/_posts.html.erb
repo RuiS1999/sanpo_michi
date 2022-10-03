@@ -1,0 +1,52 @@
+<% posts.each do |post| %>
+  <div class="p-3 border-right border-left border-bottom">
+    <div class="row">
+
+      <!--プロフィール画像-->
+      <div class="col-2 col-sm-1 p-1 p-sm-2">
+        <%= link_to user_path(post.user.user_name), class: "a_post_link" do %>
+          <div>
+            <%= image_tag post.user.get_profile_image, class:"rounded-circle profile_img"; %>
+          </div>
+        <% end %>
+      </div>
+
+      <!--投稿情報-->
+      <div class="col-10 col-sm-11 p-1 p-sm-2">
+        <div>
+          <strong><%= link_to post.user.account_name, user_path(post.user.user_name), class: "a_user_link" %></strong><span><%= link_to " @#{post.user.user_name}", user_path(post.user.user_name), class: "a_user_name" %></span>
+        </div>
+        <div>
+          <%= link_to post_path(post.id), class: "a_post_link" do %>
+            <div>
+              <%= post.body %>
+            </div>
+            <div class="p-1 p-sm-2">
+              <% if post.post_image.attached? %>
+                <p><%= image_tag post.post_image, class:"card-img post_image_index" %></p>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="row pt-3">
+          <div>
+            <% if user_signed_in? %>
+              <% if post.favorited_by?(current_user) %>
+                <%= link_to "♥#{post.favorites.count} いいね", post_favorites_path(post), method: :delete, class: "rounded-circle favorite_settled" %>
+              <% else %>
+                <%= link_to "♡#{post.favorites.count} いいね", post_favorites_path(post), method: :post, class: "rounded-circle favorite_not_settled" %>
+              <% end %>
+            <% else %>
+              <%= link_to post_favorites_path(post), method: :post do %>
+                <%= link_to "♡#{post.favorites.count} いいね", post_favorites_path(post), method: :post, class: "rounded-circle favorite_not_settled" %>
+              <% end %>
+            <% end %>
+          </div>
+          <div>
+            <span><i class="col-3"></i> <%= link_to post.post_comments.count, post_path(post) %>コメント</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

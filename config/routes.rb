@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     root to:  'homes#top'
     get '/about' => 'homes#about', as: 'about'
 
+    get "search/users" => "searches#search_user"
+    get "search/posts" => "searches#search_post"
+
     get     'users/retire'
     patch   'users/withdrawal'
 
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
     end
     resources  :posts,               only: [:show, :index, :edit, :create, :update, :destroy] do
       resources :post_comments,       only: [:create, :destroy]
-      resources :favorites,           only: [:create, :destroy]
+      resource :favorites,           only: [:create, :destroy]
     end
   end
 

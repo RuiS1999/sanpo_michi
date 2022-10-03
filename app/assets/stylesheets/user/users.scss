@@ -1,8 +1,25 @@
 // Place all the styles related to the user/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.a_user_name{
+  color: #a9a9a9;
+}
 
-.img{
-  width: 100%;
-  height: auto;
+.a_user_name:hover{
+  color: #a9a9a9;
+  text-decoration: none;
+}
+
+.a_user_link{
+    color: black;
+}
+
+.a_user_link:hover{
+    color: black;
+}
+
+.user_post_images{
+    width: 100%;
+    object-fit: cover;
+  	background-position: center;
 }

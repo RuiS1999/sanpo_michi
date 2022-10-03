@@ -9,11 +9,18 @@ class Post < ApplicationRecord
 
   has_one_attached :post_image
 
+  # 検索方法分岐
+  def self.looks(word)
+    @post = Post.where("body LIKE?","%#{word}%")
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
 
   def get_post_image
-    post_image.variant(gravity: "center", resize:"1000x1000^", crop:"1000x1000+0+0").processed
+    if post_image.attached?
+      post_image.variant(gravity: "center", resize:"1000x1000^", crop:"1000x1000+0+0").processed
+    end
   end
 end

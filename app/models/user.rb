@@ -26,8 +26,8 @@ class User < ApplicationRecord
   # # follow機能終了
 
   validates :email,           presence: true,   uniqueness: true
-  validates :user_name,       presence: true,   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
-  validates :account_name,    presence: true
+  validates :user_name,       presence: true,   length: { maximum: 15 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
+  validates :account_name,    presence: true,   length: { maximum: 10 }
   validates :introduction,    length: { maximum: 500 }
   validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}
@@ -40,6 +40,11 @@ class User < ApplicationRecord
   # URLをaccount_nameにする
   def to_param
     user_name
+  end
+
+  # 検索方法分岐
+  def self.looks(word)
+      @user = User.where("account_name LIKE?","%#{word}%")
   end
 
   def get_profile_image
