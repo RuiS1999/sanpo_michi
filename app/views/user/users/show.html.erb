@@ -1,66 +1,81 @@
-<div class="container">
-  <div class="col-lg-8 mx-auto">
-    <div class="py-5 row">
-      <div class="col-2">
-        <%= image_tag @user.get_profile_image, class:"rounded-circle profile_img"; %>
+<div class="container-fluid">
+  <div class="col-md-10 mx-md-auto">
+    <div class="row p-0">
+      <div class="col-md-3">
+        <%= render 'layouts/side' %>
       </div>
-      <div class="">
-        <div class="row">
-          <h4><%= @user.account_name %></h4><span>@<%= @user.user_name %></span>
-          <% if user_signed_in? %>
-            <% if @user.id == current_user.id %>
-              <%= link_to "プロフィール編集", edit_user_path %>
-            <% else %>
-              フォロー
-            <% end %>
-          <% end %>
+      <div class="col-md-9">
+        <div class="">
+          <%= image_tag @user.get_cover_image, class: "w-100" %>
+          <div class="col-12 d-flex justify-content-between" >
+            <div class="user-img-position col-4 col-md-3">
+              <%= image_tag @user.get_profile_image, class:"rounded-circle w-100 user-img-frame" %>
+            </div>
+            <div class="my-2">
+              <sapn>
+                <% if user_signed_in? %>
+                  <% if @user.id == current_user.id %>
+                    <%= link_to "プロフィール編集", edit_user_path, class: "btn btn-outline-success btn-sm" %>
+                  <% else %>
+                    <% if @user.is_followed_by?(current_user) %>
+                        <%= link_to user_relationships_path(@user.id), method: :delete do %>
+                      <button type="button" class="btn btn-light border btn-sm">フォロー解除</button>
+                      <% end %>
+                    <% else %>
+                      <%= link_to user_relationships_path(@user.id), method: :post do %>
+                        <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= link_to about_path do %>
+                    <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
+                  <% end %>
+                <% end %>
+              </sapn>
+            </div>
+          </div>
+          <div class="px-3 px-md-4">
+            <div>
+              <div class="py-2">
+                <div class="">
+                  <h3><%= @user.account_name %>    <span class="h6">@<%= @user.user_name %></span></h3>
+                </div>
+                <div>
+                  <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> フォロー <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="py-3">
+                <%= @user.introduction %>
+              </div>
+            </div>
+          </div>
         </div>
         <div>
-          <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> フォロー <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー</p>
+          <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active col-6 text-center" id="nav-post-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">投稿</a>
+              <a class="nav-item nav-link col-6 text-center" id="nav-favorite-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">いいね</a>
+            </div>
+          </nav>
         </div>
-        <div class="py-3">
-          <%= @user.introduction %>
-        </div>
-      </div>
-    </div>
-    <div>
-      <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active col-4" id="nav-post-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">投稿</a>
-          <a class="nav-item nav-link col-4" id="nav-favorite-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">いいね</a>
-          <a class="nav-item nav-link col-4" id="nav-image-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">投稿画像</a>
-        </div>
-      </nav>
-    </div>
 
-    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content" id="nav-tabContent">
 
-      <!--ユーザー投稿一覧 -->
-      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-post-tab">
-        <%= render 'layouts/posts', posts: @posts  %>
-      </div>
+          <!--ユーザー投稿一覧 -->
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-post-tab">
+            <%= render 'layouts/posts', posts: @posts %>
+          </div>
 
-      <!--お気に入り投稿一覧-->
-      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-favorite-tab">
-         <%= render 'favorite_post', user_favorites: @user_favorites  %>
-      </div>
-
-      <!--投稿画像一覧-->
-      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-image-tab">
-        <div class="p-3 border">
-          <div class="row">
-            <% @posts.each do |post| %>
-              <%= link_to post_path(post.id) do %>
-                <div class="col-3">
-                  <% if post.post_image.attached? %>
-                    <%= image_tag post.get_post_image, class: "user_post_images" %>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
+          <!--お気に入り投稿一覧-->
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-favorite-tab">
+             <%= render 'favorite_post', user_favorites: @user_favorites %>
           </div>
         </div>
       </div>
+      <%= render "layouts/new_post_icon" %>
     </div>
   </div>
 </div>

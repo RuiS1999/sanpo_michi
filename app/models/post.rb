@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :favorites,          dependent: :destroy
 
   validates   :user_id,         presence: true
-  validates   :body,            presence: true,     length: { maximum: 250 }
+  validates   :body,            presence: true,     length: { maximum: 500 }
 
   has_one_attached :post_image
 
@@ -21,6 +21,12 @@ class Post < ApplicationRecord
   def get_post_image
     if post_image.attached?
       post_image.variant(gravity: "center", resize:"1000x1000^", crop:"1000x1000+0+0").processed
+    end
+  end
+
+  def index_post_image
+    if post_image.attached?
+      post_image.variant(gravity: "center", resize:"800x510^", crop:"800x510+0+0").processed
     end
   end
 end

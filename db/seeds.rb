@@ -9,6 +9,17 @@
 User.create!(
   [
     {
+      email: 'test@t.com',
+      password: 'test123',
+      user_name: 'test',
+      account_name: '100',
+      introduction: '疲れた',
+      age: '35',
+      sex: 'female',
+      is_deleted: 'false'
+    },
+
+    {
       email: 'test0@t.com',
       password: 'test123',
       user_name: 'test1',

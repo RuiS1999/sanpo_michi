@@ -1,46 +1,46 @@
-<section>
-  <div class="">
-    <div class="container">
+<div class="container">
+  <div class="col-lg-8 mx-auto">
+    <div>
       <h1>会員情報編集</h1>
     </div>
-  </div>
-</section>
-
-<div class="container">
-  <div>
     <%= form_with model: @user, url: user_path do |f| %>
     <%= render "layouts/error_messages", resource: @user %>
       <div>
-        <div>
-          <%= image_tag @user.profile_image %>
+        <div class="p-2">
+          <%= image_tag @user.get_profile_image, class: "w-50 border" %>
         </div>
-        <div>
+        <div class="p-2">
           <%= f.file_field :profile_image %>
         </div>
+        <div class="p-2">
+          <%= f.file_field :cover_image %>
+        </div>
         <div>
-          <div>
+          <div class="p-2">
             <div>
-              <%= f.label :account_name, "ユーザー名" %><span>必須</span>
+              <%= f.label :account_name, "ユーザー名", class: "required" %>
             </div>
             <div>
               <%= f.text_field :account_name, placeholder: "さんぽ太郎", autocomplete: "name", class: "w-100" %>
             </div>
           </div>
-          <div>
+          <div class="p-2">
             <div>
               <%= f.label :introduction, "プロフィール" %>
+            </div>
             <div>
-              <%= f.text_area :introduction, placeholder: "プロフィール", class: "w-100" %>
+              <%= f.text_area :introduction, placeholder: "プロフィール",  rows: 7, class: "w-100" %>
             </div>
           </div>
-          <div>
+          <div class="p-2">
             <div>
               <%= f.label :age, "年齢" %>
+            </div>
             <div>
               <%= f.text_field :age, autocomplete: "age", class: "w-50" %>歳
             </div>
           </div>
-          <div>
+          <div class="p-2">
             <div>
               <%= f.label :sex, "性別" %>
             </div>
@@ -54,11 +54,10 @@
             </div>
           </div>
         </div>
-        <div>
-          <div>
-            <div><%= f.submit "変更" %></div>
-            <div><%= link_to '退会する', users_retire_path %></div>
-          </div>
+        <div class="p-2">
+          <%= f.submit "変更", class: "btn btn-primary" %>
+           |
+          <%= link_to '退会する', users_retire_path, class:"btn btn-danger" %>
         </div>
       </div>
     <% end %>

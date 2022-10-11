@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         get :followings, on: :member
         get :followers, on: :member
     end
-    resources  :posts,               only: [:show, :index, :edit, :create, :update, :destroy] do
+    resources  :posts,               only: [:new, :show, :index, :edit, :create, :update, :destroy] do
       resources :post_comments,       only: [:create, :destroy]
       resource :favorites,           only: [:create, :destroy]
     end
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   # ユーザー用
   # URL /sign_in ...
-  devise_for :users, path: '', controllers: {
+  devise_for :users, path: '',skip: [:passwords],  controllers: {
     registrations: "user/registrations",
     sessions: 'user/sessions'
   }

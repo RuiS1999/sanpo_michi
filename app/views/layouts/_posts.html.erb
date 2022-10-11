@@ -4,7 +4,7 @@
 
       <!--プロフィール画像-->
       <div class="col-2 col-sm-1 p-1 p-sm-2">
-        <%= link_to user_path(post.user.user_name), class: "a_post_link" do %>
+        <%= link_to user_path(post.user.user_name), class: "a-post-link" do %>
           <div>
             <%= image_tag post.user.get_profile_image, class:"rounded-circle profile_img"; %>
           </div>
@@ -14,36 +14,43 @@
       <!--投稿情報-->
       <div class="col-10 col-sm-11 p-1 p-sm-2">
         <div>
-          <strong><%= link_to post.user.account_name, user_path(post.user.user_name), class: "a_user_link" %></strong><span><%= link_to " @#{post.user.user_name}", user_path(post.user.user_name), class: "a_user_name" %></span>
+          <strong class="d-inline-block text-truncate" style="max-width: 10rem;"><%= link_to post.user.account_name, user_path(post.user.user_name), class: "a_user_link" %></strong>
+          <span class="d-inline-block text-truncate" style="max-width: 8rem;"><%= link_to " @#{post.user.user_name}", user_path(post.user.user_name), class: "a_user_name" %></span>
         </div>
+
         <div>
-          <%= link_to post_path(post.id), class: "a_post_link" do %>
-            <div>
+          <%= link_to post_path(post.id), class: "a-post-link" do %>
+            <div class="py-2">
               <%= post.body %>
             </div>
             <div class="p-1 p-sm-2">
               <% if post.post_image.attached? %>
-                <p><%= image_tag post.post_image, class:"card-img post_image_index" %></p>
+                <p><%= image_tag post.index_post_image, class:"card-img post-image-index" %></p>
               <% end %>
             </div>
           <% end %>
         </div>
-        <div class="row pt-3">
-          <div>
-            <% if user_signed_in? %>
-              <% if post.favorited_by?(current_user) %>
-                <%= link_to "♥#{post.favorites.count} いいね", post_favorites_path(post), method: :delete, class: "rounded-circle favorite_settled" %>
-              <% else %>
-                <%= link_to "♡#{post.favorites.count} いいね", post_favorites_path(post), method: :post, class: "rounded-circle favorite_not_settled" %>
-              <% end %>
-            <% else %>
-              <%= link_to post_favorites_path(post), method: :post do %>
-                <%= link_to "♡#{post.favorites.count} いいね", post_favorites_path(post), method: :post, class: "rounded-circle favorite_not_settled" %>
-              <% end %>
-            <% end %>
-          </div>
-          <div>
-            <span><i class="col-3"></i> <%= link_to post.post_comments.count, post_path(post) %>コメント</span>
+
+        <div class="border-top">
+          <div class="row pt-3">
+            <div class="text-center col-6">
+              <span>
+                <% if user_signed_in? %>
+                  <% if post.favorited_by?(current_user) %>
+                    <%= link_to "♥#{post.favorites.count} いいね", post_favorites_path(post), method: :delete, class: "rounded-circle favorite-settled" %>
+                  <% else %>
+                    <%= link_to "♡#{post.favorites.count} いいね", post_favorites_path(post), method: :post, class: "rounded-circle favorite-not-settled" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_favorites_path(post), method: :post do %>
+                    <%= link_to "♡#{post.favorites.count} いいね", post_favorites_path(post), method: :post, class: "rounded-circle favorite-not-settled" %>
+                  <% end %>
+                <% end %>
+              </span>
+            </div>
+            <div class="text-center col-6">
+              <span><i class="col-3"></i> <%= link_to post.post_comments.count, post_path(post) %>コメント</span>
+            </div>
           </div>
         </div>
       </div>

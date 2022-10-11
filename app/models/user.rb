@@ -33,6 +33,7 @@ class User < ApplicationRecord
   validates :is_deleted,      inclusion: {in: [true, false]}
 
   has_one_attached :profile_image
+  has_one_attached :cover_image
 
   # userのsex => enum
   enum sex:    { male: 0, female: 1, other: 2 }
@@ -47,12 +48,21 @@ class User < ApplicationRecord
       @user = User.where("account_name LIKE?","%#{word}%")
   end
 
+  # プロフィール画像正方形にする
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(gravity: "center", resize:"640x640^", crop:"640x640+0+0").processed
+  end
+
+  def get_cover_image
+    unless cover_image.attached?
+      file_path = Rails.root.join('app/assets/images/sample_cover_image.jpg')
+      cover_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    cover_image.variant(gravity: "center", resize:"1500x500^", crop:"1500x500+0+0").processed
   end
 
 end

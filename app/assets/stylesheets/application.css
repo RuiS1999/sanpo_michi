@@ -14,7 +14,7 @@
  *= require_self
  */
 main {
-  padding: 60px 0 200px 0;
+  padding: 80px 0 200px 0;
   min-height: 100vh;
   text-decoration:none;
 }
@@ -30,4 +30,19 @@ main {
 .profile_img{
   width: 100%;
   height: auto;
+}
+
+label.required:after{
+  margin-left: 1.0em;
+  padding: 0px 6px 0px 6px;
+  border-radius: 4px;
+  font-size: 0.6em;
+  color: white;
+  background-color: #C44;
+  content: "必須";
+}
+
+.side-content{
+	position: sticky;
+	top: 80px;
 }
