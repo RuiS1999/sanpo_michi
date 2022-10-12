@@ -1,12 +1,12 @@
 <div class="container-fluid">
-  <div class="col-md-10 mx-md-auto">
+  <div class="col-lg-8 mx-lg-auto">
     <div class="row p-0">
-      <div class="col-md-3">
+      <div class="col-lg-3">
         <%= render 'layouts/side' %>
       </div>
-      <div class="col-md-9">
-        <div>
-          <%= render 'layouts/users', users: @users %>
+      <div class="col-lg-9">
+        <div class="border-top">
+          <%= render 'layouts/users', users: @users  %>
         </div>
       </div>
       <%= render "layouts/new_post_icon" %>

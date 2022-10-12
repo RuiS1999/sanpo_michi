@@ -1,10 +1,20 @@
 <div class="container-fluid">
-  <div class="col-md-10 mx-md-auto">
+  <div class="col-lg-8 mx-lg-auto">
     <div class="row p-0">
-      <div class="col-md-3">
+      <div class="col-lg-3">
         <%= render 'layouts/side' %>
       </div>
-      <div class="col-md-9">
+      <div class="col-lg-9">
+        <div>
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <%= link_to "ユーザーを検索", search_users_path, class: "nav-link text-dark active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "記事を検索", search_posts_path, class: "nav-link text-dark" %>
+            </li>
+          </ul>
+        </div>
         <div>
           <%= render 'layouts/users', users: @users  %>
         </div>

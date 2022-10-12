@@ -1,11 +1,15 @@
-<div class="container">
-  <div>
-    <div class="col-lg-8 mx-auto">
-      <div class="border">
-        <%= render 'layouts/search_post' %>
+<div class="container-fluid">
+  <div class="col-lg-8 mx-lg-auto">
+    <div class="row p-0">
+      <div class="col-lg-3">
+        <%= render 'layouts/side' %>
       </div>
-      <%= render 'layouts/posts', posts: @posts %>
+      <div class="col-lg-9">
+        <div class="border-top">
+          <%= render 'layouts/posts', posts: @posts  %>
+        </div>
+      </div>
+      <%= render "layouts/new_post_icon" %>
     </div>
   </div>
-  <%= render "layouts/new_post_icon" %>
 </div>
