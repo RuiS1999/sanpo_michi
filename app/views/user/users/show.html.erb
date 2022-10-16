@@ -38,8 +38,9 @@
           <div class="px-3 px-lg-4">
             <div>
               <div class="py-2">
-                <div class="">
-                  <h3><%= @user.account_name %>    <span class="h6">@<%= @user.user_name %></span></h3>
+                <div class="py-1">
+                  <h3 class="p-0 m-0"><%= @user.account_name %></h3>
+                  <span class="h5 a_user_name">@<%= @user.user_name %></span>
                 </div>
                 <div>
                   <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> フォロー <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー</p>

@@ -2,13 +2,13 @@
   <div class="text-center my-5">
     <h3>本当に退会しますか？</h3>
     <div class="m-4">
-      退会すると、会員情報や<br />
-      これまでの購入履歴が閲覧できなくなりいます。<br />
+      退会すると、<%= current_user.account_name %>さんでの<br />
+      アカウントの操作ができなくなります。<br /><br />
       退会する場合は、「退会する」をクリックしてください。
     </div>
-    <div>
-      <%= link_to '退会しない', users_path, class: "btn btn-success  m-4 px-4 py-2" %>
-      <%= link_to "退会する", users_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger  m-4 px-4 py-2" %>
+    <div class="m-3 py-2">
+      <%= link_to '退会しない', user_path(current_user), class: "btn btn-success mx-2 px-4" %>
+      <%= link_to "退会する", users_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger mx-2 px-4" %>
     </div>
   </div>
 </div>

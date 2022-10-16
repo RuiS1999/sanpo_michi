@@ -14,9 +14,9 @@
       <!--プロフィール情報-->
       <div class="col-10 col-sm-11 py-0 px-2">
         <div class="d-flex justify-content-between">
-          <div>
-            <strong class="d-inline-block text-truncate"><%= link_to user.account_name, user_path(user.user_name), class: "a_user_link" %></strong>
-            <span class="d-inline-block text-truncate"><%= link_to " @#{user.user_name}", user_path(user.user_name), class: "a_user_name" %></span>
+          <div class="py-1">
+            <h5 class="p-0 m-0"><%= link_to user.account_name, user_path(user.user_name), class: "a_user_link" %></h5>
+            <span><%= link_to " @#{user.user_name}", user_path(user.user_name), class: "a_user_name" %></span>
           </div>
           <div class="mx-3">
             <% if user_signed_in? %>

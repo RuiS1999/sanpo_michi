@@ -3,9 +3,9 @@ class User::UsersController < ApplicationController
 
   def index
     if user_signed_in?
-      @users = User.where.not(id: current_user.id)
+      @users = User.where.not(id: current_user.id).where.not(is_deleted: true)
     else
-      @users = User.all
+      @users = User.where.not(is_deleted: true)
     end
   end
 
@@ -22,7 +22,7 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to user_path(@user.user_name)
+      redirect_to user_path(current_user)
     else
       render :edit
     end

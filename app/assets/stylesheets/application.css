@@ -33,10 +33,9 @@ main {
 }
 
 label.required:after{
-  margin-left: 1.0em;
+  margin-left: 0.5rem;
   padding: 0px 6px 0px 6px;
   border-radius: 4px;
-  font-size: 0.6em;
   color: white;
   background-color: #C44;
   content: "必須";
@@ -45,4 +44,11 @@ label.required:after{
 .side-content{
 	position: sticky;
 	top: 80px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
 }

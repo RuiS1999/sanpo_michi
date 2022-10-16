@@ -33,35 +33,39 @@
           </div>
 
           <div class="border-top row px-3">
-            <dic>
-              <p><i class=""></i> <%= @post.post_comments.count %>コメント</p>
-            </dic>
-            <div>
+            <div class="col-5">
+              <p><i class=""></i> <%= @post.post_comments.count %> コメント</p>
+            </div>
+            <div class="col-5">
               <% if user_signed_in? %>
                 <% if @post.favorited_by?(current_user) %>
-                  <%= link_to "♥#{@post.favorites.count} いいね", post_favorites_path(@post), method: :delete, class: "rounded-circle favorite-settled" %>
+                  <%= link_to post_favorites_path(@post), method: :delete, class: "favorite-settled" do %>
+                    <i class="fa-solid fa-heart"></i><%= "#{@post.favorites.count} いいね" %>
+                  <% end %>
                 <% else %>
-                  <%= link_to "♡#{@post.favorites.count} いいね", post_favorites_path(@post), method: :post, class: "rounded-circle favorite-not-settled" %>
+                  <%= link_to post_favorites_path(@post), method: :post, class: "favorite-not-settled" do %>
+                    <i class="fa-regular fa-heart"></i><%= "#{@post.favorites.count} いいね" %>
+                  <% end %>
                 <% end %>
               <% else %>
-                <%= link_to post_favorites_path(@post), method: :post do %>
-                  <%= link_to "♡#{@post.favorites.count} いいね", post_favorites_path(@post), method: :post, class: "rounded-circle favorite-not-settled" %>
+                <%= link_to post_favorites_path(@post), method: :post, class: "favorite-not-settled" do %>
+                  <i class="fa-regular fa-heart"></i><%= "#{@post.favorites.count} いいね" %>
                 <% end %>
               <% end %>
             </div>
             <div>
-              <% if user_signed_in? %>
-                <% if current_user.id == @post.user.id %>
-                  <%= link_to "削除", post_path(@post), method: :delete %>
+              <% if user_signed_in? && current_user.id == @post.user.id %>
+                <%= link_to post_path(@post), method: :delete, class: "trash-settled" do %>
+                  <i class="fa-solid fa-trash"></i> 投稿を削除
                 <% end %>
               <% end %>
             </div>
           </div>
-          <div class="border-top row p-3">
+          <div class="border-top p-3">
             <% if user_signed_in? %>
               <%= form_with model:[@post, @post_comment]  do |f| %>
                 <div>
-                  <%= f.text_field :comment, placeholder: "コメント", class: "w-50" %> <%= f.submit "コメント投稿" %>
+                  <%= f.text_field :comment, placeholder: "コメント", class: "w-50 w-lg-75" %> <%= f.submit "投稿" %>
                 </div>
               <% end %>
             <% else %>

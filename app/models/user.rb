@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   validates :email,           presence: true,   uniqueness: true
   validates :user_name,       presence: true,   length: { maximum: 15 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
-  validates :account_name,    presence: true,   length: { maximum: 10 }
+  validates :account_name,    presence: true,   length: { maximum: 25 }
   validates :introduction,    length: { maximum: 500 }
   validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}
@@ -56,7 +56,8 @@ class User < ApplicationRecord
     end
     profile_image.variant(gravity: "center", resize:"640x640^", crop:"640x640+0+0").processed
   end
-
+  
+  # カバー画像リサイズ
   def get_cover_image
     unless cover_image.attached?
       file_path = Rails.root.join('app/assets/images/sample_cover_image.jpg')
