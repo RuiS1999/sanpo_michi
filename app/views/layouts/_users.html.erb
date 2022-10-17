@@ -3,7 +3,7 @@
     <div class="row">
 
       <!--プロフィール画像-->
-      <div class="col-2 col-sm-1 p-1 p-sm-2">
+      <div class="col-2 col-md-1 p-1 p-sm-2">
         <%= link_to user_path(user.user_name), class: "a-post-link" do %>
           <div>
             <%= image_tag user.get_profile_image, class:"rounded-circle profile_img"; %>
@@ -12,7 +12,7 @@
       </div>
 
       <!--プロフィール情報-->
-      <div class="col-10 col-sm-11 py-0 px-2">
+      <div class="col-10 col-md-11 py-0 px-2">
         <div class="d-flex justify-content-between">
           <div class="py-1">
             <h5 class="p-0 m-0"><%= link_to user.account_name, user_path(user.user_name), class: "a_user_link" %></h5>

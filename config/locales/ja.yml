@@ -5,3 +5,11 @@ ja:
         male: "男性"
         female: "女性"
         other: "その他"
+
+  activerecord:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        user_name: ユーザー名
+

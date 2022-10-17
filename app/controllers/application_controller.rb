@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     when :admin   # ログアウト時はシンボルが返ってくる
       new_admin_session_path
     when :user  # ログアウト時はシンボルが返ってくる
-      about_path
+      user_session_path
     end
   end
 

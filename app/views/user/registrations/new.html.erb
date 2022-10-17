@@ -1,74 +1,52 @@
 <div class="container-fluid">
-  <div class="mx-lg-auto log-in-width">
-    <div>
-      <h1>新規会員登録</h1>
-    </div>
-    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user' do |f| %>
+  <div class="mx-lg-auto">
+    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user form-signin' do |f| %>
       <%= render "user/shared/error_messages", resource: resource %>
+      <div class="text-center">
+        <h1 class="py-4 sanpomichi">さんぽみち</h1>
+      </div>
       <div>
-        <div>
-          <h4>登録情報</h4>
+        <div class="py-2">
+          <div>
+            <%= f.label :email, "メールアドレス", class: "required" %>
+          </div>
+          <div>
+            <%= f.email_field :email, autocomplete: "email", placeholder: "sanpo_dou@walk.com", class: "form-control" %>
+          </div>
         </div>
-        <div>
+        <div class="py-2">
           <div>
-            <div>
-              <%= f.label :user_name, "ユーザー名(半角英数のみ)", class: "required" %>
-            </div>
-            <div class="input-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <div class="input-group-text">@</div>
-                <%= f.text_field :user_name, autocomplete: "name", placeholder: "Username", class: "form-control" %>
-              </div>
-            </div>
+            <%= f.label :password, "パスワード (#{@minimum_password_length}文字以上)", class: "required" %>
           </div>
           <div>
-            <div>
-              <%= f.label :email, "メールアドレス", class: "required" %>
-            </div>
-            <div class="form-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <%= f.email_field :email, autocomplete: "email", placeholder: "sanpo_dou@walk.com", class: "form-control" %>
-              </div>
-            </div>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
+        </div>
+        <div class="py-2">
+          <div>
+            <%= f.label :password_confirmationv, "パスワード (確認用)", class: "required" %>
           </div>
           <div>
-            <div>
-              <%= f.label :password, "パスワード (#{@minimum_password_length}文字以上)", class: "required" %>
-              <% if @minimum_password_length %>
-
-              <% end %>
-            </div>
-            <div class="form-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
-              </div>
-            </div>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
           </div>
+        </div>
+        <div class="py-2">
           <div>
-            <div>
-              <%= f.label :password_confirmationv, "パスワード (確認用)", class: "required" %>
-              <% if @minimum_password_length %>
-
-              <% end %>
-            </div>
-            <div class="form-group mb-2 mr-sm-2">
-              <div class="input-group-prepend">
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
-              </div>
+            <%= f.label :user_name, "ユーザー名(半角英数のみ)", class: "required" %>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">@</div>
+              <%= f.text_field :user_name, autocomplete: "name", placeholder: "sanpomichi3", class: "form-control" %>
             </div>
           </div>
         </div>
-        <div>
-          <div>
-            <div><%= f.submit "新規登録" %></div>
-          </div>
+        <div class="text-center">
+          <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-block my-2" %>
+          <h5><%= render "user/shared/links" %></h5>
         </div>
+        <p class="mt-5 mb-3 text-muted text-center">© 2022-</p>
       </div>
     <% end %>
-  </div>
-  <div>
-    <div>
-      <h5><%= render "user/shared/links" %></h5>
-    </div>
   </div>
 </div>
