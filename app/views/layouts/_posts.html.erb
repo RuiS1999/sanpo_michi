@@ -49,7 +49,11 @@
               </span>
             </div>
             <div class="text-center col-6">
-              <span><i class="col-3"></i> <%= link_to post.post_comments.count, post_path(post) %>コメント</span>
+              <span>
+                <%= link_to post_path(post), class: "text-dark" do %>
+                  <%= post.post_comments.count %> コメント
+                <% end %>
+              </span>
             </div>
           </div>
         </div>

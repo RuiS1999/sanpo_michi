@@ -48,9 +48,13 @@
                 <% end %>
               </span>
             </div>
-          </div>
-          <div class="text-center col-6">
-            <span><i class=""></i> <%= link_to user_favorite.post.post_comments.count, post_path(user_favorite.post) %>コメント</span>
+            <div class="text-center col-6">
+              <span>
+                <%= link_to post_path(user_favorite.post), class: "text-dark" do %>
+                  <%= user_favorite.post.post_comments.count %> コメント
+                <% end %>
+              </span>
+            </div>
           </div>
         </div>
       </div>

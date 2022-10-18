@@ -1,6 +1,10 @@
 class User::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
+  def new
+    @post = Post.new
+  end
+
   def create
     post = Post.new(post_params)
     post.user_id = current_user.id

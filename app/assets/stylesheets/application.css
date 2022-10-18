@@ -13,7 +13,20 @@
  *= require_tree .
  *= require_self
  */
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+/*font-family*/
+nav ul li {
+  font-family: 'Wawati SC', sans-serif;
+}
+
+h1 {
+  font-family: 'Wawati SC', sans-serif;
+}
+
+.hannotate-sc {
+  font-family: 'Hannotate SC', sans-serif;
+}
+/*font-family END*/
 
 main {
   padding: 80px 0 200px 0;
@@ -55,6 +68,3 @@ label.required:after{
   margin: auto;
 }
 
-.sanpomichi {
-  font-family: "Hannari";
-}
