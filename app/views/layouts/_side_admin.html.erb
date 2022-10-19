@@ -1,0 +1,28 @@
+<nav class="d-none d-lg-block side-content">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <span class="nav-link h5">
+          <%= link_to admin_posts_path, class: "text-dark" do %>
+            <i class="fa-solid fa-signs-post"></i> 投稿一覧
+          <% end %>
+        </span>
+      </li>
+      <li class="nav-item">
+        <span class="nav-link h5">
+          <%= link_to admin_users_path, class: "text-dark" do %>
+            <i class="fa-solid fa-users"></i> ユーザー一覧
+          <% end %>
+        </span>
+      </li>
+      </br>
+      <li class="nav-item">
+        <span class="nav-link h5">
+          <%= link_to destroy_admin_session_path, method: :delete, class: "text-dark" do %>
+            <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+          <% end %>
+        </span>
+      </li>
+    </ul>
+  </div>
+</nav>

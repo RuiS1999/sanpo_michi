@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   scope module: :user do
     root to:  'homes#top'
     get '/about' => 'homes#about', as: 'about'
@@ -16,8 +17,14 @@ Rails.application.routes.draw do
     end
     resources  :posts,               only: [:new, :show, :index, :edit, :create, :update, :destroy] do
       resources :post_comments,       only: [:create, :destroy]
-      resource :favorites,           only: [:create, :destroy]
+      resource :favorites,            only: [:create, :destroy]
     end
+  end
+
+  namespace :admin do
+    root to:  'homes#top'
+    resources  :users,  only: [:index, :show, :edit, :update]
+    resources  :posts,  only: [:new, :show, :index, :create, :update, :destroy]
   end
 
   # ユーザー用
@@ -27,7 +34,8 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
   }
 
-  devise_for :admins, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admins, skip: [:passwords] ,controllers: {
+    registrations: "admin/registrations",
     sessions: "admin/sessions"
   }
 

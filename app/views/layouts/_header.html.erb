@@ -1,7 +1,7 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-light fixed-top navbar-expand-lg" style="background-color: #e3f2fd;">
     <% if admin_signed_in? %>
-      <%= link_to "さんぽみち", admin_root_path, class:"header-title navbar-brand watati-sc"%>
+      <%= link_to "さんぽみち（管理者用）", admin_root_path, class:"header-title navbar-brand watati-sc"%>
     <% else %>
       <%= link_to "さんぽみち", root_path, class:"header-title navbar-brand watati-sc"%>
     <% end %>
@@ -44,6 +44,32 @@
               <%= link_to destroy_user_session_path, method: :delete, class: "text-dark mx-2" do %>
                 <i class="fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
+            </span>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li class="nav-item">
+            <span class="nav-link">
+                <i class="fa-solid fa-user"></i> マイページ
+            </span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">
+                <i class="fa-solid fa-magnifying-glass"></i> 話題を検索
+            </span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">
+                <i class="fa-solid fa-signs-post"></i> 投稿一覧
+            </span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">
+                <i class="fa-solid fa-users"></i> ユーザー一覧
+            </span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
             </span>
           </li>
         <% else %>

@@ -18,15 +18,9 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def get_post_image
-    if post_image.attached?
-      post_image.variant(gravity: "center", resize:"1000x1000^", crop:"1000x1000+0+0").processed
-    end
-  end
-
   def index_post_image
     if post_image.attached?
-      post_image.variant(gravity: "center", resize:"800x510^", crop:"800x510+0+0").processed
+      post_image.variant(gravity: "center", resize:"700x400^", crop:"700x400+0+0").processed
     end
   end
 end

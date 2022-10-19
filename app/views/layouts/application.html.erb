@@ -16,6 +16,8 @@
     <main class="hannotate-sc">
       <%= yield %>
     </main>
-    <%= render 'layouts/new_post_icon' %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/new_post_icon' %>
+    <% end %>
   </body>
 </html>

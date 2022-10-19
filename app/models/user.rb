@@ -54,16 +54,16 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(gravity: "center", resize:"640x640^", crop:"640x640+0+0").processed
+    profile_image.variant(gravity: "center", resize:"300x300^", crop:"300x300+0+0").processed
   end
-  
+
   # カバー画像リサイズ
   def get_cover_image
     unless cover_image.attached?
       file_path = Rails.root.join('app/assets/images/sample_cover_image.jpg')
       cover_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    cover_image.variant(gravity: "center", resize:"1500x500^", crop:"1500x500+0+0").processed
+    cover_image.variant(gravity: "center", resize:"900x300^", crop:"900x300+0+0").processed
   end
 
 end

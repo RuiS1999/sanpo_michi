@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <div class="mx-lg-auto">
-    <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user form-signin' do |f| %>
-      <%= render "user/shared/error_messages", resource: resource %>
+  <div class="mx-lg-auto watati-sc">
+    <%= form_with model: @admin, url: admin_registration_path, id: 'new_admin', class: 'new_admin form-signin' do |f| %>
+      <%= render "admin/shared/error_messages", resource: resource %>
       <div class="text-center">
         <h1 class="py-4">さんぽみち</h1>
       </div>
@@ -30,20 +30,9 @@
             <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
           </div>
         </div>
-        <div class="py-2">
-          <div>
-            <%= f.label :user_name, "ユーザー名(半角英数のみ)", class: "required" %>
-          </div>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">@</div>
-              <%= f.text_field :user_name, autocomplete: "name", placeholder: "sanpomichi3", class: "form-control" %>
-            </div>
-          </div>
-        </div>
         <div class="text-center">
           <%= f.submit "新規登録", class: "btn btn-lg btn-primary btn-block my-2" %>
-          <h5 class=><%= render "user/shared/links" %></h5>
+          <h5 class=><%= render "admin/shared/links" %></h5>
         </div>
         <p class="mt-5 mb-3 text-muted text-center">© 2022-</p>
       </div>

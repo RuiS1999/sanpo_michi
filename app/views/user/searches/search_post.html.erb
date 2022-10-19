@@ -6,6 +6,9 @@
       </div>
       <div class="col-lg-9">
         <div>
+          <%= render 'layouts/search_post' %>
+        </div>
+        <div>
           <ul class="nav nav-tabs">
             <li class="nav-item">
               <%= link_to "ユーザーを検索", search_users_path, class: "nav-link text-dark" %>
@@ -19,7 +22,6 @@
           <%= render 'layouts/posts', posts: @posts  %>
         </div>
       </div>
-      <%= render "layouts/new_post_icon" %>
     </div>
   </div>
 </div>
