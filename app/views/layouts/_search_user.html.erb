@@ -1,8 +1,18 @@
-<% if user_signed_in? %>
-  <div class="search_form">
-    <%= form_with url: search_users_path, local: true, method: :get do |f| %>
-      <%= f.text_field :word %>
-      <%= f.submit "検索", class: "btn-primary" %>
-    <% end %>
-  </div>
-<% end %>
+<div class="search_form p-2 col-12 border-right border-left border-bottom">
+  <%= form_with url: search_users_path, local: true, method: :get do |f| %>
+    <div class="d-flex justify-content-center">
+      <div class="col-9">
+        <span class="w-50">
+          <%= f.text_field :word, placeholder: "キーワードを検索", class: "form-control" %>
+        </span>
+      </div>
+      <div>
+        <%= button_tag type: "submit", class: "btn btn-primary p-0" do %>
+          <span>
+            <i class="fa-solid fa-magnifying-glass py-2 px-4"></i>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
