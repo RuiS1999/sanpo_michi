@@ -1,91 +1,129 @@
-<div class="container-fluid">
+<div class="container-fluid p-0 m-0">
   <div class="col-lg-8 mx-lg-auto">
     <div class="row p-0">
       <div class="col-lg-3">
         <%= render 'layouts/side' %>
       </div>
       <div class="col-lg-9">
-      <div class="p-3 border">
-        <div class="row">
+        <div class="p-3 border">
+          <div class="row">
 
-        <div class="col-2 col-sm-1 p-1 p-sm-2">
-          <%= link_to user_path(@post.user.user_name), class: "a-post-link" do %>
-            <div>
-              <%= image_tag @post.user.get_profile_image, class:"rounded-circle profile_img"; %>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="col-10 col-sm-11 p-1 p-sm-2">
-          <div>
-            <strong class="d-inline-block text-truncate" style="max-width: 10rem;"><%= link_to @post.user.account_name, user_path(@post.user.user_name), class: "a_user_link" %></strong>
-            <span class="d-inline-block text-truncate" style="max-width: 8rem;"><%= link_to " @#{@post.user.user_name}", user_path(@post.user.user_name), class: "a_user_name" %></span>
-          </div>
-
-          <div class="py-2">
-            <%= @post.body %>
-          </div>
-
-          <div class="pt-5">
-            <% if @post.post_image.attached? %>
-              <p><%= image_tag @post.post_image, class:"card-img post-image-show" %></p>
-            <% end %>
-          </div>
-
-          <div class="border-top row px-3">
-            <div class="col-5">
-              <p><i class=""></i> <%= @post.post_comments.count %> コメント</p>
-            </div>
-            <div class="col-5">
-              <% if user_signed_in? %>
-                <% if @post.favorited_by?(current_user) %>
-                  <%= link_to post_favorites_path(@post), method: :delete, class: "favorite-settled" do %>
-                    <i class="fa-solid fa-heart"></i><%= "#{@post.favorites.count} いいね" %>
-                  <% end %>
-                <% else %>
-                  <%= link_to post_favorites_path(@post), method: :post, class: "favorite-not-settled" do %>
-                    <i class="fa-regular fa-heart"></i><%= "#{@post.favorites.count} いいね" %>
-                  <% end %>
-                <% end %>
-              <% else %>
-                <%= link_to post_favorites_path(@post), method: :post, class: "favorite-not-settled" do %>
-                  <i class="fa-regular fa-heart"></i><%= "#{@post.favorites.count} いいね" %>
-                <% end %>
-              <% end %>
-            </div>
-            <div>
-              <% if user_signed_in? && current_user.id == @post.user.id %>
-                <%= link_to post_path(@post), method: :delete, class: "trash-settled" do %>
-                  <i class="fa-solid fa-trash"></i> 投稿を削除
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <div class="border-top p-3">
-            <% if user_signed_in? %>
-              <%= form_with model:[@post, @post_comment]  do |f| %>
+            <!--profile画像-->
+            <div class="col-2 col-sm-1 p-1 p-sm-2">
+              <%= link_to user_path(@post.user.user_name), class: "a-post-link" do %>
                 <div>
-                  <%= f.text_field :comment, placeholder: "コメント", class: "w-50 w-lg-75" %> <%= f.submit "投稿" %>
+                  <%= image_tag @post.user.get_profile_image, class:"rounded-circle profile_img"; %>
                 </div>
               <% end %>
-            <% else %>
-              コメントは会員ユーザーのみ出来ます。
-            <% end %>
-          </div>
-          <div class="border-top row p-3">
-            <% @post_comments.each do |post_comment| %>
+            </div>
+
+            <!--投稿情報-->
+            <div class="col-10 col-sm-11 p-1 p-sm-2">
               <div>
-                <%= post_comment.user.account_name %> <%= post_comment.comment %>
-                <% if post_comment.user == current_user %>
-                  <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                <strong class="d-inline-block text-truncate"><%= link_to @post.user.account_name, user_path(@post.user.user_name), class: "a_user_link" %></strong>
+                <span class="d-inline-block text-truncate"><%= link_to " @#{@post.user.user_name}", user_path(@post.user.user_name), class: "a_user_name" %></span>
+              </div>
+
+              <div class="py-2">
+                <%= @post.body %>
+              </div>
+
+              <div class="pt-5">
+                <% if @post.post_image.attached? %>
+                  <p><%= image_tag @post.post_image, class:"card-img post-image-show" %></p>
                 <% end %>
+              </div>
+
+              <div class="border-top d-flex justify-content-around p-1">
+                <div>
+                  <i class="fa-regular fa-comments"></i> <%= @post.post_comments.count %>
+                </div>
+                <div>
+                  <% if user_signed_in? %>
+                    <% if @post.favorited_by?(current_user) %>
+                      <%= link_to post_favorites_path(@post), method: :delete, class: "favorite-settled" do %>
+                        <i class="fa-solid fa-heart"></i> <%= @post.favorites.count %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to post_favorites_path(@post), method: :post, class: "favorite-not-settled" do %>
+                        <i class="fa-regular fa-heart"></i> <%= @post.favorites.count %>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to post_favorites_path(@post), method: :post, class: "favorite-not-settled" do %>
+                      <i class="fa-regular fa-heart"></i> <%= @post.favorites.count %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <% if user_signed_in? && current_user.id == @post.user.id %>
+                  <div>
+                    <%= link_to post_path(@post), method: :delete, class: "trash-settled" do %>
+                      <i class="fa-solid fa-trash"></i> 削除
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="border-top py-3">
+              <% if user_signed_in? %>
+                <%= form_with model:[@post, @post_comment]  do |f| %>
+                  <div class="d-flex justify-content-center">
+                    <%= f.text_field :comment, placeholder: "コメント", class: "col-8" %> <%= f.submit "投稿", class: "mx-1 px-2 btn btn-sm btn-success" %>
+                  </div>
+                <% end %>
+              <% else %>
+                <div class="d-flex justify-content-center">
+                  コメントは会員ユーザーのみ出来ます。
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div>
+            <% @post_comments.reverse.each do |post_comment| %>
+              <div class="p-1">
+                <div class="line-bc"><!--①コメント全体を囲う-->
+                  <% if @post.user.id == post_comment.user.id %>
+                    <!--②左コメント始-->
+                    <div class="balloon6">
+                      <div class="faceicon">
+                        <%= link_to user_path(post_comment.user.user_name) do %>
+                          <div>
+                            <%= image_tag post_comment.user.get_profile_image %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <div class="chatting">
+                        <div class="says">
+                          <p><%= post_comment.comment %></p>
+                        </div>
+                        <div class="d-inline">
+                          <% if post_comment.user == current_user %>
+                            <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "trash-settled" do %>
+                              <span><i class="fa-solid fa-trash"></i>削除</span>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="mycomment">
+                      <% if post_comment.user == current_user %>
+                        <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "trash-settled" do %>
+                          <span><i class="fa-solid fa-trash"></i>削除</span>
+                        <% end %>
+                      <% end %>
+                      <p>
+                        <%= post_comment.comment %>
+                      </p>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           </div>
-          <div></div>
         </div>
-        </div>
-      </div>
       </div>
     </div>
   </div>

@@ -1,59 +1,84 @@
 <nav class="d-none d-lg-block side-content">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
-      <% if user_signed_in? %>
+      <% unless admin_signed_in? %>
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <span class="nav-link h5">
+              <%= link_to user_path(current_user.user_name), class: "text-dark" do %>
+                <i class="fa-solid fa-user"></i> マイページ
+              <% end %>
+            </span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link h5">
+              <%= link_to edit_user_path(current_user.user_name), class: "text-dark" do %>
+                <i class="fa-solid fa-gear"></i> ユーザー情報編集
+              <% end %>
+            </span>
+          </li>
+          </br>
+        <% end %>
         <li class="nav-item">
           <span class="nav-link h5">
-            <%= link_to user_path(current_user.user_name), class: "text-dark" do %>
-              <i class="fa-solid fa-user"></i> マイページ
+            <%= link_to search_users_path, class: "text-dark" do %>
+              <i class="fa-solid fa-magnifying-glass"></i> 話題を検索
             <% end %>
           </span>
         </li>
         <li class="nav-item">
           <span class="nav-link h5">
-            <%= link_to edit_user_path(current_user.user_name), class: "text-dark" do %>
-              <i class="fa-solid fa-gear"></i> ユーザー情報編集
+            <%= link_to posts_path, class: "text-dark" do %>
+              <i class="fa-solid fa-signs-post"></i> 投稿一覧
             <% end %>
           </span>
         </li>
-        </br>
-      <% end %>
-      <li class="nav-item">
-        <span class="nav-link h5">
-          <%= link_to search_users_path, class: "text-dark" do %>
-            <i class="fa-solid fa-magnifying-glass"></i> 話題を検索
-          <% end %>
-        </span>
-      </li>
-      <li class="nav-item">
-        <span class="nav-link h5">
-          <%= link_to posts_path, class: "text-dark" do %>
-            <i class="fa-solid fa-signs-post"></i> 投稿一覧
-          <% end %>
-        </span>
-      </li>
-      <li class="nav-item">
-        <span class="nav-link h5">
-          <%= link_to users_path, class: "text-dark" do %>
-            <i class="fa-solid fa-users"></i> ユーザー一覧
-          <% end %>
-        </span>
-      </li>
-      <% if user_signed_in? %>
-        </br>
         <li class="nav-item">
           <span class="nav-link h5">
-            <%= link_to destroy_user_session_path, method: :delete, class: "text-dark" do %>
-              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+            <%= link_to users_path, class: "text-dark" do %>
+              <i class="fa-solid fa-users"></i> ユーザー一覧
             <% end %>
           </span>
         </li>
+        <% if user_signed_in? %>
+          </br>
+          <li class="nav-item">
+            <span class="nav-link h5">
+              <%= link_to destroy_user_session_path, method: :delete, class: "text-dark" do %>
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
+            </span>
+          </li>
+        <% else %>
+          </br>
+          <li class="nav-item">
+            <span class="nav-link h5">
+              <%= link_to new_user_session_path, class: "text-dark" do %>
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン
+              <% end %>
+            </span>
+          </li>
+        <% end %>
       <% else %>
+        <li class="nav-item">
+          <span class="nav-link h5">
+            <%= link_to admin_posts_path, class: "text-dark" do %>
+              <i class="fa-solid fa-signs-post"></i> 投稿一覧
+            <% end %>
+          </span>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link h5">
+            <%= link_to admin_users_path, class: "text-dark" do %>
+              <i class="fa-solid fa-users"></i> ユーザー一覧
+            <% end %>
+          </span>
+        </li>
         </br>
         <li class="nav-item">
           <span class="nav-link h5">
-            <%= link_to new_user_session_path, class: "text-dark" do %>
-              <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン
+            <%= link_to destroy_admin_session_path, method: :delete, class: "text-dark" do %>
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
             <% end %>
           </span>
         </li>

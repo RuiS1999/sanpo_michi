@@ -31,31 +31,38 @@
           <% end %>
         </div>
 
-        <div class="border-top">
-          <div class="row pt-3">
-            <div class="text-center col-6">
-              <span>
-                <% if user_signed_in? %>
-                  <% if user_favorite.post.favorited_by?(current_user) %>
-                    <%= link_to "♥#{user_favorite.post.favorites.count} いいね", post_favorites_path(user_favorite.post), method: :delete, class: "rounded-circle favorite-settled" %>
-                  <% else %>
-                    <%= link_to "♡#{user_favorite.post.favorites.count} いいね", post_favorites_path(user_favorite.post), method: :post, class: "rounded-circle favorite-not-settled" %>
-                  <% end %>
-                <% else %>
-                  <%= link_to post_favorites_path(user_favorite.post), method: :post do %>
-                    <%= link_to "♡#{user_favorite.post.favorites.count} いいね", post_favorites_path(user_favorite.post), method: :post, class: "rounded-circle favorite-not-settled" %>
-                  <% end %>
-                <% end %>
-              </span>
-            </div>
-            <div class="text-center col-6">
-              <span>
-                <%= link_to post_path(user_favorite.post), class: "text-dark" do %>
-                  <%= user_favorite.post.post_comments.count %> コメント
-                <% end %>
-              </span>
-            </div>
+        <div class="border-top d-flex justify-content-around p-1">
+          <div>
+            <span>
+              <%= link_to post_path(user_favorite.post), class: "text-dark" do %>
+                <i class="fa-regular fa-comments"></i> <%= user_favorite.post.post_comments.count %>
+              <% end %>
+            </span>
           </div>
+          <div>
+            <% if user_signed_in? %>
+              <% if user_favorite.post.favorited_by?(current_user) %>
+                <%= link_to post_favorites_path(user_favorite.post), method: :delete, class: "favorite-settled" do %>
+                  <i class="fa-solid fa-heart"></i> <%= user_favorite.post.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to post_favorites_path(user_favorite.post), method: :post, class: "favorite-not-settled" do %>
+                  <i class="fa-regular fa-heart"></i> <%= user_favorite.post.favorites.count %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to post_favorites_path(user_favorite.post), method: :post, class: "favorite-not-settled" do %>
+                <i class="fa-regular fa-heart"></i> <%= user_favorite.post.favorites.count %>
+              <% end %>
+            <% end %>
+          </div>
+          <% if user_signed_in? && current_user.id == user_favorite.post.user.id %>
+            <div>
+              <%= link_to post_path(user_favorite.post), method: :delete, class: "trash-settled" do %>
+                <i class="fa-solid fa-trash"></i> 削除
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

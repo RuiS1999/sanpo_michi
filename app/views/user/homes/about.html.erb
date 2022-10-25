@@ -1,20 +1,17 @@
-<div class="container">
-  <div>
-    <div>
-      <p>
-        新規投稿・コメント・いいね機能などはログインユーザーのみ可能です。
-      </p>
-      <div>
-        <% unless user_signed_in? %>
-          <div>
-            <%= link_to "新規登録", new_user_registration_path %>
-          </div>
-          <div>
-            <%= link_to "ログイン", new_user_session_path %>
-          </div>
-        <% else %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "btn btn-outline-secondary mx-3 my-1" %>
-        <% end %>
+<div class="container-fluid p-0 about-top">
+  <div class="">
+    <%= image_tag 'japan.jpg', class: "w-100" %>
+    <div class="col-lg-5 mx-auto">
+      <div class="pt-4">
+        <h1 class="text-center">小さな幸せをみんなと共に</h1>
+        <div class="py-5">
+          <p class="h5 p-2">
+            「さんぽみち」は登録することで、誰にでも使えるSNSサイトです。<br />
+            <br />
+            さんぽ中に見つけた発見や小さな幸せを伝え合う事で、<br />
+            使用している人がほんの少しでも幸せな気持ちになれるようにつくられました。<br />
+          </p>
+        </div>
       </div>
     </div>
   </div>

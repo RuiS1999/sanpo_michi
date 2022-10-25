@@ -2,43 +2,39 @@
   <div class="col-lg-8 mx-lg-auto">
     <div class="row p-0">
       <div class="col-lg-3">
-        <%= render 'layouts/side_admin' %>
+        <%= render 'layouts/side' %>
       </div>
       <div class="col-lg-9">
-        <div class="border-top">
-          <% @users.each do |user| %>
-            <div class="p-3 border-right border-left border-bottom">
-              <div class="row">
-
-                <!--プロフィール画像-->
-                <div class="col-2 col-md-1 p-1 p-sm-2">
-                  <%= link_to admin_user_path(user.id), class: "a-post-link" do %>
-                    <div>
-                      <%= image_tag user.get_profile_image, class:"rounded-circle profile_img"; %>
-                    </div>
-                  <% end %>
-                </div>
-
-                <!--プロフィール情報-->
-                <div class="col-10 col-md-11 py-0 px-2">
-                  <div class="d-flex justify-content-between">
-                    <div class="py-1">
-                      <h5 class="p-0 m-0"><%= link_to user.account_name, admin_user_path(user.id), class: "a_user_link" %></h5>
-                      <span><%= link_to " @#{user.user_name}", admin_user_path(user.id), class: "a_user_name" %></span>
-                    </div>
-                    <div class="mx-3">
-                      <%= link_to "プロフィール編集", edit_admin_user_path(user.id), class: "btn btn-outline-success btn-sm" %>
-                    </div>
-                  </div>
-                  <div>
-                    <a>
-                      <%= user.introduction %>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
+        <dv>
+          <%= render 'layouts/search_user' %>
+        </dv>
+        <div class="">
+          <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th>ID</th>
+                <th>ユーザー</th>
+                <th>ステータス</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <th class="text-center"><%= user.id %></th>
+                  <td><%= link_to user.account_name, admin_user_path(user.id), class: "a_user_link" %><span><%= link_to " @#{user.user_name}", admin_user_path(user.id), class: "a_user_name" %></span></td>
+                  <td class="text-center">
+                    <% if user.is_deleted == false %>
+                      <span class="btn btn-sm btn-primary">使用中</span>
+                    <% else %>
+                      <span class="btn btn-sm btn-danger">退会済</span>
+                    <% end %>
+                  </td>
+                  <td class="text-center"><%= link_to "編集", edit_admin_user_path(user.id), class: "btn btn-outline-success btn-sm" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

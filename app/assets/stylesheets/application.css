@@ -34,6 +34,10 @@ main {
   text-decoration:none;
 }
 
+.about-top{
+  margin-top: -24px;
+}
+
 .new-post-icon {
   width: 50px;
   height: 50px;

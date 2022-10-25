@@ -3,5 +3,6 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
+     @posts = Post.looks(params[:word])
   end
 end

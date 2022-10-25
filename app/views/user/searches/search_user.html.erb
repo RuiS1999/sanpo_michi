@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid p-0 m-0">
   <div class="col-lg-8 mx-lg-auto">
     <div class="row p-0">
       <div class="col-lg-3">
@@ -15,12 +15,15 @@
             </li>
           </ul>
         </div>
-        <div>
-          <%= render 'layouts/search_user' %>
+        <div class="border-right border-left">
+          <div>
+            <%= render 'layouts/search_user' %>
+          </div>
+          <div>
+            <%= render 'layouts/users', users: @users  %>
+          </div>
         </div>
-        <div>
-          <%= render 'layouts/users', users: @users  %>
-        </div>
+
       </div>
     </div>
   </div>
