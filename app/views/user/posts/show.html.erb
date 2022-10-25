@@ -84,7 +84,7 @@
             <% @post_comments.reverse.each do |post_comment| %>
               <div class="p-1">
                 <div class="line-bc"><!--①コメント全体を囲う-->
-                  <% if @post.user.id == post_comment.user.id %>
+                  <% unless @post.user.id == post_comment.user.id %>
                     <!--②左コメント始-->
                     <div class="balloon6">
                       <div class="faceicon">
