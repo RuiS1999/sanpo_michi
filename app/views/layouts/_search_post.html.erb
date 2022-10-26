@@ -1,14 +1,29 @@
 <div class="search_form p-2 col-12 border-right border-left border-bottom">
-  <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
-    <div class="d-flex justify-content-center">
-      <div class="col-9">
-        <span><%= f.text_field :word, placeholder: "本文のキーワードを検索", class: "form-control" %></span>
+  <% unless admin_signed_in? %>
+    <%= form_with url: search_posts_path, local: true, method: :get do |f| %>
+      <div class="d-flex justify-content-center">
+        <div class="col-9">
+          <span><%= f.text_field :word, placeholder: "本文を検索", class: "form-control" %></span>
+        </div>
+        <div>
+          <%= button_tag type: "submit", class: "btn btn-primary p-0" do %>
+            <span><i class="fa-solid fa-magnifying-glass py-2 px-4"></i></span>
+          <% end %>
+        </div>
       </div>
-      <div>
-        <%= button_tag type: "submit", class: "btn btn-primary p-0" do %>
-          <span><i class="fa-solid fa-magnifying-glass py-2 px-4"></i></span>
-        <% end %>
+    <% end %>
+  <% else %>
+    <%= form_with url: admin_posts_path, local: true, method: :get do |f| %>
+      <div class="d-flex justify-content-center">
+        <div class="col-9">
+          <span><%= f.text_field :word, placeholder: "本文を検索", class: "form-control" %></span>
+        </div>
+        <div>
+          <%= button_tag type: "submit", class: "btn btn-primary p-0" do %>
+            <span><i class="fa-solid fa-magnifying-glass py-2 px-4"></i></span>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

@@ -5,36 +5,40 @@
         <%= render 'layouts/side' %>
       </div>
       <div class="col-lg-9">
-        <dv>
-          <%= render 'layouts/search_user' %>
-        </dv>
-        <div class="">
-          <table class="table">
-            <thead>
-              <tr class="text-center">
-                <th>ID</th>
-                <th>ユーザー</th>
-                <th>ステータス</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users.each do |user| %>
-                <tr>
-                  <th class="text-center"><%= user.id %></th>
-                  <td><%= link_to user.account_name, admin_user_path(user.id), class: "a_user_link" %><span><%= link_to " @#{user.user_name}", admin_user_path(user.id), class: "a_user_name" %></span></td>
-                  <td class="text-center">
-                    <% if user.is_deleted == false %>
-                      <span class="btn btn-sm btn-primary">使用中</span>
-                    <% else %>
-                      <span class="btn btn-sm btn-danger">退会済</span>
-                    <% end %>
-                  </td>
-                  <td class="text-center"><%= link_to "編集", edit_admin_user_path(user.id), class: "btn btn-outline-success btn-sm" %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+        <div class="border-top">
+          <div>
+            <%= render 'layouts/search_user' %>
+          </div>
+          <div>
+            <div>
+              <table class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th>ID</th>
+                    <th>名前</th>
+                    <th>ステータス</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @users.each do |user| %>
+                    <tr>
+                      <th class="text-center"><%= user.id %></th>
+                      <td><%= user.account_name %> <span class="a_user_name">@<%= user.user_name %></span></td>
+                      <td class="text-center">
+                        <% unless user.is_deleted == true %>
+                          <span class="btn btn-sm btn-primary">使用中</span>
+                        <% else %>
+                          <span class="btn btn-sm btn-danger">退会済</span>
+                        <% end %>
+                      </td>
+                      <td class="text-center"><span><%= link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-outline-success" %></span></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

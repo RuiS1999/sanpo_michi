@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  has_many :post_comments,      dependent: :destroy
-  has_many :favorites,          dependent: :destroy
+  has_many :post_comments,    dependent: :destroy
+  has_many :favorites,        dependent: :destroy
+  has_many :reports,          dependent: :destroy
 
   validates   :user_id,         presence: true
   validates   :body,            presence: true,     length: { maximum: 500 }
@@ -14,8 +15,14 @@ class Post < ApplicationRecord
     @post = Post.where("body LIKE?","%#{word}%")
   end
 
+  # いいね済or未
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
+  end
+
+  # 報告済or未
+  def reported_by?(user)
+    reports.exists?(user_id: user.id)
   end
 
   def index_post_image

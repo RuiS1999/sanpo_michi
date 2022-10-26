@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :post_comments,    dependent: :destroy
   has_many :posts,            dependent: :destroy
   has_many :favorites,        dependent: :destroy
+  has_many :reports,          dependent: :destroy
 
   # # follow機能
   # フォローする側から中間テーブルへのアソシエーション
@@ -32,6 +33,7 @@ class User < ApplicationRecord
   validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}
 
+  # 画像
   has_one_attached :profile_image
   has_one_attached :cover_image
 

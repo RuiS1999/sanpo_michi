@@ -6,6 +6,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts
+    @user_favorites = @user.favorites
   end
 
   def edit

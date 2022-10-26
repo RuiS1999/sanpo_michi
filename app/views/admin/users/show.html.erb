@@ -1,2 +1,69 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container-fluid p-0 m-0">
+  <div class="col-lg-8 mx-lg-auto">
+    <div class="row p-0">
+      <div class="col-lg-3">
+        <%= render 'layouts/side' %>
+      </div>
+      <div class="col-lg-9">
+        <div class="">
+          <%= image_tag @user.get_cover_image, class: "w-100" %>
+          <div class="col-12 d-flex justify-content-between" >
+            <div class="user-img-position col-4 col-lg-3">
+              <%= image_tag @user.get_profile_image, class:"rounded-circle w-100 user-img-frame" %>
+            </div>
+            <div class="my-2">
+              <sapn>
+                <%= link_to "プロフィール編集", edit_admin_user_path, class: "btn btn-success btn-sm" %>
+              </sapn>
+            </div>
+          </div>
+          <div class="px-3 px-lg-4">
+            <div>
+              <div class="py-2">
+                <div class="py-1">
+                  <h3 class="p-0 m-0"><%= @user.account_name %></h3>
+                  <span class="h5 a_user_name">@<%= @user.user_name %></span>
+                </div>
+                <div>
+                  <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> フォロー <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="py-3">
+                <%= @user.introduction %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--ユーザー投稿一覧 -->
+        <div class="my-4">
+          <h3>< ユーザー投稿一覧 ></h3>
+          <div>
+            <table class="table">
+              <thead>
+                <tr class="text-center">
+                  <th>投稿ID</th>
+                  <th>投稿文</th>
+                  <th>通報数</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @posts.each do |post| %>
+                  <tr class="text-center">
+                    <td><%= post.id %></td>
+                    <td><%= post.body %></td>
+                    <td></td>
+                    <td><%= link_to "詳細", admin_post_path(post.id), class: "btn btn-sm btn-outline-success" %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
