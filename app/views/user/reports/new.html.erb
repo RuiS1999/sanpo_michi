@@ -1,5 +1,33 @@
-<div class="container-fluid p-0">
-  <div>
-    
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_with model: [@post, @report] do |f| %>
+        <div>
+          <ul class="list-unstyled">
+            <li class="my-2">
+              <%= f.radio_button :reason, Report.reasons.key(0) %>
+              <%= f.label :reason, "興味のないコンテンツ", value: Report.reasons.key(0) %>
+            </li>
+            <li class="my-2">
+              <%= f.radio_button :reason, Report.reasons.key(1) %>
+              <%= f.label :reason, "不審な内容またはスパムに関する投稿", value: Report.reasons.key(1) %>
+            </li>
+            <li class="my-2">
+              <%= f.radio_button :reason, Report.reasons.key(2) %>
+              <%= f.label :reason, "相手を傷つける投稿", value: Report.reasons.key(2) %>
+            </li>
+            <li class="my-2">
+              <%= f.radio_button :reason, Report.reasons.key(3) %>
+              <%= f.label :reason, "自殺をほのめかす投稿", value: Report.reasons.key(3) %>
+            </li>
+            <li class="my-2">
+              <%= f.radio_button :reason, Report.reasons.key(4) %>
+              <%= f.label :reason, "その他", value: Report.reasons.key(4) %>
+            </li>
+          </ul>
+          <%= f.submit '投稿を報告', class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

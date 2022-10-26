@@ -55,13 +55,29 @@
                     <% end %>
                   <% end %>
                 </div>
-                <% if user_signed_in? && current_user.id == @post.user.id %>
-                  <div>
-                    <%= link_to post_path(@post), method: :delete, class: "trash-settled" do %>
+                <div>
+                  <% if user_signed_in? && current_user.id == @post.user.id %>
+                    <%= link_to post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
                       <i class="fa-solid fa-trash"></i> 削除
                     <% end %>
-                  </div>
-                <% end %>
+                  <% else %>
+                    <% if user_signed_in? %>
+                      <% if @post.reported_by?(current_user) %>
+                        <%= link_to post_reports_path(@post), method: :delete, "data-confirm" => "報告を取消しますか?", class: "text-success" do %>
+                          <span><i class="fa-solid fa-check"></i> 報告済</span>
+                        <% end %>
+                      <% else %>
+                        <%= link_to new_post_reports_path(@post), class: "trash-settled" do %>
+                          <span><i class="fa-solid fa-flag"></i> 報告</span>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to new_post_reports_path(@post), class: "trash-settled" do %>
+                        <span><i class="fa-solid fa-flag"></i> 報告</span>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
@@ -84,8 +100,20 @@
             <% @post_comments.reverse.each do |post_comment| %>
               <div class="p-1">
                 <div class="line-bc"><!--①コメント全体を囲う-->
-                  <% unless @post.user.id == post_comment.user.id %>
-                    <!--②左コメント始-->
+                  <% if @post.user.id == post_comment.user.id %>
+                    <!--右コメント始-->
+                    <div class="mycomment">
+                      <% if post_comment.user == current_user %>
+                        <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                          <span><i class="fa-solid fa-trash"></i>削除</span>
+                        <% end %>
+                      <% end %>
+                      <p>
+                        <%= post_comment.comment %>
+                      </p>
+                    </div>
+                  <% else %>
+                    <!--左コメント始-->
                     <div class="balloon6">
                       <div class="faceicon">
                         <%= link_to user_path(post_comment.user.user_name) do %>
@@ -100,23 +128,12 @@
                         </div>
                         <div class="d-inline">
                           <% if post_comment.user == current_user %>
-                            <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "trash-settled" do %>
+                            <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
                               <span><i class="fa-solid fa-trash"></i>削除</span>
                             <% end %>
                           <% end %>
                         </div>
                       </div>
-                    </div>
-                  <% else %>
-                    <div class="mycomment">
-                      <% if post_comment.user == current_user %>
-                        <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "trash-settled" do %>
-                          <span><i class="fa-solid fa-trash"></i>削除</span>
-                        <% end %>
-                      <% end %>
-                      <p>
-                        <%= post_comment.comment %>
-                      </p>
                     </div>
                   <% end %>
                 </div>
