@@ -18,8 +18,10 @@ class User::ReportsController < ApplicationController
   end
 
   def destroy
-    Report.find(params[:id]).destroy
-    redirect_to request.referer
+    post = Post.find(params[:post_id])
+    report = current_user.reports.find_by(post_id: post.id)
+    report.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   def report_params

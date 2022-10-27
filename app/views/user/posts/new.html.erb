@@ -2,15 +2,16 @@
   <div>
     </div>
       <%= form_with model: Post.new do |f| %>
-        <div class="modal-body">
-          <div>
+        <div>
+          <div class="py-2">
             <%= f.text_area :body, placeholder: "投稿文", class: "form-control", rows: 20 %>
           </div>
           <div class="py-2">
-            <%= f.file_field :post_image, placeholder: "画像を選択" %>
+            <%= f.file_field :post_image, placeholder: "画像を選択" %><br />
+            <span class="small text-danger">※画像の投稿は１枚のみです</span>
           </div>
         </div>
-        <div class="modal-footer">
+        <div>
           <%= f.submit "投稿", class: "btn btn-primary" %>
         </div>
       <% end %>
