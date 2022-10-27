@@ -16,8 +16,8 @@
                   <tr class="text-center">
                     <th>投稿ID</th>
                     <th>投稿文</th>
-                    <th>詳細</th>
                     <th>通報数</th>
+                    <th>詳細</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -25,8 +25,8 @@
                     <tr class="text-center">
                       <th><%= post.id %></th>
                       <td><%= post.body %></td>
+                      <td class="text-danger"><%= post.reports.count %></td>
                       <td><%= link_to "詳細", admin_post_path(post.id), class: "btn btn-sm btn-outline-success" %></td>
-                      <td></td>
                     </tr>
                   <% end %>
                 </tbody>
