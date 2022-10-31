@@ -7,7 +7,13 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
-    @user_favorites = @user.favorites
+    @report_posts = []
+    @posts.each do |post|
+      if post.reports.exists?
+        @report_posts << post
+      end
+      @report_posts
+    end
   end
 
   def edit

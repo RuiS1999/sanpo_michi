@@ -53,7 +53,7 @@ class User < ApplicationRecord
   # プロフィール画像正方形にする
   def get_profile_image
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+      file_path = Rails.root.join('app/assets/images/no_profile_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(gravity: "center", resize:"300x300^", crop:"300x300+0+0").processed
@@ -62,7 +62,7 @@ class User < ApplicationRecord
   # カバー画像リサイズ
   def get_cover_image
     unless cover_image.attached?
-      file_path = Rails.root.join('app/assets/images/sample_cover_image.jpg')
+      file_path = Rails.root.join('app/assets/images/road.jpg')
       cover_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     cover_image.variant(gravity: "center", resize:"900x300^", crop:"900x300+0+0").processed

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get "post/report_posts" => "posts#report_post"
+
     root to:  'homes#top'
     resources  :users,  only: [:index, :show, :edit, :update]
     resources  :posts,  only: [:new, :show, :index, :create, :destroy]

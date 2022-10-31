@@ -9,23 +9,31 @@
           <div>
             <%= render 'layouts/search_post' %>
           </div>
+          <div class="text-right p-2">
+            <%= link_to admin_post_report_posts_path, class: "text-danger h5" do %>
+              >> 報告された投稿
+            <% end %>
+          </div>
           <div>
             <div>
-              <table class="table">
+              <table class="table w-100">
                 <thead>
                   <tr class="text-center">
                     <th>投稿ID</th>
-                    <th>投稿文</th>
-                    <th>通報数</th>
-                    <th>詳細</th>
+                    <th>投稿者</th>
+                    <th>本文</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <% @posts.each do |post| %>
+                  <% @posts.reverse.each do |post| %>
                     <tr class="text-center">
                       <th><%= post.id %></th>
-                      <td><%= post.body %></td>
-                      <td class="text-danger"><%= post.reports.count %></td>
+                      <td>
+                        <%= link_to admin_user_path(post.user), class: "text-dark" do %>
+                          <span><%= post.user.account_name %></span> <span class="a_user_name">@<%= post.user.user_name %></span></td>
+                        <% end %>
+                      <td class="post-body"><%= post.body %></td>
                       <td><%= link_to "詳細", admin_post_path(post.id), class: "btn btn-sm btn-outline-success" %></td>
                     </tr>
                   <% end %>

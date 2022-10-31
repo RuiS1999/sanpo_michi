@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="col-lg-8 mx-lg-auto">
+    <div class="row p-0">
+      <div class="col-lg-3">
+        <%= render 'layouts/side' %>
+      </div>
+      <div class="col-lg-9">
+        <div>
+          <div>
+            <h3>報告された投稿一覧</h3>
+            <div>
+              <table class="table">
+                <thead>
+                  <tr class="text-center">
+                    <th>投稿ID</th>
+                    <th>投稿文</th>
+                    <th>報告数</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @report_posts.each do |report_post| %>
+                    <tr class="text-center">
+                      <th><%= report_post.id %></th>
+                      <td class="post-body"><%= report_post.body %></td>
+                      <td class="text-danger"><%= report_post.reports.count %></td>
+                      <td><%= link_to "詳細", admin_post_path(report_post.id), class: "btn btn-sm btn-outline-success" %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

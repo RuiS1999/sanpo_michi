@@ -24,9 +24,6 @@
                   <h3 class="p-0 m-0"><%= @user.account_name %></h3>
                   <span class="h5 a_user_name">@<%= @user.user_name %></span>
                 </div>
-                <div>
-                  <p class="text-small"><%= link_to @user.followings.count, followings_user_path(@user) %> フォロー <%= link_to @user.followers.count, followers_user_path(@user) %> フォロワー</p>
-                </div>
               </div>
             </div>
             <div>
@@ -37,16 +34,50 @@
           </div>
         </div>
 
-        <!--ユーザー投稿一覧 -->
+        <div class="row my-4 text-center d-flex justify-content-around">
+          <div class="m-2">
+            <div class="p-2">
+              フォロー数
+            </div>
+            <div class="border-top h3 p-2">
+              <%= @user.followings.count %>
+            </div>
+          </div>
+          <div class="m-2">
+            <div class="p-2">
+              フォロワー数
+            </div>
+            <div class="border-top h3 p-2">
+              <%= @user.followers.count %>
+            </div>
+          </div>
+          <div class="m-2">
+            <div class="p-2">
+              投稿数
+            </div>
+            <div class="border-top h3 p-2">
+              <%= @user.posts.count %>
+            </div>
+          </div>
+          <div class="m-2">
+            <div class="p-2">
+              報告投稿数
+            </div>
+            <div class="border-top h3 p-2">
+              <%= @report_posts.count %>
+            </div>
+          </div>
+        </div>
+
         <div class="my-4">
-          <h3>< ユーザー投稿一覧 ></h3>
+          <h3 class="text-center p-1">- ユーザー投稿一覧 -</h3>
           <div>
             <table class="table">
               <thead>
                 <tr class="text-center">
                   <th>投稿ID</th>
                   <th>投稿文</th>
-                  <th>通報数</th>
+                  <th>報告数</th>
                   <th></th>
                 </tr>
               </thead>

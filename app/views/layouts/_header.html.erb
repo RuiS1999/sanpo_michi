@@ -49,16 +49,6 @@
         <% elsif admin_signed_in? %>
           <li class="nav-item">
             <span class="nav-link">
-                <i class="fa-solid fa-user"></i> マイページ
-            </span>
-          </li>
-          <li class="nav-item">
-            <span class="nav-link">
-                <i class="fa-solid fa-magnifying-glass"></i> 話題を検索
-            </span>
-          </li>
-          <li class="nav-item">
-            <span class="nav-link">
               <%= link_to admin_posts_path, class: "text-dark mx-2" do %>
                 <i class="fa-solid fa-signs-post"></i> 投稿一覧
               <% end %>
