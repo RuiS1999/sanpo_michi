@@ -1,5 +1,5 @@
 class User::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :followings, :followers]
 
   def index
     if user_signed_in?

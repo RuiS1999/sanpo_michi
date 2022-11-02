@@ -1,13 +1,11 @@
-<div class="container-fluid p-0 m-0">
-  <div class="col-lg-8 mx-lg-auto">
-    <div class="row p-0">
-      <div class="col-lg-3">
-        <%= render 'layouts/side' %>
-      </div>
-      <div class="col-lg-9">
-        <div class="border-top border-right border-left">
-          <%= render 'layouts/users', users: @users  %>
-        </div>
+<div class="container">
+  <div class="row p-0">
+    <div class="col-lg-3">
+      <%= render 'layouts/side' %>
+    </div>
+    <div class="col-lg-9">
+      <div class="border-top">
+        <%= render 'layouts/users', users: @users  %>
       </div>
     </div>
   </div>

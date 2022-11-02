@@ -1,29 +1,26 @@
-<div class="container-fluid p-0 m-0">
-  <div class="col-lg-8 mx-lg-auto">
-    <div class="row p-0">
-      <div class="col-lg-3">
-        <%= render 'layouts/side' %>
+<div class="container">
+  <div class="row p-0">
+    <div class="col-lg-3">
+      <%= render 'layouts/side' %>
+    </div>
+    <div class="col-lg-9">
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <%= link_to "名前で検索", search_users_path, class: "nav-link text-dark active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "記事を検索", search_posts_path, class: "nav-link text-dark" %>
+          </li>
+        </ul>
       </div>
-      <div class="col-lg-9">
+      <div>
         <div>
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <%= link_to "名前で検索", search_users_path, class: "nav-link text-dark active" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "記事を検索", search_posts_path, class: "nav-link text-dark" %>
-            </li>
-          </ul>
+          <%= render 'layouts/search_user' %>
         </div>
         <div>
-          <div>
-            <%= render 'layouts/search_user' %>
-          </div>
-          <div>
-            <%= render 'layouts/users', users: @users  %>
-          </div>
+          <%= render 'layouts/users', users: @users  %>
         </div>
-
       </div>
     </div>
   </div>

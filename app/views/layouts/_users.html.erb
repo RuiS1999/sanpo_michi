@@ -34,7 +34,7 @@
                 <% end %>
               <% end %>
             <% else %>
-              <%= link_to about_path do %>
+              <%= link_to user_relationships_path(user.id), method: :post do %>
                 <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
               <% end %>
             <% end %>

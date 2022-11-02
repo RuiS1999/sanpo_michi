@@ -18,18 +18,12 @@
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-image-tab">
               <div>
                 <H4>カバー画像</H4>
-                <div>
-                  <%= image_tag @user.get_cover_image, class: "w-100" %>
-                </div>
                 <div class="p-2">
-                  <%= f.file_field :cover_image, placeholder: "カバー画像を選択" %>
+                  <%= f.file_field :cover_image %>
                 </div>
               </div>
               <div class="pt-4">
                 <h4>プロフィール画像</h4>
-                <div class="p-2">
-                  <%= image_tag @user.get_profile_image, class: "w-50 border" %>
-                </div>
                 <div class="p-2">
                   <%= f.file_field :profile_image %>
                 </div>

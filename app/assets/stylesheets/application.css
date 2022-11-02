@@ -26,6 +26,10 @@ h1 {
 .hannotate-sc {
   font-family: 'Hannotate SC', sans-serif;
 }
+
+h3 {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+}
 /*font-family END*/
 
 main {

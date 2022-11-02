@@ -13,28 +13,30 @@
 
       <!--投稿情報-->
       <div class="col-10 col-sm-11 p-1 p-sm-2">
-        <div class="">
-          <strong><%= link_to user_favorite.user.account_name, user_path(user_favorite.user.user_name), class: "a_user_link" %></strong>
-          <span class="text-truncate"><%= link_to " @#{user_favorite.post.user.user_name}", user_path(user_favorite.post.user.user_name), class: "a_user_name" %></span>
-        </div>
         <div>
-          <span class="day"><%= user_favorite.post.created_at.strftime('%Y/%m/%d') %>投稿</span>
+          <div>
+            <strong><%= link_to user_favorite.user.account_name, user_path(user_favorite.user.user_name), class: "a_user_link" %></strong>
+            <span class="text-truncate"><%= link_to " @#{user_favorite.post.user.user_name}", user_path(user_favorite.post.user.user_name), class: "a_user_name" %></span>
+          </div>
+          <div>
+            <span class="day"><%= user_favorite.post.created_at.strftime('%Y/%m/%d') %>投稿</span>
+          </div>
         </div>
 
-        <div>
+        <div class="my-3">
           <%= link_to post_path(user_favorite.post.id), class: "a-post-link" do %>
-            <div class="py-4 post-body">
+            <div class="p-2 post-body">
               <%= user_favorite.post.body %>
             </div>
-            <div class="mt-3">
-              <% if user_favorite.post.post_image.attached? %>
+            <% if user_favorite.post.post_image.attached? %>
+              <div class="p-2">
                 <p><%= image_tag user_favorite.post.index_post_image, class:"card-img post-image-index" %></p>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
 
-        <div class="border-top d-flex justify-content-around p-1">
+        <div class="border-top d-flex justify-content-around pt-3">
           <div>
             <span>
               <%= link_to post_path(user_favorite.post), class: "text-dark" do %>
