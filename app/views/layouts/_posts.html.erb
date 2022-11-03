@@ -19,7 +19,7 @@
             <span class="text-truncate"><%= link_to " @#{post.user.user_name}", user_path(post.user.user_name), class: "a_user_name" %></span>
           </div>
           <div>
-            <span class="day"><%= post.created_at.strftime('%Y/%m/%d') %>投稿</span>
+            <span class="small"><%= post.created_at.strftime('%Y/%m/%d') %>投稿</span>
           </div>
         </div>
 

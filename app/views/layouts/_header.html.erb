@@ -1,9 +1,9 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-light fixed-top navbar-expand-lg" style="background-color: #e3f2fd;">
     <% if admin_signed_in? %>
-      <%= link_to "さんぽみち（管理者用）", admin_root_path, class:"header-title navbar-brand hannotate-sc"%>
+      <%= link_to "さんぽみち（管理者用）", admin_root_path, class:"header-title navbar-brand watati-sc"%>
     <% else %>
-      <%= link_to "さんぽみち", root_path, class:"header-title navbar-brand hannotate-sc"%>
+      <%= link_to "さんぽみち", root_path, class:"header-title navbar-brand watati-sc"%>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

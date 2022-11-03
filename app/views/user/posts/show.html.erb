@@ -24,7 +24,7 @@
                 <span class="text-truncate"><%= link_to " @#{@post.user.user_name}", user_path(@post.user.user_name), class: "a_user_name" %></span>
               </div>
               <div>
-                <span class="day"><%= @post.created_at.strftime('%Y/%m/%d') %>投稿</span>
+                <span class="small"><%= @post.created_at.strftime('%Y/%m/%d') %>投稿</span>
               </div>
             </div>
 
@@ -111,7 +111,7 @@
                   <div class="mycomment">
                     <% if post_comment.user == current_user %>
                       <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                        <span><i class="fa-solid fa-trash"></i>削除</span>
+                        <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
                       <% end %>
                     <% end %>
                     <p>
@@ -135,7 +135,7 @@
                       <div class="d-inline">
                         <% if post_comment.user == current_user %>
                           <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                            <span><i class="fa-solid fa-trash"></i>削除</span>
+                            <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
                           <% end %>
                         <% end %>
                       </div>

@@ -27,8 +27,8 @@ class User < ApplicationRecord
   # # follow機能終了
 
   validates :email,           presence: true,   uniqueness: true
-  validates :user_name,       presence: true,   length: { maximum: 15 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
-  validates :account_name,    presence: true,   length: { maximum: 25 }
+  validates :user_name,       presence: true,   length: { in: 4..15 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
+  validates :account_name,    presence: true,   length: { in: 4..25 }
   validates :introduction,    length: { maximum: 500 }
   validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}

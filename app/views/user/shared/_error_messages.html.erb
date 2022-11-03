@@ -1,9 +1,11 @@
 <% if resource.errors.any? %>
   <div id="error_explanation">
-    <h2>入力情報に誤りがあります。</h2>
-    <ul>
+    <h4><i class="fa-solid fa-triangle-exclamation"></i>入力情報に誤りがあります。</h4>
+    <ul class="mt-2">
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li>
+          <%= message %>
+        </li>
       <% end %>
     </ul>
   </div>

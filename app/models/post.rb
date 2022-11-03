@@ -5,8 +5,8 @@ class Post < ApplicationRecord
   has_many :favorites,        dependent: :destroy
   has_many :reports,          dependent: :destroy
 
-  validates   :user_id,         presence: true
-  validates   :body,            presence: true,     length: { maximum: 500 }
+  validates   :user_id,       presence: true
+  validates   :body,          presence: true,     length: { maximum: 500 }
 
   has_one_attached :post_image
 

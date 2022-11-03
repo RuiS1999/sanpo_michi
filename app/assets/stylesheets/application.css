@@ -23,8 +23,12 @@ h1 {
   font-family: 'Wawati SC', sans-serif;
 }
 
-.hannotate-sc {
-  font-family: 'Hannotate SC', sans-serif;
+.watati-sc {
+  font-family: 'Wawati SC', sans-serif;
+}
+
+h3 {
+  font-family: 'Wawati SC', sans-serif;
 }
 
 h3 {
@@ -76,3 +80,32 @@ label.required:after{
   margin: auto;
 }
 
+#error_explanation {
+    width: auto;
+    border: 2px solid red;
+    padding: 7px;
+    padding-bottom: 0;
+    background-color: #f0f0f0;
+}
+
+#error_explanation h4 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+    margin: -7px;
+    margin-bottom: 0;
+    background-color: #c00;
+    color: #fff;
+}
+
+#error_explanation ul li {
+    font-size: 12px;
+    list-style: none;
+}
+
+.field_with_errors .input {
+    padding: 2px;
+    border: 2px solid red;
+    display: table;
+}

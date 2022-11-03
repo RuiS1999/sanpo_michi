@@ -1,14 +1,81 @@
 <div class="container">
+  <%= image_tag 'japan.jpg', class: "w-100" %>
   <div class="row">
-    <%= image_tag 'japan.jpg', class: "w-100" %>
-    <div class="col-lg-3 m-2">
+    <div class="col-lg-3 mx-auto">
       <h3 class="text-center">投稿メニュー</h3>
+      <ul class="navbar-nav p-2">
+        <li class="nav-item">
+          <h5 class="nav-link">
+            <%= link_to posts_path, class: "text-dark mx-2" do %>
+              <i class="fa-solid fa-signs-post"></i> 投稿一覧
+            <% end %>
+          </h5>
+        </li>
+        <li class="nav-item">
+          <h5 class="nav-link">
+            <%= link_to new_post_path, class: "text-dark mx-2" do %>
+              <i class="fa-regular fa-square-plus"></i> 新規投稿
+            <% end %>
+          </h5>
+        </li>
+        <li class="nav-item">
+          <h5 class="nav-link">
+            <%= link_to search_posts_path, class: "text-dark mx-2" do %>
+              <i class="fa-solid fa-magnifying-glass"></i> 記事を検索
+            <% end %>
+          </h5>
+        </li>
+      </ul>
     </div>
-    <div class="col-lg-3 m-2">
+    <div class="col-lg-3 mx-auto">
       <h3 class="text-center">ユーザーメニュー</h3>
+      <ul class="navbar-nav p-2">
+        <li class="nav-item">
+          <h5 class="nav-link">
+            <%= link_to users_path, class: "text-dark mx-2" do %>
+              <i class="fa-solid fa-users"></i> ユーザー一覧
+            <% end %>
+          </h5>
+        </li>
+        <li class="nav-item">
+          <h5 class="nav-link">
+            <%= link_to search_users_path, class: "text-dark mx-2" do %>
+              <i class="fa-solid fa-magnifying-glass"></i> ユーザーを検索
+            <% end %>
+          </h5>
+        </li>
+      </ul>
     </div>
-    <div class="col-lg-3 m-2">
+    <div class="col-lg-3 mx-auto">
       <h3 class="text-center">マイページ</h3>
+      <% if user_signed_in? %>
+        <ul class="navbar-nav p-2">
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to user_path(current_user.user_name), class: "text-dark mx-2" do %>
+                <i class="fa-solid fa-user"></i> マイページ
+              <% end %>
+            </h5>
+          </li>
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to edit_user_path(current_user.user_name), class: "text-dark" do %>
+                <i class="fa-solid fa-gear"></i> ユーザー情報編集
+              <% end %>
+            </h5>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav p-2">
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to new_user_session_path, class: "text-dark mx-2" do %>
+                <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン画面へ
+              <% end %>
+            </h5>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>
