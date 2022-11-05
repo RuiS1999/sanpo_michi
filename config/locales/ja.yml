@@ -8,7 +8,6 @@ ja:
 
     report:
       reason:
-        not_interested: 興味のないコンテンツ
         spam: 不審な内容またはスパムに関する投稿
         offensive: 相手を傷つける投稿
         suicide: 自殺をほのめかす投稿
@@ -21,7 +20,7 @@ ja:
         password: パスワード
         user_name: ユーザー名
         account_name: アカウント名
-        age: 年齢
+        birth_date: 生年月日
         sex: 性別
 
       post:

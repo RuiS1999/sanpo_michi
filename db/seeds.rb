@@ -11,21 +11,21 @@ User.create!(
     {
       email: 'test@t.com',
       password: 'test123',
-      user_name: 'test',
-      account_name: '100',
+      user_name: '1230',
+      account_name: '1000',
       introduction: '疲れた',
-      age: '35',
-      sex: 'female',
+      birth_date: '',
+      sex: '',
       is_deleted: 'false'
     },
 
     {
       email: 'test0@t.com',
       password: 'test123',
-      user_name: 'test1',
-      account_name: '101',
-      introduction: '何にもなりたくない',
-      age: '21',
+      user_name: '1231',
+      account_name: '1001',
+      introduction: '',
+      birth_date: '',
       sex: 'female',
       is_deleted: 'false'
     },
@@ -33,23 +33,17 @@ User.create!(
     {
       email: 'test1@t.com',
       password: 'test123',
-      user_name: 'test2',
-      account_name: '102',
-      introduction: '何にもなりたくない',
-      age: '32',
-      sex: 'male',
-      is_deleted: 'false'
-    },
-
-    {
-      email: 'test2@t.com',
-      password: 'test123',
-      user_name: 'test3',
-      account_name: '103',
-      introduction: '何にもなりたくない',
-      age: '47',
-      sex: 'male',
+      user_name: '1232',
+      account_name: '1002',
+      introduction: '',
+      birth_date: '',
+      sex: '',
       is_deleted: 'false'
     }
   ]
+)
+
+Admin.create!(
+ email: 'test@t.com',
+ password: 'test123'
 )

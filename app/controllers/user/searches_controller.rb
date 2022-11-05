@@ -11,4 +11,8 @@ class User::SearchesController < ApplicationController
   def search_post
     @posts = Post.looks(params[:word])
   end
+
+  def search_post_hashtag
+    @posts = Post.hashtag_looks(params[:word])
+  end
 end

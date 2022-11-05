@@ -30,7 +30,7 @@
                     <tr class="text-center">
                       <th><%= post.id %></th>
                       <td>
-                        <%= link_to admin_user_path(post.user), class: "text-dark" do %>
+                        <%= link_to admin_user_path(post.user.id), class: "text-dark" do %>
                           <span><%= post.user.account_name %></span> <span class="a_user_name">@<%= post.user.user_name %></span></td>
                         <% end %>
                       <td class="post-body"><%= post.body %></td>

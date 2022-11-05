@@ -42,10 +42,13 @@
         </div>
         <div>
           <a>
-            <%= user.introduction %>
+            <%= safe_join("#{user.introduction}".split("\n"),tag(:br)) %>
           </a>
         </div>
       </div>
     </div>
   </div>
+<% end %>
+<% if users.count == 0 %>
+  <h5 class="my-4">ユーザーが見当たりません</h5>
 <% end %>

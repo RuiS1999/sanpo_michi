@@ -30,7 +30,6 @@ class User < ApplicationRecord
   validates :user_name,       presence: true,   length: { in: 4..15 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
   validates :account_name,    presence: true,   length: { in: 4..25 }
   validates :introduction,    length: { maximum: 500 }
-  validates :age,             allow_nil: true,  numericality: { only_integer: true }
   validates :is_deleted,      inclusion: {in: [true, false]}
 
   # 画像
@@ -47,7 +46,7 @@ class User < ApplicationRecord
 
   # 検索方法分岐
   def self.looks(word)
-      @user = User.where("account_name LIKE?","%#{word}%")
+      @user = User.where( ["account_name like? OR user_name like?", "%#{word}%", "%#{word}%"] )
   end
 
   # プロフィール画像正方形にする

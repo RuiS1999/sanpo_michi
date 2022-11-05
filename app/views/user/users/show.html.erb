@@ -48,7 +48,7 @@
           </div>
           <div>
             <div class="py-3">
-              <%= @user.introduction %>
+              <%= safe_join("#{@user.introduction}".split("\n"),tag(:br)) %>
             </div>
           </div>
         </div>

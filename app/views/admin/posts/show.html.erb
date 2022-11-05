@@ -1,3 +1,104 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
-<%= @post.favorites.count %>
+<div class="container">
+  <div class="row p-0">
+    <div class="col-lg-3">
+      <%= render 'layouts/side' %>
+    </div>
+    <div class="col-lg-9 mx-auto">
+      <div class="p-3 border">
+        <div class="row">
+
+          <!--profile画像-->
+          <div class="col-2 col-sm-1 p-1">
+            <%= link_to user_path(@post.user.user_name), class: "a-post-link" do %>
+              <div>
+                <%= image_tag @post.user.get_profile_image, class:"rounded-circle profile_img"; %>
+              </div>
+            <% end %>
+          </div>
+
+          <!--投稿情報-->
+          <div class="col-10 col-sm-11 p-1 p-sm-2">
+            <div>
+              <div>
+                <strong><%= link_to @post.user.account_name, user_path(@post.user.user_name), class: "a_user_link" %></strong>
+                <span class="text-truncate"><%= link_to " @#{@post.user.user_name}", user_path(@post.user.user_name), class: "a_user_name" %></span>
+              </div>
+              <div>
+                <span class="small"><%= @post.created_at.strftime('%Y/%m/%d') %>投稿</span>
+              </div>
+            </div>
+
+            <div class="my-3">
+              <div class="p-2 post-body">
+                <%= safe_join("#{@post.body}".split("\n"),tag(:br)) %>
+              </div>
+              <div class="p-2 post-body">
+                <%= render_with_hashtags(@post.hashbody) %>
+              </div>
+              <% if @post.post_image.attached? %>
+                <div class="p-2">
+                  <p><%= image_tag @post.post_image, class:"card-img post-image-show" %></p>
+                </div>
+              <% end %>
+            </div>
+
+
+            <div class="border-top d-flex justify-content-around pt-3 pb-1">
+              <div>
+                <i class="fa-regular fa-comments"></i> <%= @post.post_comments.count %>
+              </div>
+              <div>
+                <i class="fa-regular fa-heart"></i> <%= @post.favorites.count %>
+              </div>
+              <div>
+                <%= link_to admin_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                  <i class="fa-solid fa-trash"></i> 削除
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <% @post_comments.reverse.each do |post_comment| %>
+            <div class="p-1">
+              <div class="line-bc"><!--①コメント全体を囲う-->
+                <% if @post.user.id == post_comment.user.id %>
+                  <!--右コメント始-->
+                  <div class="mycomment">
+                    <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                      <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+                    <% end %>
+                    <p>
+                      <%= post_comment.comment %>
+                    </p>
+                  </div>
+                <% else %>
+                  <!--左コメント始-->
+                  <div class="balloon6">
+                    <div class="faceicon">
+                      <%= link_to user_path(post_comment.user.user_name) do %>
+                        <div>
+                          <%= image_tag post_comment.user.get_profile_image %>
+                        </div>
+                      <% end %>
+                    </div>
+                    <div class="chatting">
+                      <div class="says">
+                        <p><%= post_comment.comment %></p>
+                      </div>
+                      <div class="d-inline">
+                        <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                          <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

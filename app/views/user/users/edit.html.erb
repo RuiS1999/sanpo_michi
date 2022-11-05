@@ -51,10 +51,10 @@
               </div>
               <div class="p-2">
                 <div>
-                  <%= f.label :age, "年齢" %>
+                  <%= f.label :birth_date, "生年月日" %>
                 </div>
                 <div>
-                  <%= f.text_field :age, autocomplete: "age", class: "w-50" %>歳
+                  <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "w-50" %>
                 </div>
               </div>
               <div class="p-2">

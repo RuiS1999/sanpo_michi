@@ -6,5 +6,5 @@ class Report < ApplicationRecord
   validates :post_id,       presence: true
   validates :reason,        presence: true
 
-  enum reason:    { not_interested: 0, spam: 1, offensive: 2, suicide: 3, other: 4 }
+  enum reason:    { spam: 0, offensive: 1, suicide: 2, other: 3 }
 end

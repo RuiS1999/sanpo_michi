@@ -6,9 +6,13 @@ Rails.application.routes.draw do
 
     get "search/users" => "searches#search_user"
     get "search/posts" => "searches#search_post"
+    get "search/post_hashtags" => "searches#search_post_hashtag"
 
     get     'users/retire'
     patch   'users/withdrawal'
+
+    get '/post/hashtag/:name' => 'posts#hashtag'
+    get '/post/hashtag' => 'posts#hashtag'
 
     resources  :users, param: :user_name, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]

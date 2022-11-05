@@ -13,7 +13,7 @@
                 <thead>
                   <tr class="text-center">
                     <th>投稿ID</th>
-                    <th>投稿文</th>
+                    <th>投稿者</th>
                     <th>報告数</th>
                     <th></th>
                   </tr>
@@ -22,7 +22,11 @@
                   <% @report_posts.each do |report_post| %>
                     <tr class="text-center">
                       <th><%= report_post.id %></th>
-                      <td class="post-body"><%= report_post.body %></td>
+                      <td class="post-body">
+                        <%= link_to admin_user_path(report_post.user.id), class: "text-dark" do %>
+                          <span><%= report_post.user.account_name %></span> <span class="a_user_name">@<%= report_post.user.user_name %></span></td>
+                        <% end %>
+                      </td>
                       <td class="text-danger"><%= report_post.reports.count %></td>
                       <td><%= link_to "詳細", admin_post_path(report_post.id), class: "btn btn-sm btn-outline-success" %></td>
                     </tr>

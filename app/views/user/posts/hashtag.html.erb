@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row p-0">
+    <div class="col-lg-3">
+      <%= render 'layouts/side' %>
+    </div>
+    <div class="col-lg-9">
+      <div class="border-top">
+        <% if params[:name] == nil %>
+
+        <% else %>
+          <%= render 'layouts/posts', posts: @post  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

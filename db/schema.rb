@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_26_101056) do
+ActiveRecord::Schema.define(version: 2022_11_04_235055) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -66,6 +66,22 @@ ActiveRecord::Schema.define(version: 2022_10_26_101056) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "hashtag_posts", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "hashtag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_hashtag_posts_on_hashtag_id"
+    t.index ["post_id"], name: "index_hashtag_posts_on_post_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "post_id", null: false
@@ -77,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_10_26_101056) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "body", null: false
+    t.text "hashbody"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -105,7 +122,7 @@ ActiveRecord::Schema.define(version: 2022_10_26_101056) do
     t.string "user_name", null: false
     t.string "account_name", default: "さんぽ家の名無さん", null: false
     t.text "introduction"
-    t.integer "age"
+    t.date "birth_date"
     t.integer "sex"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -116,4 +133,6 @@ ActiveRecord::Schema.define(version: 2022_10_26_101056) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "hashtag_posts", "hashtags"
+  add_foreign_key "hashtag_posts", "posts"
 end

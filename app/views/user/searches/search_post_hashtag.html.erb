@@ -11,17 +11,17 @@
               <%= link_to "名前で検索", search_users_path, class: "nav-link text-dark px-2" %>
             </li>
             <li class="nav-item">
-              <%= link_to "記事を検索", search_posts_path, class: "nav-link text-dark active px-2" %>
+              <%= link_to "記事を検索", search_posts_path, class: "nav-link text-dark px-2" %>
             </li>
             <li class="nav-item">
-              <%= link_to "#タグを検索", search_post_hashtags_path, class: "nav-link text-dark px-2" %>
+              <%= link_to "#タグを検索", search_post_hashtags_path, class: "nav-link text-dark active px-2" %>
             </li>
           </ul>
         </div>
       </nav>
       <div>
         <div>
-          <%= render 'layouts/search_post' %>
+          <%= render 'layouts/search_post_hashtag' %>
         </div>
         <div>
           <%= render 'layouts/posts', posts: @posts  %>

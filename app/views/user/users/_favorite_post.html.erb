@@ -26,7 +26,10 @@
         <div class="my-3">
           <%= link_to post_path(user_favorite.post.id), class: "a-post-link" do %>
             <div class="p-2 post-body">
-              <%= user_favorite.post.body %>
+              <%= safe_join("#{user_favorite.post.body}".split("\n"),tag(:br)) %>
+            </div>
+            <div class="p-2 post-body">
+              <%= render_with_hashtags(user_favorite.post.hashbody) %>
             </div>
             <% if user_favorite.post.post_image.attached? %>
               <div class="p-2">
@@ -88,4 +91,7 @@
       </div>
     </div>
   </div>
+<% end %>
+<% if user_favorites.count == 0 %>
+  <h5 class="my-4">投稿がありません</h5>
 <% end %>
