@@ -27,8 +27,9 @@ h1 {
   font-family: 'Wawati SC', sans-serif;
 }
 
-h3 {
+.menu {
   font-family: 'Wawati SC', sans-serif;
+  background: linear-gradient(transparent 70%, #00e6b4 70%);
 }
 
 /*font-family END*/

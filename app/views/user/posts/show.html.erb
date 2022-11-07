@@ -89,7 +89,10 @@
               </div>
             </div>
           </div>
+          <!--投稿情報終了-->
+
         </div>
+
         <div>
           <div class="border-top py-3">
             <% if user_signed_in? %>
@@ -106,47 +109,51 @@
           </div>
         </div>
         <div>
-          <% @post_comments.reverse.each do |post_comment| %>
-            <div class="p-1">
-              <div class="line-bc"><!--①コメント全体を囲う-->
-                <% if @post.user.id == post_comment.user.id %>
-                  <!--右コメント始-->
-                  <div class="mycomment">
-                    <% if post_comment.user == current_user %>
-                      <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                        <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+          <% if @post_comments.count == 0 %>
+            <p class="text-center">コメントはありません</p>
+          <% else %>
+            <% @post_comments.reverse.each do |post_comment| %>
+              <div class="p-1">
+                <div class="line-bc"><!--①コメント全体を囲う-->
+                  <% if @post.user.id == post_comment.user.id %>
+                    <!--右コメント始-->
+                    <div class="mycomment">
+                      <% if post_comment.user == current_user %>
+                        <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                          <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                    <p>
-                      <%= post_comment.comment %>
-                    </p>
-                  </div>
-                <% else %>
-                  <!--左コメント始-->
-                  <div class="balloon6">
-                    <div class="faceicon">
-                      <%= link_to user_path(post_comment.user.user_name) do %>
-                        <div>
-                          <%= image_tag post_comment.user.get_profile_image %>
-                        </div>
-                      <% end %>
+                      <p>
+                        <%= post_comment.comment %>
+                      </p>
                     </div>
-                    <div class="chatting">
-                      <div class="says">
-                        <p><%= post_comment.comment %></p>
-                      </div>
-                      <div class="d-inline">
-                        <% if post_comment.user == current_user %>
-                          <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                            <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
-                          <% end %>
+                  <% else %>
+                    <!--左コメント始-->
+                    <div class="balloon6">
+                      <div class="faceicon">
+                        <%= link_to user_path(post_comment.user.user_name) do %>
+                          <div>
+                            <%= image_tag post_comment.user.get_profile_image %>
+                          </div>
                         <% end %>
                       </div>
+                      <div class="chatting">
+                        <div class="says">
+                          <p><%= post_comment.comment %></p>
+                        </div>
+                        <div class="d-inline">
+                          <% if post_comment.user == current_user %>
+                            <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                              <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>

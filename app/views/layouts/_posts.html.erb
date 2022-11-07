@@ -24,28 +24,42 @@
         </div>
 
         <div class="my-3">
-          <%= link_to post_path(post.id), class: "a-post-link" do %>
-            <div class="p-2 post-body">
-              <%= safe_join("#{post.body}".split("\n"),tag(:br)) %>
-            </div>
-            <div class="p-2 post-body">
-              <%= render_with_hashtags(post.hashbody) %>
-            </div>
-            <% if post.post_image.attached? %>
-              <div class="p-2">
-                <p><%= image_tag post.index_post_image, class:"card-img post-image-index" %></p>
+          <% unless admin_signed_in? %>
+            <%= link_to post_path(post), class: "a-post-link" do %>
+              <div class="p-2 post-body">
+                <%= safe_join("#{post.body}".split("\n"),tag(:br)) %>
               </div>
+              <div class="p-2 post-body">
+                <%= render_with_hashtags(post.hashbody) %>
+              </div>
+              <% if post.post_image.attached? %>
+                <div class="p-2">
+                  <p><%= image_tag post.index_post_image, class:"card-img post-image-index" %></p>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to admin_post_path(post), class: "a-post-link" do %>
+              <div class="p-2 post-body">
+                <%= safe_join("#{post.body}".split("\n"),tag(:br)) %>
+              </div>
+              <div class="p-2 post-body">
+                <%= render_with_hashtags(post.hashbody) %>
+              </div>
+              <% if post.post_image.attached? %>
+                <div class="p-2">
+                  <p><%= image_tag post.index_post_image, class:"card-img post-image-index" %></p>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
 
         <div class="border-top d-flex justify-content-around pt-3">
           <div>
-            <span>
-              <%= link_to post_path(post), class: "text-dark" do %>
-                <i class="fa-regular fa-comments"></i> <%= post.post_comments.count %>
-              <% end %>
-            </span>
+            <%= link_to post_path(post), class: "text-dark" do %>
+              <span><i class="fa-regular fa-comments"></i> <%= post.post_comments.count %></span>
+            <% end %>
           </div>
           <div>
             <% if user_signed_in? %>
@@ -67,7 +81,7 @@
           <div>
             <% if user_signed_in? && current_user.id == post.user.id %>
               <%= link_to post_path(post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                <i class="fa-solid fa-trash"></i> 削除
+                <span><i class="fa-solid fa-trash"></i> 削除</span>
               <% end %>
             <% else %>
               <% if user_signed_in? %>
@@ -80,6 +94,10 @@
                     <span><i class="fa-solid fa-flag"></i> 報告</span>
                   <% end %>
                 <% end %>
+              <% elsif admin_signed_in? %>
+                <%= link_to admin_post_path(post), class: "text-danger" do %>
+                  <span><i class="fa-solid fa-flag"></i> <%= post.reports.count %>報告</span>
+                <% end %>
               <% else %>
                 <%= link_to new_post_reports_path(post), class: "trash-settled" do %>
                   <span><i class="fa-solid fa-flag"></i> 報告</span>
@@ -87,6 +105,13 @@
               <% end %>
             <% end %>
           </div>
+          <% if admin_signed_in? %>
+            <div>
+              <%= link_to admin_post_path(post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                <span><i class="fa-solid fa-trash"></i> 削除</span>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

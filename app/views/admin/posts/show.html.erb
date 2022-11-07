@@ -45,57 +45,106 @@
 
             <div class="border-top d-flex justify-content-around pt-3 pb-1">
               <div>
-                <i class="fa-regular fa-comments"></i> <%= @post.post_comments.count %>
+                <span><i class="fa-regular fa-comments"></i> <%= @post.post_comments.count %></span>
               </div>
               <div>
-                <i class="fa-regular fa-heart"></i> <%= @post.favorites.count %>
+                <span><i class="fa-regular fa-heart"></i> <%= @post.favorites.count %></span>
+              </div>
+              <div>
+                <%= link_to admin_post_path(@post), class: "trash-settled" do %>
+                  <span><i class="fa-solid fa-flag"></i> <%= @post.reports.count %>報告</span>
+                <% end %>
               </div>
               <div>
                 <%= link_to admin_post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                  <i class="fa-solid fa-trash"></i> 削除
+                  <span><i class="fa-solid fa-trash"></i> 削除</span>
                 <% end %>
               </div>
             </div>
           </div>
+          <!--投稿情報終了-->
         </div>
+      </div>
+
+      <!--報告情報-->
+      <% unless @post.reports.count == 0 %>
+        <div class="border-right border-left border-bottom">
+          <div class="row m-0">
+            <div class="col-md-5 p-2">
+              <%= pie_chart @post.reports.group(:reason).count %>
+            </div>
+            <div class="col-md-7 p-2">
+              <table class="table-equality text-center table-bordered my-auto p-2">
+                <tr>
+                  <th class="p-2">不審な内容またはスパムに関する投稿</th>
+                  <td><%= @post.reports.where(reason: "spam").count %></td>
+                </tr>
+                <tr>
+                  <th class="p-2">相手を傷つける投稿</th>
+                  <td><%= @post.reports.where(reason: "offensive").count %></td>
+                </tr>
+                <tr>
+                  <th class="p-2">自殺をほのめかす投稿</th>
+                  <td><%= @post.reports.where(reason: "suicide").count %></td>
+                </tr>
+                <tr>
+                  <th class="p-2">その他</th>
+                  <td><%= @post.reports.where(reason: "other").count %></td>
+                </tr>
+                <tr style="border-top: double;">
+                  <th class="p-2"><strong>合計</strong></th>
+                  <th><strong><%= @post.reports.count %></strong></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+      <!--コメント-->
+      <div class="border-right border-left border-bottom pt-3">
         <div>
-          <% @post_comments.reverse.each do |post_comment| %>
-            <div class="p-1">
-              <div class="line-bc"><!--①コメント全体を囲う-->
-                <% if @post.user.id == post_comment.user.id %>
-                  <!--右コメント始-->
-                  <div class="mycomment">
-                    <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                      <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
-                    <% end %>
-                    <p>
-                      <%= post_comment.comment %>
-                    </p>
-                  </div>
-                <% else %>
-                  <!--左コメント始-->
-                  <div class="balloon6">
-                    <div class="faceicon">
-                      <%= link_to user_path(post_comment.user.user_name) do %>
-                        <div>
-                          <%= image_tag post_comment.user.get_profile_image %>
-                        </div>
+          <% if @post_comments.count == 0 %>
+            <p class="text-center">コメントはありません</p>
+          <% else %>
+            <% @post_comments.reverse.each do |post_comment| %>
+              <div class="p-1">
+                <div class="line-bc"><!--①コメント全体を囲う-->
+                  <% if @post.user.id == post_comment.user.id %>
+                    <!--右コメント始-->
+                    <div class="mycomment">
+                      <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                        <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
                       <% end %>
+                      <p>
+                        <%= post_comment.comment %>
+                      </p>
                     </div>
-                    <div class="chatting">
-                      <div class="says">
-                        <p><%= post_comment.comment %></p>
-                      </div>
-                      <div class="d-inline">
-                        <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                          <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+                  <% else %>
+                    <!--左コメント始-->
+                    <div class="balloon6">
+                      <div class="faceicon">
+                        <%= link_to user_path(post_comment.user.user_name) do %>
+                          <div>
+                            <%= image_tag post_comment.user.get_profile_image %>
+                          </div>
                         <% end %>
                       </div>
+                      <div class="chatting">
+                        <div class="says">
+                          <p><%= post_comment.comment %></p>
+                        </div>
+                        <div class="d-inline">
+                          <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                            <span class="text-small"><i class="fa-solid fa-trash"></i>削除</span>
+                          <% end %>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                <% end %>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>
