@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts,            dependent: :destroy
   has_many :favorites,        dependent: :destroy
   has_many :reports,          dependent: :destroy
+  has_many :step_logs,        dependent: :destroy
 
   # # follow機能
   # フォローする側から中間テーブルへのアソシエーション

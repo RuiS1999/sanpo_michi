@@ -67,3 +67,5 @@ gem "enum_help"
 gem 'rails-i18n'
 
 gem "chartkick"
+
+gem 'simple_calendar', '~> 2.0'

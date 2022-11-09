@@ -19,11 +19,12 @@ Rails.application.routes.draw do
         get :followings, on: :member
         get :followers, on: :member
     end
-    resources  :posts,               only: [:new, :show, :index, :edit, :create, :update, :destroy] do
-      resources :post_comments,       only: [:create, :destroy]
-      resource :favorites,            only: [:create, :destroy]
-      resource :reports,              only: [:new, :create, :destroy]
+    resources  :posts,                only: [:new, :show, :index, :edit, :create, :update, :destroy] do
+      resources :post_comments,         only: [:create, :destroy]
+      resource :favorites,              only: [:create, :destroy]
+      resource :reports,                only: [:new, :create, :destroy]
     end
+    resources  :step_logs,            only: [:index, :show, :edit, :create, :update, :destroy]
   end
 
   namespace :admin do
