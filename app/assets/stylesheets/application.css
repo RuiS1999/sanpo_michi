@@ -38,7 +38,7 @@ h1 {
 
 main {
   padding: 20px 0 200px 0;
-  min-height: 100vh;
+  min-height: 90vh;
   text-decoration:none;
 }
 
@@ -47,11 +47,9 @@ main {
 }
 
 .new-post-icon {
-  width: 50px;
-  height: 50px;
   position:fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
 }
 
 .profile_img{
@@ -66,6 +64,7 @@ label.required:after{
   color: white;
   background-color: #C44;
   content: "必須";
+  font-size: 12px;
 }
 
 .side-content{

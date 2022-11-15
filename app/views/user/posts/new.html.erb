@@ -1,6 +1,5 @@
 <div class="container">
   <div class="col-lg-9 col-md-8 mx-auto">
-    <%= render "user/shared/error_messages", resource: @post %>
     <div>
       <%= form_with model: @post do |f| %>
         <div class="d-inline-block pb-2">
@@ -8,16 +7,22 @@
         </div>
         <div>
           <div class="py-2">
-            <p class="mb-0">○投稿画像</p>
+            <div>
+              <%= f.label :post_image, "投稿画像", class: "mb-0" %>
+            </div>
             <%= f.file_field :post_image, placeholder: "画像を選択" %><br />
             <span class="small text-danger">※画像の投稿は１枚のみです</span>
           </div>
           <div class="py-2">
-            <p class="mb-0">○投稿文入力欄</p>
+            <div>
+              <%= f.label :body, "投稿文", class: "mb-0" %>
+            </div>
             <%= f.text_area :body, placeholder: "投稿文", class: "input form-control", rows: 15 %>
           </div>
           <div class="py-2">
-            <p class="mb-0">○ハッシュタグ入力欄</p>
+            <div>
+              <%= f.label :hashbody, "ハッシュタグ", class: "mb-0" %>
+            </div>
             <%= f.text_area :hashbody, placeholder: "例) #風景 #喫茶店 #新発見", class: "input form-control", rows: 4 %>
           </div>
         </div>

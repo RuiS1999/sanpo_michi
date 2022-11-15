@@ -17,7 +17,21 @@
               <% end %>
             </h5>
           </li>
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to step_logs_path, class: "text-dark" do %>
+                <i class="fa-solid fa-shoe-prints"></i> 歩数記録
+              <% end %>
+            </h5>
+          </li>
           </br>
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to new_post_path, class: "text-dark" do %>
+                <i class="fa-solid fa-pen-fancy"></i> 新規投稿
+              <% end %>
+            </h5>
+          </li>
         <% end %>
         <li class="nav-item">
           <h5 class="nav-link">

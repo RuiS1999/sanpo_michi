@@ -1,52 +1,47 @@
 <div class="container">
-<h1 class="top">カレンダー</h1>
-<br>
-
-<div class="row">
-<div class="col-md-4">
-
-<%= form_with(model: @step_log, local: true) do |f| %>
-
-  <div class="title">
-    <div class="form-tag">歩数</div>
-    <%= f.text_field :number_of_step %>歩
+  <div class="mb-4">
+    <h1 class="text-center">さんぽ記録</h1>
   </div>
-
-  <div class="content">
-    <div class="form-tag">消費カロリー</div>
-    <%= f.text_field :calorie %>kcal
-  </div>
-
-  <div class="content">
-    <div class="form-tag">歩いた時間</div>
-    <%= f.text_field :walking_time %>分
-  </div>
-
-  <div class="time">
-    <div class="form-tag">時間</div>
-    <%= f.date_select :start_time %>
-  </div>
-
- <div class="submit">
-    <%= f.submit %>
- </div>
-<% end %>
-</div>
-
-<br>
-
-
-<br>
-<div class="col-md-8">
-<%= month_calendar events: @step_logs do |date, step_logs| %>
-  <%= date.day %>
-
-  <% step_logs.each do |step_log| %>
-    <div>
-      <%= link_to step_log.calorie, step_log %> kcal
+  <div class="row">
+    <div class="col-lg-4 py-2 px-4 mt-3">
+      <h3>
+        <%= link_to new_step_log_path, class: "btn btn-lg btn-primary" do %>
+          New Record<i class="fa-solid fa-feather-pointed"></i>
+        <% end %>
+      </h3>
+      <div>
+        <div class="box1">
+          <div>
+            今月の合計歩数： <%= @month_date.sum(:number_of_step) %>歩
+          </div>
+          <div class="mt-4">
+            今月の散歩時間： <%= @month_date.sum(:walking_time) %>分
+          </div>
+        </div>
+        <div class="box1">
+          <div>
+            先月の合計歩数： <%= @prev_month_date.sum(:number_of_step) %>歩
+          </div>
+          <div class="mt-4">
+            先月の散歩時間： <%= @prev_month_date.sum(:walking_time) %>分
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-<% end %>
+    <div class="col-lg-8 p-2">
+      <%= month_calendar events: @step_logs do |date, step_logs| %>
+        <%= date.day %>
+
+        <% step_logs.each do |step_log| %>
+          <div>
+            <%= link_to step_log do %>
+              <i class="fa-solid fa-shoe-prints"></i> <%= step_log.walking_time %>分
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+<%= line_chart StepLog.step_by_month(current_user), curve: false %>

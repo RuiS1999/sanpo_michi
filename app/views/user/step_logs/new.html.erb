@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="">
+      <div class="new-recode-box">
+        <h3 class="text-center border-bottom">New Recode</h3>
+        <%= form_with model: @step_log do |f| %>
+          <div class="py-2">
+            <div>
+              <%= f.label :start_time, "日にち", class: "equired mb-0" %>
+            </div>
+            <div>
+              <%= f.date_select :start_time, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div>
+              <%= f.label :number_of_step, "歩数 (歩)", class: "required mb-0" %>
+            </div>
+            <div>
+              <%= f.text_field :number_of_step, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div>
+              <%= f.label :walking_time, "散歩時間 (分)", class: "required mb-0" %>
+            </div>
+            <div>
+              <%= f.text_field :walking_time, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div>
+              <%= f.label :calorie, "消費カロリー (kcal)", class: "required mb-0" %>
+            </div>
+            <div>
+              <%= f.text_field :calorie, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <%= f.submit %>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <div class=my-4>
+          <h3></h3>
+        </div>
+        <div class="calorie-calculation-box">
+          <span class="box-title">カロリー計算</span>
+          <%= form_with model: CalorieCalculation.new, url: calorie_calculation_path, method: :post do |f| %>
+            <div class="py-2">
+              <div>
+                <%= f.label :mets, "運動強度(METS)", class: "mb-0" %>
+              </div>
+              <div>
+                <%= f.select :mets, [['3METS: ウォーキング(通常)', 3], ['4METS: ウォーキング(少し速い)', 4], ['10METS: ランニング(9.7km/h)', 10], ['15METS: ランニング(14.5km/h)', 15]] %>
+              </div>
+            </div>
+
+            <div class="py-2">
+              <div>
+                <%= f.label :weight, "体重(kg)", class: "mb-0" %>
+              </div>
+              <div>
+                <%= f.text_field :weight %>
+              </div>
+            </div>
+
+            <div class="py-2">
+              <div>
+                <%= f.label :walking_time, "運動時間(分)", class: "mb-0" %>
+              </div>
+              <div>
+                <%= f.text_field :walking_time %>
+              </div>
+            </div>
+
+            <div class="py-2">
+              <%= f.submit "計算する", class: "btn btn-outline-dark" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

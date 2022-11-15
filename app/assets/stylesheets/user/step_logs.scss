@@ -1,3 +1,56 @@
 // Place all the styles related to the user/step_logs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.step-log-table th {
+    border: solid 1px;  /* 枠線指定 */
+    padding: 10px 20px;      /* 余白指定 */
+}
+
+.step-log-table td {
+    border: solid 1px;  /* 枠線指定 */
+    padding: 10px 40px;      /* 余白指定 */
+}
+
+.box1{
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    padding: 1.5em;
+    margin: 2em 0;
+}
+
+.calorie-calculation-box {
+    position: relative;
+    margin: 4em 0;
+    padding: 0.5em 1em;
+    border: dashed 2px #2ca9e1;
+    border-radius: 8px;
+}
+.calorie-calculation-box .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #2ca9e1;
+    font-weight: bold;
+}
+
+.new-recode-box{
+    padding: 1em;
+    margin: 1em 0 2em;
+    color: #5d627b;
+    background: white;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.22);
+    width: 360px;
+    border: solid 1px #474a4d;
+}
+.new-recode-box p {
+    margin: 0;
+    padding: 0;
+}

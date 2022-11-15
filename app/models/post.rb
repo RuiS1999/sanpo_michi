@@ -4,12 +4,12 @@ class Post < ApplicationRecord
   has_many :post_comments,    dependent: :destroy
   has_many :favorites,        dependent: :destroy
   has_many :reports,          dependent: :destroy
-  has_many :hashtag_posts, dependent: :destroy
-  has_many :hashtags, through: :hashtag_posts
+  has_many :hashtag_posts,    dependent: :destroy
+  has_many :hashtags,         through: :hashtag_posts
 
   validates   :user_id,       presence: true
   validates   :body,          presence: true,     length: { maximum: 500 }
-  validates   :hashbody,      presence: true,     length: { maximum: 500 }
+  validates   :hashbody,      length: { maximum: 500 }
 
   has_one_attached :post_image
 

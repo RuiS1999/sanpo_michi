@@ -4,11 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :post_comments,    dependent: :destroy
-  has_many :posts,            dependent: :destroy
-  has_many :favorites,        dependent: :destroy
-  has_many :reports,          dependent: :destroy
-  has_many :step_logs,        dependent: :destroy
+  has_many :post_comments,        dependent: :destroy
+  has_many :posts,                dependent: :destroy
+  has_many :favorites,            dependent: :destroy
+  has_many :reports,              dependent: :destroy
+  has_many :step_logs,            dependent: :destroy
+  has_many :calorie_calculations, dependent: :destroy
 
   # # follow機能
   # フォローする側から中間テーブルへのアソシエーション

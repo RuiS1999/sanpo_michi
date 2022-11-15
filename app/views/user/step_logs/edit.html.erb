@@ -1,2 +1,51 @@
-<h1>Users::StepLogs#edit</h1>
-<p>Find me in app/views/users/step_logs/edit.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="">
+      <h5><%= link_to "<< 戻る", step_log_path(@step_log) %></h5>
+      <div class="new-recode-box">
+        <h3 class="text-center border-bottom">Edit Recode</h3>
+        <%= form_with model: @step_log do |f| %>
+          <div class="py-2">
+            <div>
+              <%= f.label :start_time, "日にち", class: "equired mb-0" %>
+            </div>
+            <div>
+              <%= f.date_select :start_time, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div>
+              <%= f.label :number_of_step, "歩数 (歩)", class: "required mb-0" %>
+            </div>
+            <div>
+              <%= f.text_field :number_of_step, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div>
+              <%= f.label :walking_time, "散歩時間 (分)", class: "required mb-0" %>
+            </div>
+            <div>
+              <%= f.text_field :walking_time, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <div>
+              <%= f.label :calorie, "消費カロリー (kcal)", class: "required mb-0" %>
+            </div>
+            <div>
+              <%= f.text_field :calorie, class: "input" %>
+            </div>
+          </div>
+
+          <div class="py-2">
+            <%= f.submit class: "btn btn-outline-dark" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

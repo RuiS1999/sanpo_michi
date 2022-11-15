@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_09_022611) do
+ActiveRecord::Schema.define(version: 2022_11_13_080928) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2022_11_09_022611) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "calorie_calculations", force: :cascade do |t|
+    t.integer "mets", null: false
+    t.integer "weight", null: false
+    t.integer "walking_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -115,10 +123,10 @@ ActiveRecord::Schema.define(version: 2022_11_09_022611) do
 
   create_table "step_logs", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "calorie"
-    t.integer "number_of_step"
-    t.integer "walking_time"
-    t.datetime "start_time"
+    t.integer "calorie", null: false
+    t.integer "number_of_step", null: false
+    t.integer "walking_time", null: false
+    t.datetime "start_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

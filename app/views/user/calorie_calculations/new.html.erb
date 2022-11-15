@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="my-5">
+      <% unless @calorie == "正しい数値を入力してください" %>
+        消費カロリーは
+        <h2><%= @calorie.round(1) %>kcal</h2>
+        <h5><%= link_to "<< 戻る", new_step_log_path %></h5>
+      <% else %>
+        <h4 class="text-danger"><%= @calorie %></h4>
+        <h5><%= link_to "<< 計算し直す", new_step_log_path %></h5>
+      <% end %>
+    </div>
+  </div>
+</div>
