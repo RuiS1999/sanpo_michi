@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get   '/post/hashtag/:name' => 'posts#hashtag'
     get   '/post/hashtag' => 'posts#hashtag'
 
+    get   '/step_log/graph' => 'step_logs#graph'
+
     post  '/calorie_calculation' => 'calorie_calculations#new'
 
     resources  :users, param: :user_name, only: [:index, :show, :edit, :update] do

@@ -27,6 +27,9 @@
           </div>
         </div>
       </div>
+      <div>
+        <h5><%= link_to "過去一年分の集計>>", step_log_graph_path %></h5>
+      </div>
     </div>
     <div class="col-lg-8 p-2">
       <%= month_calendar events: @step_logs do |date, step_logs| %>
@@ -43,5 +46,3 @@
     </div>
   </div>
 </div>
-
-<%= line_chart StepLog.step_by_month(current_user), curve: false %>

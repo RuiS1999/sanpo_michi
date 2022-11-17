@@ -10,7 +10,7 @@
             <div>
               <%= f.label :post_image, "投稿画像", class: "mb-0" %>
             </div>
-            <%= f.file_field :post_image, placeholder: "画像を選択" %><br />
+            <%= f.file_field :post_image, accept: 'image/jpg,image/jpeg,image/png' %><br />
             <span class="small text-danger">※画像の投稿は１枚のみです</span>
           </div>
           <div class="py-2">

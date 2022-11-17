@@ -19,13 +19,13 @@
               <div>
                 <H4>カバー画像</H4>
                 <div class="p-2">
-                  <%= f.file_field :cover_image %>
+                  <%= f.file_field :cover_image, accept: 'image/jpg,image/jpeg,image/png' %>
                 </div>
               </div>
               <div class="pt-4">
                 <h4>プロフィール画像</h4>
                 <div class="p-2">
-                  <%= f.file_field :profile_image %>
+                  <%= f.file_field :profile_image, accept: 'image/jpg,image/jpeg,image/png' %>
                 </div>
               </div>
               <div class="py-4">

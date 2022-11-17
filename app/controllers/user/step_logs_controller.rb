@@ -5,10 +5,10 @@ class User::StepLogsController < ApplicationController
   end
 
   def index
-    @step_logs = current_user.step_logs.all
+    @step_logs = current_user.step_logs
     @date = Date.today
-    @month_date = current_user.step_logs.where(start_time: @date.beginning_of_month...@date.end_of_month)
-    @prev_month_date = current_user.step_logs.where(start_time: @date.beginning_of_month.prev_month...@date.end_of_month.prev_month)
+    @month_date = @step_logs.where(start_time: @date.beginning_of_month...@date.end_of_month)
+    @prev_month_date = @step_logs.where(start_time: @date.beginning_of_month.prev_month...@date.end_of_month.prev_month)
   end
 
   def show
@@ -60,6 +60,10 @@ class User::StepLogsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def graph
+    @step_logs = current_user.step_logs
   end
 
   private

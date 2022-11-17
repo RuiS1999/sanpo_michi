@@ -1,0 +1,50 @@
+<div class="container">
+  <div>
+    <h5><%= link_to "<<戻る", step_logs_path %></h5>
+  </div>
+  <div class="row">
+    <div class="col-lg-5 p-1 m-lg-2 my-2">
+      <div class="border p-1">
+        <h4 class="text-center">散歩時間（分）</h4>
+        <%= line_chart @step_logs.step_by_month(:walking_time), curve: false %>
+      </div>
+    </div>
+    <div class="col-lg-5 p-1 m-lg-2 my-2">
+      <div class="border p-1">
+        <h4 class="text-center">歩数（歩）</h4>
+        <%= line_chart @step_logs.step_by_month(:number_of_step), curve: false %>
+      </div>
+    </div>
+    <div class="col-lg-5 p-1 m-lg-2 my-2">
+      <div class="border p-1">
+        <h4 class="text-center">消費カロリー（kcal）</h4>
+        <%= line_chart @step_logs.step_by_month(:calorie), curve: false %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <table class="text-center">
+      <thead>
+        <tr class="">
+          <th></th>
+          <th>散歩時間</th>
+          <th>歩数</th>
+          <th>消費kcal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @step_logs.step_by_month_table.each do |table_date| %>
+          <tr>
+            <td><%= table_date.strftime("%Y/%m月") %></td>
+            <td><%= @step_logs.month_recode(table_date, :calorie) %></td>
+            <td><%= @step_logs.month_recode(table_date, :number_of_step) %></td>
+            <td><%= @step_logs.month_recode(table_date, :calorie) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
