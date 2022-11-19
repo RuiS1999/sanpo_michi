@@ -5,79 +5,66 @@
         <%= render 'layouts/side' %>
       </div>
       <div class="col-lg-9">
+        <h1 class="text-center">プロフィール編集</h1>
         <%= form_with model: @user, url: user_path do |f| %>
         <%= render "layouts/error_messages", resource: @user %>
-          <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active text-center" id="nav-image-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">画像</a>
-              <a class="nav-item nav-link text-center" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">プロフィール</a>
-              <a class="nav-item nav-link text-center" id="nav-delete-tab" data-toggle="tab" href="#nav-delete" role="tab" aria-controls="nav-delete" aria-selected="false">退会</a>
-            </div>
-          </nav>
-          <div class="tab-content py-4" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-image-tab">
-              <div>
-                <H4>カバー画像</H4>
-                <div class="p-2">
+          <div>
+            <div>
+              <div class="p-3">
+                <%= f.label :cover_image, "カバー画像", class: "h5 menu" %>
+                <div>
                   <%= f.file_field :cover_image, accept: 'image/jpg,image/jpeg,image/png' %>
                 </div>
               </div>
-              <div class="pt-4">
-                <h4>プロフィール画像</h4>
-                <div class="p-2">
+              <div class="p-3">
+                <%= f.label :profile_image, "プロフィール画像", class: "h5 menu" %>
+                <div>
                   <%= f.file_field :profile_image, accept: 'image/jpg,image/jpeg,image/png' %>
                 </div>
               </div>
-              <div class="py-4">
-                <%= f.submit "変更", class: "btn btn-primary mx-1 px-3" %>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-              <div class="p-2">
+              <div class="p-3">
                 <div>
-                  <%= f.label :account_name, "ユーザー名", class: "required" %>
-                </div>
-                <div>
-                  <%= f.text_field :account_name, placeholder: "さんぽ太郎", autocomplete: "name", class: "w-100" %>
+                  <%= f.label :account_name, "ユーザー名", class: "h5 menu" %>
+                  <div>
+                    <%= f.text_field :account_name, placeholder: "さんぽ太郎", autocomplete: "name", class: "w-100 input form-control" %>
+                  </div>
                 </div>
               </div>
-              <div class="p-2">
+              <div class="p-3">
                 <div>
-                  <%= f.label :introduction, "プロフィール" %>
-                </div>
-                <div>
-                  <%= f.text_area :introduction, placeholder: "プロフィール",  rows: 7, class: "w-100" %>
-                </div>
-              </div>
-              <div class="p-2">
-                <div>
-                  <%= f.label :birth_date, "生年月日" %>
-                </div>
-                <div>
-                  <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "w-50" %>
+                  <%= f.label :introduction, "プロフィール", class: "h5 menu" %>
+                  <div>
+                    <%= f.text_area :introduction, placeholder: "プロフィール",  rows: 7, class: "w-100 input form-control" %>
+                  </div>
                 </div>
               </div>
-              <div class="p-2">
+              <div class="p-3">
                 <div>
-                  <%= f.label :sex, "性別" %>
+                  <%= f.label :birth_date, "生年月日", class: "h5 menu" %>
+                  <div>
+                    <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1), class: "w-50" %>
+                  </div>
                 </div>
+              </div>
+              <div class="p-3">
                 <div>
-                  <%= f.radio_button :sex, User.sexes.key(0) %>
-                  <%= f.label :sex, "男性", value: User.sexes.key(0) %>
-                  <%= f.radio_button :sex, User.sexes.key(1) %>
-                  <%= f.label :sex, "女性", value: User.sexes.key(1) %>
-                  <%= f.radio_button :sex, User.sexes.key(2) %>
-                  <%= f.label :sex, "その他", value: User.sexes.key(2) %>
+                  <%= f.label :sex, "性別", class: "h5 menu" %>
+                  <div>
+                    <%= f.radio_button :sex, User.sexes.key(0) %>
+                    <%= f.label :sex, "男性", value: User.sexes.key(0) %>
+                    <%= f.radio_button :sex, User.sexes.key(1) %>
+                    <%= f.label :sex, "女性", value: User.sexes.key(1) %>
+                    <%= f.radio_button :sex, User.sexes.key(2) %>
+                    <%= f.label :sex, "その他", value: User.sexes.key(2) %>
+                  </div>
                 </div>
               </div>
               <div class="py-4">
-                <%= f.submit "変更", class: "btn btn-primary mx-1 px-3" %>
+                <%= f.submit "変更", class: "btn btn-primary mx-1 px-4" %>
+                <%= link_to users_retire_path, class:"btn btn-danger mx-2" do %>
+                  退会画面へ<i class="fa-solid fa-angles-right"></i>
+                <% end %>
               </div>
-            </div>
-            <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab">
-              <%= link_to users_retire_path, class:"btn btn-outline-danger mx-2" do %>
-                退会画面へ<i class="fa-solid fa-angles-right"></i>
-              <% end %>
             </div>
           </div>
         <% end %>

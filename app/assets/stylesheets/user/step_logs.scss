@@ -54,3 +54,21 @@
     margin: 0;
     padding: 0;
 }
+
+.design10 {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 600px;
+}
+.design10 th {
+    padding: 10px 1px;
+    border-top: solid 1px #778ca3;
+    border-bottom: double 4px #778ca3;
+    color: #778ca3
+}
+.design10 td {
+    padding: 10px 1px;
+    border-bottom: solid 1px #778ca3;
+}

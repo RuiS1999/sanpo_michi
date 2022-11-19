@@ -37,7 +37,7 @@
 
         <% step_logs.each do |step_log| %>
           <div>
-            <%= link_to step_log do %>
+            <%= link_to step_log, class: "text-forest" do %>
               <i class="fa-solid fa-shoe-prints"></i> <%= step_log.walking_time %>分
             <% end %>
           </div>

@@ -1,9 +1,9 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-light navbar-expand-lg border-bottom bg-light">
+  <nav class="navbar navbar-light navbar-expand-lg border-bottom">
     <% if admin_signed_in? %>
-      <%= link_to "さんぽみち（管理者用）", admin_root_path, class:"header-title navbar-brand watati-sc"%>
+      <%= link_to "さんぽみち（管理者用）", admin_root_path, class:"header-title navbar-brand watati-sc text-light"%>
     <% else %>
-      <%= link_to "さんぽみち", root_path, class:"header-title navbar-brand watati-sc"%>
+      <%= link_to "さんぽみち", root_path, class:"header-title navbar-brand watati-sc text-light"%>
     <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,42 +13,42 @@
         <% if user_signed_in? %>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to user_path(current_user.user_name), class: "text-dark mx-1" do %>
+              <%= link_to user_path(current_user.user_name), class: "text-light mx-1" do %>
                 <i class="fa-solid fa-user"></i> マイページ
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to step_logs_path, class: "text-dark mx-1" do %>
+              <%= link_to step_logs_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-shoe-prints"></i> 歩数記録
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to new_post_path, class: "text-dark mx-1" do %>
+              <%= link_to new_post_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-pen-fancy"></i> 新規投稿
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to search_users_path, class: "text-dark mx-1" do %>
+              <%= link_to search_users_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-magnifying-glass"></i> 話題を検索
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to posts_path, class: "text-dark mx-1" do %>
+              <%= link_to posts_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-signs-post"></i> 投稿一覧
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to destroy_user_session_path, method: :delete, class: "text-dark mx-1" do %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
             </span>
@@ -56,21 +56,21 @@
         <% elsif admin_signed_in? %>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to admin_posts_path, class: "text-dark mx-1" do %>
+              <%= link_to admin_posts_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-signs-post"></i> 投稿一覧
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to admin_users_path, class: "text-dark mx-1" do %>
+              <%= link_to admin_users_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-users"></i> ユーザー一覧
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to destroy_admin_session_path, method: :delete, class: "text-dark mx-1" do %>
+              <%= link_to destroy_admin_session_path, method: :delete, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
             </span>
@@ -78,35 +78,42 @@
         <% else %>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to about_path, class: "text-dark mx-1" do %>
+              <%= link_to about_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-table"></i> About
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to search_users_path, class: "text-dark mx-1" do %>
+              <%= link_to search_users_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-magnifying-glass"></i> 話題を検索
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to posts_path, class: "text-dark mx-1" do %>
+              <%= link_to posts_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-signs-post"></i> 投稿一覧
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to users_path, class: "text-dark mx-1" do %>
+              <%= link_to users_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-users"></i> ユーザー一覧
               <% end %>
             </span>
           </li>
           <li class="nav-item">
             <span class="nav-link">
-              <%= link_to new_user_session_path, class: "text-dark mx-1" do %>
+              <%= link_to new_user_registration_path, class: "text-light mx-1" do %>
+                <i class="fa-solid fa-user-plus"></i> 新規登録
+              <% end %>
+            </span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">
+              <%= link_to new_user_session_path, class: "text-light mx-1" do %>
                 <i class="fa-solid fa-arrow-right-to-bracket"></i> ログイン
               <% end %>
             </span>
