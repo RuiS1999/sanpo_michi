@@ -18,68 +18,68 @@
 
 /*font-family*/
 nav ul li {
-  font-family: 'Wawati SC', sans-serif;
+    font-family: 'Wawati SC', sans-serif;
 }
 
 h1 {
-  font-family: 'Wawati SC', sans-serif;
+    font-family: 'Wawati SC', sans-serif;
 }
 
 .watati-sc {
-  font-family: 'Wawati SC', sans-serif;
+    font-family: 'Wawati SC', sans-serif;
 }
 
 .menu {
-  background: linear-gradient(transparent 70%, #228b22 85%);
+    background: linear-gradient(transparent 70%, #228b22 85%);
 }
 
 /*font-family END*/
 header {
-  background-color:  #228b22;
-  color: #228b22;
+    background-color:  #228b22;
+    color: #228b22;
 }
 
 main {
-  padding: 20px 0 200px 0;
-  min-height: 90vh;
-  text-decoration:none;
+    padding: 20px 0 200px 0;
+    min-height: 90vh;
+    text-decoration:none;
 }
 
 .about-top{
-  margin-top: -24px;
+    margin-top: -24px;
 }
 
 .new-post-icon {
-  position:fixed;
-  bottom: 20px;
-  right: 20px;
+    position:fixed;
+    bottom: 20px;
+    right: 20px;
 }
 
 .profile_img{
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
 label.required:after{
-  margin-left: 0.5rem;
-  padding: 2px 6px 2px 6px;
-  border-radius: 4px;
-  color: white;
-  background-color: #C44;
-  content: "必須";
-  font-size: 75%;
+    margin-left: 0.5em;
+    padding: 2px 6px 2px 6px;
+    border-radius: 4px;
+    color: white;
+    background-color: #C44;
+    content: "必須";
+    font-size: 75%;
 }
 
 .side-content{
-	position: sticky;
-	top: 20px;
+	  position: sticky;
+	  top: 20px;
 }
 
 .form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: auto;
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
 }
 
 #error_explanation {
@@ -112,6 +112,98 @@ label.required:after{
     display: table;
 }
 
-.text-forest {
+.text-forest{
     color: #228b22;
+}
+
+.main-visual {
+    margin-top: -20px;
+}
+
+.main-visual img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    background-position: center;
+}
+
+.main-visual-text {
+    min-width: 350px;
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%,0%);
+    color:#fff;
+    text-align: center;
+    font-size: 120%;
+}
+
+
+.main-visual-text h1 {
+	line-height:0.95em;
+	font-weight:bold;
+	color: #fff;
+	text-shadow: 0 0 0.2em black;
+    font-size: 60px;
+}
+
+.main-visual-text span {
+    font-size: 25px;
+    border-bottom: solid 2px;
+}
+
+.main-visual-text strong {
+    font-size: 28px;
+    color: #eebbcb;
+    -webkit-text-stroke: 0.015em rgba(0,0,0,1);
+}
+
+.top-menu {
+    padding-bottom: 0.3em;
+    border-bottom: solid 0.02em black;
+    text-align: center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient( 0deg, #A1887F 0 0.1em, #6D4C41 0.1em 0.2em );
+	-webkit-background-clip: text;
+}
+
+.top-menu-item li {
+	line-height:0.95em;
+	font-weight:bold;
+	color: transparent;
+	background: repeating-linear-gradient( 0deg, #A1887F 0 0.1em, #6D4C41 0.1em 0.2em );
+	-webkit-background-clip: text;
+}
+
+.box17{
+    min-height: 327px;
+    margin:2em 0;
+    position: relative;
+    padding: 1.5em 3em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+}
+.box17:before, .box17:after{
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: -webkit-calc(100% + 20px);
+    height: calc(100% + 20px);
+    background-color: black;
+}
+.box17:before {left: 10px;}
+.box17:after {right: 10px;}
+.box17 p {
+    margin: 0;
+    padding: 0;
+}
+
+.box17 i {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    margin-right: 0.5em;
 }

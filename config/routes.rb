@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
     post  '/calorie_calculation' => 'calorie_calculations#new'
 
-    resources  :users, param: :user_name, only: [:index, :show, :edit, :update] do
+    resources  :users, param: :user_name, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
         get :followings, on: :member
         get :followers, on: :member
