@@ -45,21 +45,14 @@ main {
     text-decoration:none;
 }
 
-.about-top{
-    margin-top: -24px;
-}
-
-.new-post-icon {
-    position:fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
 .profile_img{
     width: 100%;
     height: auto;
 }
 
+
+
+/*form関連*/
 label.required:after{
     margin-left: 0.5em;
     padding: 2px 6px 2px 6px;
@@ -115,7 +108,10 @@ label.required:after{
 .text-forest{
     color: #228b22;
 }
+/*form関連終*/
 
+
+/*topページ*/
 .main-visual {
     margin-top: -20px;
 }
@@ -162,10 +158,13 @@ label.required:after{
     padding-bottom: 0.3em;
     border-bottom: solid 0.02em black;
     text-align: center;
-	line-height:0.95em;
-	font-weight:bold;
+	line-height: 0.95em;
+	font-weight: bold;
 	color: transparent;
-	background: repeating-linear-gradient( 0deg, #A1887F 0 0.1em, #6D4C41 0.1em 0.2em );
+	background: rgba(0,0,0,1);
+	text-shadow:
+		0 0 0.1em rgba(255,255,255,0.05),
+		0.01em 0.04em 0.03em rgba(255,255,255,0.4);
 	-webkit-background-clip: text;
 }
 
@@ -177,7 +176,7 @@ label.required:after{
 	-webkit-background-clip: text;
 }
 
-.box17{
+.top-menu-box{
     min-height: 327px;
     margin:2em 0;
     position: relative;
@@ -185,7 +184,7 @@ label.required:after{
     border-top: solid 2px black;
     border-bottom: solid 2px black;
 }
-.box17:before, .box17:after{
+.top-menu-box:before, .top-menu-box:after{
     content: '';
     position: absolute;
     top: -10px;
@@ -194,16 +193,158 @@ label.required:after{
     height: calc(100% + 20px);
     background-color: black;
 }
-.box17:before {left: 10px;}
-.box17:after {right: 10px;}
-.box17 p {
+.top-menu-box:before {left: 10px;}
+.top-menu-box:after {right: 10px;}
+.top-menu-box p {
     margin: 0;
     padding: 0;
 }
 
-.box17 i {
+.top-menu-box i {
     display: inline-block;
     width: 20px;
     text-align: center;
     margin-right: 0.5em;
+}
+/*topページ終*/
+
+
+/*aboutページ*/
+.about-visual {
+    margin-top: -20px;
+}
+
+.about-visual img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    background-position: center;
+}
+
+.about-visual-text {
+    width: 800px;
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%,0%);
+    color:#fff;
+    background-color: rgba( 0, 0, 0, 0.5);
+    padding: 30px;
+}
+
+
+.about-visual-text h1 {
+    text-align: center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #fff;
+	text-shadow: 0 0 0.2em black;
+    font-size: 50px;
+}
+
+.about-visual-text p {
+    font-weight: 600;
+    line-height: 1.4em;
+    filter: drop-shadow(10px 10px 5px #fff);
+}
+
+.about-post {
+    margin: 3em 0;
+    position: relative;
+    padding: 1em 1.5em;
+    border: solid 3px #0091EA;
+    border-radius: 8px;
+}
+
+.about-post h1 {
+    margin-bottom: 0.4em;
+    font-size: 3em;
+	text-align: center;
+	line-height: 1em;
+	font-weight: bold;
+	color: #FFF;
+	text-shadow:
+		0 0 0.05em #0091EA,
+		0 0 0.10em #0091EA,
+		0 0 0.15em #0091EA,
+		0 0 0.30em #0091EA;
+	filter: saturate(150%);
+	-webkit-background-clip: text;
+	-webkit-box-reflect: below -0.25em -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, .6)), to(transparent));
+}
+
+.about-post img {
+    width: 100%;
+}
+
+.about-post h4 {
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #FFF;
+	text-shadow: 0 0 0.3em #004f80;
+}
+
+.about-recode {
+    margin: 3em 0;
+    position: relative;
+    padding: 1em 1.5em;
+    border: solid 3px #228b22;
+    border-radius: 8px;
+}
+
+.about-recode h1 {
+    margin-bottom: 0.4em;
+    font-size: 2.5em;
+	text-align: center;
+	line-height: 1em;
+	font-weight: bold;
+	color: #FFF;
+	text-shadow:
+		0 0 0.05em #228b22,
+		0 0 0.10em #228b22,
+		0 0 0.15em #228b22,
+		0 0 0.30em #228b22;
+	filter: saturate(150%);
+	-webkit-background-clip: text;
+	-webkit-box-reflect: below -0.25em -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, .6)), to(transparent));
+}
+
+.about-recode img {
+    width: 100%;
+}
+
+.about-recode h4 {
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #FFF;
+	text-shadow: 0 0 0.3em #116b11;
+}
+/*aboutページ終*/
+
+
+
+/*レスポンシブ*/
+@media screen and (max-width:1024px) {
+    .about-visual-text {
+        width: 100%;
+        position: absolute;
+        top: 120px;
+        left: 50%;
+        transform: translate(-50%,0%);
+        color:#fff;
+        background-color: rgba( 0, 0, 0, 0.5);
+    }
+
+    .main-visual-text {
+        width: 90%;
+        position: absolute;
+        top: 120px;
+        left: 50%;
+        transform: translate(-50%,0%);
+        color:#fff;
+        text-align: center;
+        font-size: 90%;
+    }
 }

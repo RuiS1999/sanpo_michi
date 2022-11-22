@@ -10,7 +10,7 @@
               <%= f.label :start_time, "日にち", class: "equired mb-0" %>
             </div>
             <div>
-              <%= f.date_select :start_time, class: "input" %>
+              <%= f.date_field :start_time, class: "input" %>
             </div>
           </div>
 
@@ -42,7 +42,7 @@
           </div>
 
           <div class="py-2">
-            <%= f.submit %>
+            <%= f.submit "登録する", class: "btn btn-outline-dark" %>
           </div>
         <% end %>
       </div>
