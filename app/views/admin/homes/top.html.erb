@@ -1,2 +1,73 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div>
+    <div class="text-center">
+      <h1>さんぽみち</h1>
+      <h3>（管理者用）</h3>
+    </div>
+
+    <div class="col-lg-5 mx-auto">
+      <div class="top-menu-box">
+        <h2 class="top-menu">メニュー</h2>
+        <ul class="navbar-nav p-2">
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to admin_posts_path, class: "text-dark" do %>
+                <i class="fa-solid fa-signs-post"></i> 投稿一覧
+              <% end %>
+            </h5>
+          </li>
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to admin_users_path, class: "text-dark" do %>
+                <i class="fa-solid fa-users"></i> ユーザー一覧
+              <% end %>
+            </h5>
+          </li>
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to admin_post_report_posts_path, class: "text-dark" do %>
+                <i class="fa-solid fa-flag"></i> 報告された投稿
+              <% end %>
+            </h5>
+          </li>
+          <li class="nav-item">
+            <h5 class="nav-link">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "text-dark" do %>
+                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <% end %>
+            </h5>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="row my-4 text-center d-flex justify-content-center">
+        <div class="m-2">
+          <div class="p-2">
+            全ユーザー数
+          </div>
+          <div class="border-top h3 p-2">
+            <%= @all_users.count %>
+          </div>
+        </div>
+        <div class="m-2">
+          <div class="p-2">
+            使用中ユーザー数
+          </div>
+          <div class="border-top h3 p-2">
+            <%= @users.count %>
+          </div>
+        </div>
+        <div class="m-2">
+          <div class="p-2">
+            投稿数
+          </div>
+          <div class="border-top h3 p-2">
+            <%= @posts.count %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

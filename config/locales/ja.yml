@@ -18,6 +18,7 @@ ja:
       user:
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード（確認用）
         user_name: ユーザー名
         account_name: アカウント名
         birth_date: 生年月日

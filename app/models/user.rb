@@ -29,8 +29,8 @@ class User < ApplicationRecord
   # # follow機能終了
 
   validates :email,           presence: true,   uniqueness: true
-  validates :user_name,       presence: true,   length: { in: 4..23 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
-  validates :account_name,    presence: true,   length: { in: 2..20 }
+  validates :user_name,       presence: true,   length: { in: 4..25 },   uniqueness: true,   format: { with: /\A[a-z0-9]+\z/i }
+  validates :account_name,    presence: true,   length: { in: 2..25 }
   validates :introduction,    length: { maximum: 500 }
   validates :is_deleted,      inclusion: {in: [true, false]}
 
@@ -63,7 +63,7 @@ class User < ApplicationRecord
   # カバー画像リサイズ
   def get_cover_image
     unless cover_image.attached?
-      file_path = Rails.root.join('app/assets/images/road.jpg')
+      file_path = Rails.root.join('app/assets/images/road_sea.jpg')
       cover_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     cover_image.variant(gravity: "center", resize:"900x300^", crop:"900x300+0+0").processed

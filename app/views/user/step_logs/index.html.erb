@@ -37,8 +37,8 @@
 
         <% step_logs.each do |step_log| %>
           <div>
-            <%= link_to step_log, class: "text-forest" do %>
-              <i class="fa-solid fa-shoe-prints"></i>
+            <%= link_to step_log, class: "text-forest calender-text" do %>
+              <i class="fa-solid fa-shoe-prints"></i> <span class="d-none d-sm-block"><%= step_log.number_of_step %>歩</span>
             <% end %>
           </div>
         <% end %>

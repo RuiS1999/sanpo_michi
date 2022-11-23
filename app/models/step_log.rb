@@ -27,6 +27,16 @@ class StepLog < ApplicationRecord
     return months
   end
 
+  def self.step_by_day_table
+    days = []
+    date = Date.current
+    StepLog.where(start_time: date.beginning_of_month...date.end_of_month).each do
+      days << date.beginning_of_month
+      date = date.prev_day
+    end
+    return days
+  end
+
   def self.month_recode(month, option)
     return  where(start_time: month.beginning_of_month...month.end_of_month).sum(option)
   end

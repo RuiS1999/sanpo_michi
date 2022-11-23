@@ -24,7 +24,7 @@
         </div>
         <div class="py-2">
           <div>
-            <%= f.label :password_confirmationv, "パスワード (確認用)", class: "required" %>
+            <%= f.label :password_confirmation, "パスワード (確認用)", class: "required" %>
           </div>
           <div>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password", class: "form-control input" %>
@@ -39,6 +39,14 @@
               <div class="input-group-text">@</div>
               <%= f.text_field :user_name, autocomplete: "name", placeholder: "sanpomichi3", class: "form-control input" %>
             </div>
+          </div>
+        </div>
+        <div class="py-2">
+          <div>
+            <%= f.label :account_name, "ニックネーム", class: "required" %>
+          </div>
+          <div>
+            <%= f.text_field :account_name, autocomplete: "name", placeholder: "さんぽ太郎", class: "form-control input" %>
           </div>
         </div>
         <div class="text-center">

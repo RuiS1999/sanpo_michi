@@ -9,6 +9,12 @@ class Admin::PostsController < ApplicationController
     @posts = Post.looks(params[:word])
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
+  end
+
   def report_post
     @posts = Post.all
     @report_posts = []

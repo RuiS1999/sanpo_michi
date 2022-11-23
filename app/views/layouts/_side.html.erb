@@ -47,13 +47,6 @@
             <% end %>
           </h5>
         </li>
-        <li class="nav-item">
-          <h5 class="nav-link">
-            <%= link_to search_users_path, class: "text-dark" do %>
-              <i class="fa-solid fa-users"></i> ユーザー一覧
-            <% end %>
-          </h5>
-        </li>
         <% if user_signed_in? %>
           </br>
           <li class="nav-item">
@@ -91,7 +84,7 @@
         <li class="nav-item">
           <h5 class="nav-link">
             <%= link_to admin_post_report_posts_path, class: "text-dark" do %>
-              <i class="fa-solid fa-flag"></i>報告された投稿
+              <i class="fa-solid fa-flag"></i> 報告された投稿
             <% end %>
           </h5>
         </li>

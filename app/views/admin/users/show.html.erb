@@ -76,7 +76,7 @@
               <thead>
                 <tr class="text-center">
                   <th>投稿ID</th>
-                  <th>投稿文</th>
+                  <th>お気に入り数</th>
                   <th>報告数</th>
                   <th></th>
                 </tr>
@@ -85,7 +85,7 @@
                 <% @posts.each do |post| %>
                   <tr class="text-center">
                     <td><%= post.id %></td>
-                    <td><%= post.body %></td>
+                    <td><%= post.favorites.count %></td>
                     <td class="text-danger"><%= post.reports.count %></td>
                     <td><%= link_to "詳細", admin_post_path(post.id), class: "btn btn-sm btn-outline-success" %></td>
                   </tr>
