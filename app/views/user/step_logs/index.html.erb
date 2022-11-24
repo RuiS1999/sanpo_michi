@@ -17,6 +17,9 @@
           <div class="mt-4">
             今月の散歩時間： <%= @month_date.sum(:walking_time) %>分
           </div>
+          <div class="mt-4">
+            今月の消費kcal： <%= @month_date.sum(:calorie) %>kcal
+          </div>
         </div>
         <div class="box1">
           <div>
@@ -24,6 +27,9 @@
           </div>
           <div class="mt-4">
             先月の散歩時間： <%= @prev_month_date.sum(:walking_time) %>分
+          </div>
+          <div class="mt-4">
+            先月の消費kcal： <%= @prev_month_date.sum(:calorie) %>kcal
           </div>
         </div>
       </div>
@@ -38,7 +44,10 @@
         <% step_logs.each do |step_log| %>
           <div>
             <%= link_to step_log, class: "text-forest calender-text" do %>
-              <i class="fa-solid fa-shoe-prints"></i> <span class="d-none d-sm-block"><%= step_log.number_of_step %>歩</span>
+              <span class="d-block"><i class="fa-solid fa-shoe-prints"></i></span>
+              <span class="d-none d-sm-block"><%= step_log.number_of_step %>歩</span>
+              <span class="d-none d-sm-block"><%= step_log.walking_time %>分</span>
+              <span class="d-none d-sm-block"><%= step_log.calorie %>kcal</span>
             <% end %>
           </div>
         <% end %>
