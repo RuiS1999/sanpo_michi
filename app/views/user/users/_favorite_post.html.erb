@@ -1,97 +1,100 @@
-<% user_favorites.reverse.each do |user_favorite| %>
-  <div class="p-3 border-right border-left border-bottom">
-    <div class="row">
+<% if user_favorites.count == 0 %>
+  <% user_favorites.reverse.each do |user_favorite| %>
+    <div class="p-3 border-right border-left border-bottom">
+      <div class="row">
 
-      <!--プロフィール画像-->
-      <div class="col-2 col-sm-1 p-1 p-sm-2">
-        <%= link_to user_path(user_favorite.user.user_name), class: "a-post-link" do %>
-          <div>
-            <%= image_tag user_favorite.post.user.get_profile_image, class:"rounded-circle profile_img"; %>
-          </div>
-        <% end %>
-      </div>
-
-      <!--投稿情報-->
-      <div class="col-10 col-sm-11 p-1 p-sm-2">
-        <div>
-          <div>
-            <strong><%= link_to user_favorite.user.account_name, user_path(user_favorite.user.user_name), class: "a_user_link" %></strong>
-            <span class="text-truncate"><%= link_to " @#{user_favorite.post.user.user_name}", user_path(user_favorite.post.user.user_name), class: "a_user_name" %></span>
-          </div>
-          <div>
-            <span class="small"><%= user_favorite.post.created_at.strftime('%Y/%m/%d') %>投稿</span>
-          </div>
-        </div>
-
-        <div class="my-3">
-          <%= link_to post_path(user_favorite.post.id), class: "a-post-link" do %>
-            <div class="p-2 post-body">
-              <%= safe_join("#{user_favorite.post.body}".split("\n"),tag(:br)) %>
+        <!--プロフィール画像-->
+        <div class="col-2 col-sm-1 p-1 p-sm-2">
+          <%= link_to user_path(user_favorite.user.user_name), class: "a-post-link" do %>
+            <div>
+              <%= image_tag user_favorite.post.user.get_profile_image, class:"rounded-circle profile_img"; %>
             </div>
-            <div class="p-2 post-body">
-              <%= render_with_hashtags(user_favorite.post.hashbody) %>
-            </div>
-            <% if user_favorite.post.post_image.attached? %>
-              <div class="p-2">
-                <p><%= image_tag user_favorite.post.index_post_image, class:"card-img post-image-index" %></p>
-              </div>
-            <% end %>
           <% end %>
         </div>
 
-        <div class="border-top d-flex justify-content-around pt-3">
+        <!--投稿情報-->
+        <div class="col-10 col-sm-11 p-1 p-sm-2">
           <div>
-            <span>
-              <%= link_to post_path(user_favorite.post), class: "text-dark" do %>
-                <i class="fa-regular fa-comments"></i> <%= user_favorite.post.post_comments.count %>
-              <% end %>
-            </span>
+            <div>
+              <strong><%= link_to user_favorite.user.account_name, user_path(user_favorite.user.user_name), class: "a_user_link" %></strong>
+              <span class="text-truncate"><%= link_to " @#{user_favorite.post.user.user_name}", user_path(user_favorite.post.user.user_name), class: "a_user_name" %></span>
+            </div>
+            <div>
+              <span class="small"><%= user_favorite.post.created_at.strftime('%Y/%m/%d') %>投稿</span>
+            </div>
           </div>
-          <div>
-            <% if user_signed_in? %>
-              <% if user_favorite.post.favorited_by?(current_user) %>
-                <%= link_to post_favorites_path(user_favorite.post), method: :delete, class: "favorite-settled" do %>
-                  <i class="fa-solid fa-heart"></i> <%= user_favorite.post.favorites.count %>
+
+          <div class="my-3">
+            <%= link_to post_path(user_favorite.post.id), class: "a-post-link" do %>
+              <div class="p-2 post-body">
+                <%= safe_join("#{user_favorite.post.body}".split("\n"),tag(:br)) %>
+              </div>
+              <div class="p-2 post-body">
+                <%= render_with_hashtags(user_favorite.post.hashbody) %>
+              </div>
+              <% if user_favorite.post.post_image.attached? %>
+                <div class="p-2">
+                  <p><%= image_tag user_favorite.post.index_post_image, class:"card-img post-image-index" %></p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="border-top d-flex justify-content-around pt-3">
+            <div>
+              <span>
+                <%= link_to post_path(user_favorite.post), class: "text-dark" do %>
+                  <i class="fa-regular fa-comments"></i> <%= user_favorite.post.post_comments.count %>
+                <% end %>
+              </span>
+            </div>
+            <div>
+              <% if user_signed_in? %>
+                <% if user_favorite.post.favorited_by?(current_user) %>
+                  <%= link_to post_favorites_path(user_favorite.post), method: :delete, class: "favorite-settled" do %>
+                    <i class="fa-solid fa-heart"></i> <%= user_favorite.post.favorites.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_favorites_path(user_favorite.post), method: :post, class: "favorite-not-settled" do %>
+                    <i class="fa-regular fa-heart"></i> <%= user_favorite.post.favorites.count %>
+                  <% end %>
                 <% end %>
               <% else %>
                 <%= link_to post_favorites_path(user_favorite.post), method: :post, class: "favorite-not-settled" do %>
                   <i class="fa-regular fa-heart"></i> <%= user_favorite.post.favorites.count %>
                 <% end %>
               <% end %>
-            <% else %>
-              <%= link_to post_favorites_path(user_favorite.post), method: :post, class: "favorite-not-settled" do %>
-                <i class="fa-regular fa-heart"></i> <%= user_favorite.post.favorites.count %>
-              <% end %>
-            <% end %>
-          </div>
-          <div>
-            <% if user_signed_in? && current_user.id == user_favorite.user.id %>
-              <%= link_to post_path(user_favorite.post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
-                <i class="fa-solid fa-trash"></i> 削除
-              <% end %>
-            <% else %>
-              <% if user_signed_in? %>
-                <% if user_favorite.post.reported_by?(current_user) %>
-                  <%= link_to post_reports_path(user_favorite.post), method: :delete, "data-confirm" => "報告を取消しますか?", class: "text-success" do %>
-                    <span><i class="fa-solid fa-check"></i> 報告済</span>
+            </div>
+            <div>
+              <% if user_signed_in? && current_user.id == user_favorite.user.id %>
+                <%= link_to post_path(user_favorite.post), method: :delete, "data-confirm" => "本当に消しますか?", class: "trash-settled" do %>
+                  <i class="fa-solid fa-trash"></i> 削除
+                <% end %>
+              <% else %>
+                <% if user_signed_in? %>
+                  <% if user_favorite.post.reported_by?(current_user) %>
+                    <%= link_to post_reports_path(user_favorite.post), method: :delete, "data-confirm" => "報告を取消しますか?", class: "text-success" do %>
+                      <span><i class="fa-solid fa-check"></i> 報告済</span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to new_post_reports_path(user_favorite.post), class: "trash-settled" do %>
+                      <span><i class="fa-solid fa-flag"></i> 報告</span>
+                    <% end %>
                   <% end %>
                 <% else %>
                   <%= link_to new_post_reports_path(user_favorite.post), class: "trash-settled" do %>
                     <span><i class="fa-solid fa-flag"></i> 報告</span>
                   <% end %>
                 <% end %>
-              <% else %>
-                <%= link_to new_post_reports_path(user_favorite.post), class: "trash-settled" do %>
-                  <span><i class="fa-solid fa-flag"></i> 報告</span>
-                <% end %>
               <% end %>
-            <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  <% end %>
+<% else %>
+  <div class="p-3 border-right border-left border-bottom">
+    <h5 class="my-4">投稿がありません</h5>
   </div>
-<% end %>
-<% if user_favorites.count == 0 %>
-  <h5 class="my-4">投稿がありません</h5>
 <% end %>

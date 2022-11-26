@@ -1,54 +1,57 @@
-<% users.each do |user| %>
-  <div class="p-3 border-right border-left border-bottom">
-    <div class="row">
+<% unless users.count == 0 %>
+  <% users.each do |user| %>
+    <div class="p-3 border-right border-left border-bottom">
+      <div class="row">
 
-      <!--プロフィール画像-->
-      <div class="col-2 col-md-1 p-1 p-sm-2">
-        <%= link_to user_path(user.user_name), class: "a-post-link" do %>
-          <div>
-            <%= image_tag user.get_profile_image, class:"rounded-circle profile_img"; %>
-          </div>
-        <% end %>
-      </div>
+        <!--プロフィール画像-->
+        <div class="col-2 col-md-1 p-1 p-sm-2">
+          <%= link_to user_path(user.user_name), class: "a-post-link" do %>
+            <div>
+              <%= image_tag user.get_profile_image, class:"rounded-circle profile_img"; %>
+            </div>
+          <% end %>
+        </div>
 
-      <!--プロフィール情報-->
-      <div class="col-10 col-md-11 py-0 px-2">
-        <div class="d-flex justify-content-between">
-          <div class="py-1">
-            <h5 class="p-0 m-0"><%= link_to user.account_name, user_path(user.user_name), class: "a_user_link" %></h5>
-            <span><%= link_to " @#{user.user_name}", user_path(user.user_name), class: "a_user_name" %></span>
-          </div>
-          <div class="mx-3">
-            <% if user_signed_in? %>
-              <% if user.id == current_user.id %>
-                <%= link_to "プロフィール編集", edit_user_path(user.user_name), class: "btn btn-outline-success btn-sm" %>
-              <% else %>
-                <% if user.is_followed_by?(current_user) %>
-                  <%= link_to user_relationships_path(user.id), method: :delete do %>
-                    <button type="button" class="btn btn-light border btn-sm">フォロー解除</button>
-                  <% end %>
+        <!--プロフィール情報-->
+        <div class="col-10 col-md-11 py-0 px-2">
+          <div class="d-flex justify-content-between">
+            <div class="py-1">
+              <h5 class="p-0 m-0"><%= link_to user.account_name, user_path(user.user_name), class: "a_user_link" %></h5>
+              <span><%= link_to " @#{user.user_name}", user_path(user.user_name), class: "a_user_name" %></span>
+            </div>
+            <div class="mx-3">
+              <% if user_signed_in? %>
+                <% if user.id == current_user.id %>
+                  <%= link_to "プロフィール編集", edit_user_path(user.user_name), class: "btn btn-outline-success btn-sm" %>
                 <% else %>
-                  <%= link_to user_relationships_path(user.id), method: :post do %>
-                    <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
+                  <% if user.is_followed_by?(current_user) %>
+                    <%= link_to user_relationships_path(user.id), method: :delete do %>
+                      <button type="button" class="btn btn-light border btn-sm">フォロー解除</button>
+                    <% end %>
+                  <% else %>
+                    <%= link_to user_relationships_path(user.id), method: :post do %>
+                      <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
+                    <% end %>
                   <% end %>
                 <% end %>
+              <% else %>
+                <%= link_to user_relationships_path(user.id), method: :post do %>
+                  <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to user_relationships_path(user.id), method: :post do %>
-                <button type="button" class="btn btn btn-secondary btn-sm">フォロー</button>
-              <% end %>
-            <% end %>
+            </div>
           </div>
-        </div>
-        <div>
-          <a>
-            <%= safe_join("#{user.introduction}".split("\n"),tag(:br)) %>
-          </a>
+          <div>
+            <a>
+              <%= safe_join("#{user.introduction}".split("\n"),tag(:br)) %>
+            </a>
+          </div>
         </div>
       </div>
     </div>
+  <% end %>
+<% else %>
+  <div class="p-3 border-right border-left border-bottom">
+    <h5 class="text-center my-4">ユーザーが見当たりません</h5>
   </div>
-<% end %>
-<% if users.count == 0 %>
-  <h5 class="my-4">ユーザーが見当たりません</h5>
 <% end %>

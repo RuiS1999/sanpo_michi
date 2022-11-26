@@ -25,9 +25,6 @@ class User::PostsController < ApplicationController
     @post_comments = @post.post_comments.all
   end
 
-  def edit
-  end
-
   def destroy
     post = Post.find(params[:id])
     post.destroy
