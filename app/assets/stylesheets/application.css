@@ -193,6 +193,7 @@ label.required:after{
     border-top: solid 2px black;
     border-bottom: solid 2px black;
 }
+
 .top-menu-box:before, .top-menu-box:after{
     content: '';
     position: absolute;
@@ -202,6 +203,7 @@ label.required:after{
     height: calc(100% + 20px);
     background-color: black;
 }
+
 .top-menu-box:before {left: 10px;}
 .top-menu-box:after {right: 10px;}
 .top-menu-box p {
