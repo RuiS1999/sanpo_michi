@@ -29,10 +29,12 @@
                       <% end %>
                     </td>
                     <td class="text-center">
-                      <% unless user.is_deleted == true %>
-                        <span class="btn btn-sm btn-primary">使用中</span>
-                      <% else %>
-                        <span class="btn btn-sm btn-danger">退会済</span>
+                      <%= link_to admin_user_path(user.id) do %>
+                        <% unless user.is_deleted == true %>
+                          <span class="btn btn-sm btn-primary">使用中</span>
+                        <% else %>
+                          <span class="btn btn-sm btn-danger">退会済</span>
+                        <% end %>
                       <% end %>
                     </td>
                     <td class="text-center"><span><%= link_to "詳細", admin_user_path(user.id), class: "btn btn-sm btn-outline-success" %></span></td>
