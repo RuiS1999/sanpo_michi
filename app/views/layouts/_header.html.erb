@@ -1,5 +1,5 @@
-<header class="shadow-sm bg-light">
-  <nav class="navbar navbar-light navbar-expand-lg">
+<header>
+  <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top">
     <% if admin_signed_in? %>
       <%= link_to "さんぽみち（管理者用）", admin_root_path, class:"header-title navbar-brand watati-sc text-dark"%>
     <% else %>

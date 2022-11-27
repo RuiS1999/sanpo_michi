@@ -8,8 +8,8 @@
   <div class="row">
     <div class="col-lg-4 py-2 px-4 mt-3">
       <div>
-        <%= link_to new_step_log_path, class: "btn btn-lg btn-dark" do %>
-          <span>New Record<i class="fa-solid fa-feather-pointed"></i></span>
+        <%= link_to new_step_log_path, class: "btn btn-lg btn-dark w-75" do %>
+          <span>New Record <i class="fa-solid fa-feather-pointed"></i></span>
         <% end %>
       </div>
       <div>
@@ -36,8 +36,8 @@
           </div>
         </div>
       </div>
-      <div>
-        <h5><%= link_to "過去一年分の集計>>", step_log_graph_path %></h5>
+      <div class="text-right">
+        <h5><%= link_to "過去一年分の集計 >>", step_log_graph_path, class: "btn btn-outline-success w-100 p-3" %></h5>
       </div>
     </div>
     <div class="col-lg-8 p-2">
