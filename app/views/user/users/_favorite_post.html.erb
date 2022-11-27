@@ -1,4 +1,4 @@
-<% if user_favorites.count == 0 %>
+<% unless user_favorites.count == 0 %>
   <% user_favorites.reverse.each do |user_favorite| %>
     <div class="p-3 border-right border-left border-bottom">
       <div class="row">
@@ -95,6 +95,6 @@
   <% end %>
 <% else %>
   <div class="p-3 border-right border-left border-bottom">
-    <h5 class="my-4">投稿がありません</h5>
+    <h5 class="text-center my-4">投稿がありません</h5>
   </div>
 <% end %>
