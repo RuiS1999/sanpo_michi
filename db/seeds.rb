@@ -13,7 +13,7 @@ User.create!(
       password: 'test123',
       user_name: '1230',
       account_name: '1000',
-      introduction: '疲れた',
+      introduction: '何事も',
       birth_date: '',
       sex: '',
       is_deleted: 'false'
@@ -24,7 +24,7 @@ User.create!(
       password: 'test123',
       user_name: '1231',
       account_name: '1001',
-      introduction: '',
+      introduction: '温泉行きたい',
       birth_date: '',
       sex: 'female',
       is_deleted: 'false'
@@ -35,7 +35,7 @@ User.create!(
       password: 'test123',
       user_name: '1232',
       account_name: '1002',
-      introduction: '',
+      introduction: '海辺で黄昏たい',
       birth_date: '',
       sex: '',
       is_deleted: 'false'

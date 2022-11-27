@@ -59,6 +59,12 @@ main {
     list-style: none;
 }
 
+.new-icon-button {
+    position: fixed;
+    right: 10%;
+    bottom: 2%;
+}
+
 
 
 /*form関連*/
