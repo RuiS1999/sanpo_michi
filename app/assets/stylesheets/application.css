@@ -36,7 +36,7 @@ h1 {
 /*font-family END*/
 
 main {
-    padding: 76px 0 200px 0;
+    padding: 90px 0 200px 0;
     min-height: 90vh;
     text-decoration:none;
 }
@@ -122,7 +122,7 @@ label.required:after{
 
 /*topページ*/
 .main-visual {
-    margin-top: -20px;
+    margin-top: -34px;
 }
 
 .main-visual img {
@@ -222,7 +222,7 @@ label.required:after{
 
 /*aboutページ*/
 .about-visual {
-    margin-top: -20px;
+    margin-top: -34px;
 }
 
 .about-visual img {
