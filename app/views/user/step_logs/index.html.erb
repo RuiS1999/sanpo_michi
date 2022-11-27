@@ -1,14 +1,17 @@
 <div class="container">
+  <div>
+    <h5><%= link_to "<<マイページ", user_path(current_user) %></h5>
+  </div>
   <div class="mb-4">
     <h1 class="text-center">さんぽ記録</h1>
   </div>
   <div class="row">
     <div class="col-lg-4 py-2 px-4 mt-3">
-      <h3>
-        <%= link_to new_step_log_path, class: "btn btn-lg btn-primary" do %>
-          New Record<i class="fa-solid fa-feather-pointed"></i>
+      <div>
+        <%= link_to new_step_log_path, class: "btn btn-lg btn-dark" do %>
+          <span>New Record<i class="fa-solid fa-feather-pointed"></i></span>
         <% end %>
-      </h3>
+      </div>
       <div>
         <div class="box1">
           <div>
