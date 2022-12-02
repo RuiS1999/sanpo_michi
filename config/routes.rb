@@ -16,8 +16,6 @@ Rails.application.routes.draw do
 
     get   '/step_log/graph' => 'step_logs#graph'
 
-    post  '/calorie_calculation' => 'calorie_calculations#result'
-
     resources  :users, param: :user_name, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
         get :followings, on: :member

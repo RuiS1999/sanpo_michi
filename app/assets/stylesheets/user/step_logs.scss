@@ -24,8 +24,8 @@
 .calorie-calculation-box {
     position: relative;
     margin: 4em 0;
-    padding: 0.5em 1em;
-    border: dashed 2px #2ca9e1;
+    padding: 1.5em 1em 0.5em;
+    border: dashed 2px #5d627b;
     border-radius: 8px;
 }
 .calorie-calculation-box .box-title {
@@ -37,7 +37,7 @@
     line-height: 1;
     font-size: 19px;
     background: #FFF;
-    color: #2ca9e1;
+    color: #5d627b;
     font-weight: bold;
 }
 
@@ -75,6 +75,11 @@
 
 .calender-text {
     font-size: 0.8em;
+}
+
+.attention {
+    color: #e6153e;
+    margin-left: 0.5em;
 }
 
 @media screen and (max-width:800px) {

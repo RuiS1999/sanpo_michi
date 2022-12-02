@@ -34,7 +34,7 @@ class Post < ApplicationRecord
 
   def index_post_image
     if post_image.attached?
-      post_image.variant(gravity: "center", resize:"700x400^", crop:"700x400+0+0").processed
+      post_image.variant(gravity: "center", crop: "700x350+0+0").processed
     end
   end
 

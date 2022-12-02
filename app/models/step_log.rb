@@ -2,9 +2,9 @@ class StepLog < ApplicationRecord
   belongs_to :user
 
   validates :user_id,         presence: true
-  validates :calorie,         presence: true, numericality: true
-  validates :number_of_step,  presence: true, numericality: true
-  validates :walking_time,    presence: true, numericality: true
+  validates :calorie,         presence: true,   numericality: {greater_than: 0}
+  validates :number_of_step,  presence: true,   numericality: {greater_than: 0}
+  validates :walking_time,    presence: true,   numericality: {greater_than: 0}
   validates :start_time,      presence: true
 
   def self.step_by_month(option)

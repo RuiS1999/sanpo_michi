@@ -1,3 +1,9 @@
+<script>
+    function calc(weight, mets, time) {
+      const calorie_value = document.getElementById('calorie').value = Math.round(weight * mets * (time / 60)) * 1.05;
+    }
+</script>
+
 <div class="container">
   <div class="d-flex justify-content-center">
     <div class="">
@@ -19,7 +25,7 @@
               <%= f.label :number_of_step, "歩数 (歩)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.text_field :number_of_step, class: "input" %>
+              <%= f.number_field :number_of_step, class: "input" %>
             </div>
           </div>
 
@@ -28,7 +34,7 @@
               <%= f.label :walking_time, "散歩時間 (分)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.text_field :walking_time, class: "input" %>
+              <%= f.number_field :walking_time, class: "input" %>
             </div>
           </div>
 
@@ -37,7 +43,7 @@
               <%= f.label :calorie, "消費カロリー (kcal)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.text_field :calorie, class: "input" %>
+              <%= f.number_field :calorie, class: "input", id: "calorie" %>
             </div>
           </div>
 
@@ -52,38 +58,26 @@
         </div>
         <div class="calorie-calculation-box">
           <span class="box-title">カロリー計算</span>
-          <%= form_with model: CalorieCalculation.new, url: calorie_calculation_path, method: :post do |f| %>
-            <div class="py-2">
-              <div>
-                <%= f.label :mets, "運動強度(METS)", class: "mb-0" %>
-              </div>
-              <div>
-                <%= f.select :mets, [['3METS: ウォーキング(通常)', 3], ['4METS: ウォーキング(少し速い)', 4], ['10METS: ランニング(9.7km/h)', 10], ['15METS: ランニング(14.5km/h)', 15]] %>
-              </div>
-            </div>
-
-            <div class="py-2">
-              <div>
-                <%= f.label :weight, "体重(kg)", class: "mb-0" %>
-              </div>
-              <div>
-                <%= f.text_field :weight %>
-              </div>
-            </div>
-
-            <div class="py-2">
-              <div>
-                <%= f.label :walking_time, "運動時間(分)", class: "mb-0" %>
-              </div>
-              <div>
-                <%= f.text_field :walking_time %>
-              </div>
-            </div>
-
-            <div class="py-2">
-              <%= f.submit "計算する", class: "btn btn-outline-dark" %>
-            </div>
-          <% end %>
+            <form class="diet_form">
+              <dl>
+                <dd>体重(kg)：</dd>
+                <dd><input type="number" name="weight"></dd>
+                <dd>運動強度(Mets)：</dd>
+                <dd>
+                  <select type="number" class="p-1" name="mets">
+                    <option value="3">3METS: ウォーキング(通常)</option>
+                    <option value="4">4METS: ウォーキング(少し速い)</option>
+                    <option value="5">5METS: 自転車に乗る(のんびり)</option>
+                    <option value="7">7METS: 自転車に乗る(全般)</option>
+                    <option value="10">10METS: ランニング(9.7km/h)</option>
+                    <option value="15">15METS: ランニング(14.5km/h)</option>
+                  </select>
+                </dd>
+                <dd>運動時間(分)：</dd>
+                <dd><input type="number" name="time"></dd>
+                <p><input type="button" class="px-3 py-1" onclick="calc(weight.value, mets.value, time.value);" value="計算"><span class="attention">※自動で入力されます</span></p>
+              </dl>
+          </form>
         </div>
       </div>
     </div>

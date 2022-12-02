@@ -27,8 +27,12 @@ class User::PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    post.destroy
-    redirect_to posts_path
+    if post.user_id == current_user.id
+      post.destroy
+      redirect_to posts_path
+    else
+      redirect_to post_path(post)
+    end
   end
 
   def hashtag
