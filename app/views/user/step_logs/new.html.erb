@@ -1,6 +1,6 @@
 <script>
     function calc(weight, mets, time) {
-      const calorie_value = document.getElementById('calorie').value = Math.round(weight * mets * (time / 60)) * 1.05;
+      const calorie_value = document.getElementById('calorie').value = Math.round((weight * mets * (time / 60)) * 1.05) / 10;
     }
 </script>
 
@@ -43,7 +43,7 @@
               <%= f.label :calorie, "消費カロリー (kcal)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.number_field :calorie, class: "input", id: "calorie" %>
+              <%= f.number_field :calorie, class: "input", id: "calorie", step: "0.1" %>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
             <form class="diet_form">
               <dl>
                 <dd>体重(kg)：</dd>
-                <dd><input type="number" name="weight"></dd>
+                <dd><input type="number" name="weight" step="0.1"></dd>
                 <dd>運動強度(Mets)：</dd>
                 <dd>
                   <select type="number" class="p-1" name="mets">
