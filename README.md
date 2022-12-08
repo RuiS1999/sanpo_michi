@@ -6,7 +6,8 @@
 <br>
 
 ## サイトテーマ
-散歩で見つけたお気に入りや気になったところの画像を共有するSNS<br>
+・散歩で見つけたお気に入りや気になったところの画像を共有するSNS<br>
+・歩数、散歩時間、消費カロリーを記録する日記としての役割もある<br>
 <br>
 
 ## テーマを選んだ理由
@@ -26,10 +27,18 @@
 URL:**https://docs.google.com/spreadsheets/d/1UseO6dKvOUPhvxEOkqwHEwb9zWhOM0RfrtZ39PAqLa0/edit?usp=sharing**<br>
 <br>
 
-## 設計書
-未定<br>
+## 使用素材
+・Font Awesome<br>
+・ぱくたそ<br>
+・O-DAN<br>
 <br>
 
-## 使用素材
-未定<br>
-<br>
+## 環境構築に必要な手順
+```
+$ git clone
+$ cd sanpo_michi
+$ bundle
+$ rails db:migrate
+$ rails db:seed
+$ rails s
+```
