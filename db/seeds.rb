@@ -43,6 +43,42 @@ User.create!(
   ]
 )
 
+Post.create!(
+  [
+    {
+      user_id: '1',
+      body: 'test',
+      hashbody: '#test'
+    },
+
+    {
+      user_id: '2',
+      body: 'test2',
+      hashbody: '#test'
+    }
+  ]
+)
+
+StepLog.create!(
+  [
+    {
+      user_id: '1',
+      calorie: '390',
+      number_of_step: '12000',
+      walking_time: '120',
+      start_time: '2022-12-1 00:00:00'
+    },
+
+    {
+      user_id: '1',
+      calorie: '390',
+      number_of_step: '12000',
+      walking_time: '120',
+      start_time: '2022-12-2 00:00:00'
+    }
+  ]
+)
+
 Admin.create!(
  email: 'test@t.com',
  password: 'test123'
