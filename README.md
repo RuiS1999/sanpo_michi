@@ -45,3 +45,4 @@ $ rails s
 * 管理者ログイン 〜/admin/sign_in
 * メールアドレス test@t.com
 * パスワード　test123
+* 
