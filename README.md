@@ -42,7 +42,12 @@ $ rails db:migrate
 $ rails db:seed
 $ rails s
 ```
+<br>
+####管理者ユーザー
 * 管理者ログイン 〜/admin/sign_in
 * メールアドレス test@t.com
 * パスワード　test123
-* 
+<br>
+####テストユーザー
+* メールアドレス test@t.com
+* パスワード　test123
