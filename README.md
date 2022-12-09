@@ -43,6 +43,7 @@ $ rails db:seed
 $ rails s
 ```
 <br>
+
 #### 管理者ユーザー
 * 管理者ログイン 〜/admin/sign_in
 * メールアドレス test@t.com
