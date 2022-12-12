@@ -25,7 +25,7 @@
               <%= f.label :number_of_step, "歩数 (歩)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.number_field :number_of_step, class: "input" %>
+              <%= f.number_field :number_of_step, class: "input", min: "0" %>
             </div>
           </div>
 
@@ -34,7 +34,7 @@
               <%= f.label :walking_time, "散歩時間 (分)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.number_field :walking_time, class: "input" %>
+              <%= f.number_field :walking_time, class: "input", min: "0" %>
             </div>
           </div>
 
@@ -43,7 +43,7 @@
               <%= f.label :calorie, "消費カロリー (kcal)", class: "required mb-0" %>
             </div>
             <div>
-              <%= f.number_field :calorie, class: "input", id: "calorie", step: "0.1" %>
+              <%= f.number_field :calorie, class: "input", id: "calorie", min: "0", step: "0.1" %>
             </div>
           </div>
 
@@ -61,7 +61,7 @@
             <form class="diet_form">
               <dl>
                 <dd>体重(kg)：</dd>
-                <dd><input type="number" name="weight" step="0.1"></dd>
+                <dd><input type="number" name="weight" min="0" step="0.1"></dd>
                 <dd>運動強度(Mets)：</dd>
                 <dd>
                   <select type="number" class="p-1" name="mets">
@@ -74,7 +74,7 @@
                   </select>
                 </dd>
                 <dd>運動時間(分)：</dd>
-                <dd><input type="number" name="time"></dd>
+                <dd><input type="number" name="time" min="0"></dd>
                 <p><input type="button" class="px-3 py-1" onclick="calc(weight.value, mets.value, time.value);" value="計算"><span class="attention">※自動で入力されます</span></p>
               </dl>
           </form>
