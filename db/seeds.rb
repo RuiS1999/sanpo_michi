@@ -48,13 +48,115 @@ Post.create!(
     {
       user_id: '1',
       body: 'test',
-      hashbody: '#test'
+      hashbody: '#test #test1'
     },
 
     {
       user_id: '2',
       body: 'test2',
-      hashbody: '#test'
+      hashbody: '#test #test2'
+    },
+
+    {
+      user_id: '2',
+      body: 'test3',
+      hashbody: '#test #test1'
+    },
+
+    {
+      user_id: '1',
+      body: 'test4',
+      hashbody: '#test #test1'
+    }
+  ]
+)
+
+HashtagPosts.create!(
+  [
+    {
+      hashname: 'test'
+    },
+
+    {
+      hashname: 'test1'
+    },
+
+    {
+      hashname: 'test2'
+    }
+  ]
+)
+
+Hashtags.create!(
+  [
+    {
+      hashname: 'test'
+    },
+
+    {
+      hashname: 'test1'
+    },
+
+    {
+      hashname: 'test2'
+    }
+  ]
+)
+
+Favorite.create!(
+  [
+    {
+      user_id: '1',
+      post_id: "1"
+    },
+
+    {
+      user_id: '1',
+      post_id: '3'
+    },
+
+    {
+      user_id: '3',
+      post_id: '1'
+    },
+
+    {
+      user_id: '2',
+      post_id: '2'
+    }
+  ]
+)
+
+PostComment.create!(
+  [
+    {
+      user_id: '1',
+      post_id: '1',
+      comment: 'comment1'
+    },
+
+    {
+      user_id: '1',
+      post_id: '3',
+      comment: 'comment2'
+    },
+
+    {
+      user_id: '3',
+      post_id: '1',
+      comment: 'comment3'
+    },
+
+    {
+      user_id: '2',
+      post_id: '2',
+      comment: 'comment4'
+    },
+
+    {
+      user_id: '2',
+      post_id: '1',
+      comment: 'comment5'
     }
   ]
 )
@@ -66,7 +168,7 @@ StepLog.create!(
       calorie: '390',
       number_of_step: '12000',
       walking_time: '120',
-      start_time: '2022-12-1 00:00:00'
+      start_time: '2022-1-1 00:00:00'
     },
 
     {
@@ -74,7 +176,31 @@ StepLog.create!(
       calorie: '390',
       number_of_step: '12000',
       walking_time: '120',
-      start_time: '2022-12-2 00:00:00'
+      start_time: '2022-1-2 00:00:00'
+    },
+
+    {
+      user_id: '2',
+      calorie: '39',
+      number_of_step: '1200',
+      walking_time: '120',
+      start_time: '2022-1-2 00:00:00'
+    },
+
+    {
+      user_id: '2',
+      calorie: '200',
+      number_of_step: '1200',
+      walking_time: '60',
+      start_time: '2022-1-5 00:00:00'
+    },
+
+    {
+      user_id: '3',
+      calorie: '90',
+      number_of_step: '1000',
+      walking_time: '60',
+      start_time: '2022-1-2 00:00:00'
     }
   ]
 )
