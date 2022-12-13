@@ -74,15 +74,43 @@ Post.create!(
 HashtagPosts.create!(
   [
     {
-      hashname: 'test'
+      post_id: '1',
+      hashtag_id: '1'
     },
 
     {
-      hashname: 'test1'
+      post_id: '1',
+      hashtag_id: '2'
     },
 
     {
-      hashname: 'test2'
+      post_id: '2',
+      hashtag_id: '1'
+    },
+
+    {
+      post_id: '2',
+      hashtag_id: '3'
+    },
+
+    {
+      post_id: '3',
+      hashtag_id: '1'
+    },
+
+    {
+      post_id: '3',
+      hashtag_id: '2'
+    },
+
+    {
+      post_id: '4',
+      hashtag_id: '1'
+    },
+
+    {
+      post_id: '4',
+      hashtag_id: '2'
     }
   ]
 )
