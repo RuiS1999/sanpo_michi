@@ -120,6 +120,22 @@ Post.create!(
   ]
 )
 
+Hashtag.create!(
+  [
+    {
+      hashname: 'test'
+    },
+
+    {
+      hashname: 'test1'
+    },
+
+    {
+      hashname: 'test2'
+    }
+  ]
+)
+
 HashtagPost.create!(
   [
     {
@@ -160,22 +176,6 @@ HashtagPost.create!(
     {
       post_id: '4',
       hashtag_id: '2'
-    }
-  ]
-)
-
-Hashtag.create!(
-  [
-    {
-      hashname: 'test'
-    },
-
-    {
-      hashname: 'test1'
-    },
-
-    {
-      hashname: 'test2'
     }
   ]
 )
