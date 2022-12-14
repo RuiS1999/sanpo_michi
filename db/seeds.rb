@@ -120,50 +120,6 @@ Post.create!(
   ]
 )
 
-HashtagPost.create!(
-  [
-    {
-      post_id: '1',
-      hashtag_id: '1'
-    },
-
-    {
-      post_id: '1',
-      hashtag_id: '2'
-    },
-
-    {
-      post_id: '2',
-      hashtag_id: '1'
-    },
-
-    {
-      post_id: '2',
-      hashtag_id: '3'
-    },
-
-    {
-      post_id: '3',
-      hashtag_id: '1'
-    },
-
-    {
-      post_id: '3',
-      hashtag_id: '2'
-    },
-
-    {
-      post_id: '4',
-      hashtag_id: '1'
-    },
-
-    {
-      post_id: '4',
-      hashtag_id: '2'
-    }
-  ]
-)
-
 PostComment.create!(
   [
     {
