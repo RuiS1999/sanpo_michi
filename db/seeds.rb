@@ -71,7 +71,7 @@ Post.create!(
   ]
 )
 
-HashtagPosts.create!(
+HashtagPost.create!(
   [
     {
       post_id: '1',
@@ -115,7 +115,7 @@ HashtagPosts.create!(
   ]
 )
 
-Hashtags.create!(
+Hashtag.create!(
   [
     {
       hashname: 'test'
@@ -135,7 +135,7 @@ Favorite.create!(
   [
     {
       user_id: '1',
-      post_id: "1"
+      post_id: '1'
     },
 
     {
