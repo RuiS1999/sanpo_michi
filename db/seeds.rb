@@ -55,7 +55,7 @@ StepLog.create!(
       calorie: '390',
       number_of_step: '12000',
       walking_time: '120',
-      start_time: '2022-1-1 00:00:00'
+      start_time: '2023-1-1 00:00:00'
     },
 
     {
@@ -63,7 +63,7 @@ StepLog.create!(
       calorie: '390',
       number_of_step: '12000',
       walking_time: '120',
-      start_time: '2022-1-2 00:00:00'
+      start_time: '2023-1-2 00:00:00'
     },
 
     {
@@ -71,7 +71,7 @@ StepLog.create!(
       calorie: '39',
       number_of_step: '1200',
       walking_time: '120',
-      start_time: '2022-1-2 00:00:00'
+      start_time: '2023-1-2 00:00:00'
     },
 
     {
@@ -79,7 +79,7 @@ StepLog.create!(
       calorie: '200',
       number_of_step: '1200',
       walking_time: '60',
-      start_time: '2022-1-5 00:00:00'
+      start_time: '2023-1-5 00:00:00'
     },
 
     {
@@ -87,7 +87,7 @@ StepLog.create!(
       calorie: '90',
       number_of_step: '1000',
       walking_time: '60',
-      start_time: '2022-1-2 00:00:00'
+      start_time: '2023-1-2 00:00:00'
     }
   ]
 )
