@@ -120,22 +120,6 @@ Post.create!(
   ]
 )
 
-Hashtag.create!(
-  [
-    {
-      hashname: 'test'
-    },
-
-    {
-      hashname: 'test1'
-    },
-
-    {
-      hashname: 'test2'
-    }
-  ]
-)
-
 HashtagPost.create!(
   [
     {
