@@ -39,9 +39,18 @@ URL:**https://docs.google.com/spreadsheets/d/1UseO6dKvOUPhvxEOkqwHEwb9zWhOM0Rfrt
 
 ## 環境構築に必要な手順
 ```
-$ git clone
+$ git clone https://github.com/RuiS1999/sanpo_michi.git
 $ cd sanpo_michi
-$ bundle
+
+Gemfile内にある記述
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+を削除
+
+$ bundle install
+$ yarn add jquery bootstrap@4.5 popper.js
 $ rails db:migrate
 $ rails db:seed
 $ rails s
