@@ -60,6 +60,30 @@ StepLog.create!(
 
     {
       user_id: '1',
+      calorie: '90',
+      number_of_step: '4000',
+      walking_time: '120',
+      start_time: '2022-12-13 00:00:00'
+    },
+
+    {
+      user_id: '1',
+      calorie: '500',
+      number_of_step: '19000',
+      walking_time: '120',
+      start_time: '2022-11-26 00:00:00'
+    },
+
+    {
+      user_id: '1',
+      calorie: '3900',
+      number_of_step: '12000',
+      walking_time: '120',
+      start_time: '2022-10-2 00:00:00'
+    },
+
+    {
+      user_id: '1',
       calorie: '390',
       number_of_step: '12000',
       walking_time: '120',
