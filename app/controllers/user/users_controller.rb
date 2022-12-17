@@ -21,10 +21,14 @@ class User::UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    if @user.update(user_params)
-      redirect_to user_path(current_user)
+    if @user.id == current_user.id
+      if @user.update(user_params)
+        redirect_to user_path(current_user)
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to user_path(current_user)
     end
   end
 
