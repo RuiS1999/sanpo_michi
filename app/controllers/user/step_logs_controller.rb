@@ -45,8 +45,12 @@ class User::StepLogsController < ApplicationController
 
   def destroy
     step_log = StepLog.find(params[:id])
-    step_log.destroy
-    redirect_to step_logs_path
+    if current_user.id == step_log.user_id
+      step_log.destroy
+      redirect_to step_logs_path
+    else
+      redirect_to step_log_path(step_log)
+    end
   end
 
   def edit
@@ -55,10 +59,14 @@ class User::StepLogsController < ApplicationController
 
   def update
     @step_log = StepLog.find(params[:id])
-    if @step_log.update(step_log_params)
-      redirect_to step_logs_path
+    if current_user.id == @step_log.user_id
+      if @step_log.update(step_log_params)
+        redirect_to step_log_path(@step_log)
+      else
+        render :edit
+      end
     else
-      render :edit
+      redirect_to step_log_path(@step_log)
     end
   end
 

@@ -10,7 +10,7 @@
               <%= f.label :start_time, "日にち", class: "equired mb-0" %>
             </div>
             <div>
-              <%= f.date_select :start_time, class: "input" %>
+              <%= @step_log.start_time.strftime('%Y/%m/%d') %>
             </div>
           </div>
 
