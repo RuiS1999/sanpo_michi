@@ -13,9 +13,11 @@ class User::FavoritesController < ApplicationController
 
   def destroy
     post = Post.find(params[:post_id])
-    favorite = current_user.favorites.find_by(post_id: post.id)
-    favorite.destroy
-    redirect_back(fallback_location: root_path)
+     favorite = current_user.favorites.find_by(post_id: post.id)
+    if current_user.id == favorite.user_id
+     favorite.destroy
+     redirect_back(fallback_location: root_path)
+    end
   end
 
 
