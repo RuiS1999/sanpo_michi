@@ -10,10 +10,12 @@ class User::ReportsController < ApplicationController
     post = Post.find(params[:post_id])
     report = current_user.reports.new(report_params)
     report.post_id = post.id
-    if report.save
-      redirect_to posts_path
-    else
-      render :new
+    unless current_user.id == post.user_id
+      if report.save
+        redirect_to posts_path
+      else
+        render :new
+      end
     end
   end
 

@@ -5,7 +5,7 @@
         <div>
           <ul class="list-unstyled">
             <li class="my-2">
-              <%= f.radio_button :reason, Report.reasons.key(0) %>
+              <%= f.radio_button :reason, Report.reasons.key(0), checked: true %>
               <%= f.label :reason, "不審な内容またはスパムに関する投稿", value: Report.reasons.key(0) %>
             </li>
             <li class="my-2">
