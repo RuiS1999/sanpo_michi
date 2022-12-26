@@ -13,13 +13,12 @@
         <%= form_with model: @step_log do |f| %>
           <div class="py-2">
             <div>
-              <%= f.label :start_time, "日にち", class: "equired mb-0" %>
+              <%= f.label :start_time, "日にち", class: "required mb-0" %>
             </div>
             <div>
               <%= f.date_field :start_time, class: "input" %>
             </div>
           </div>
-
           <div class="py-2">
             <div>
               <%= f.label :number_of_step, "歩数 (歩)", class: "required mb-0" %>
@@ -28,7 +27,6 @@
               <%= f.number_field :number_of_step, class: "input", min: "0" %>
             </div>
           </div>
-
           <div class="py-2">
             <div>
               <%= f.label :walking_time, "散歩時間 (分)", class: "required mb-0" %>
@@ -37,7 +35,6 @@
               <%= f.number_field :walking_time, class: "input", min: "0" %>
             </div>
           </div>
-
           <div class="py-2">
             <div>
               <%= f.label :calorie, "消費カロリー (kcal)", class: "required mb-0" %>
@@ -46,16 +43,12 @@
               <%= f.number_field :calorie, class: "input", id: "calorie", min: "0", step: "0.1" %>
             </div>
           </div>
-
           <div class="py-2">
             <%= f.submit "登録する", class: "btn btn-outline-dark" %>
           </div>
         <% end %>
       </div>
       <div>
-        <div class=my-4>
-          <h3></h3>
-        </div>
         <div class="calorie-calculation-box">
           <span class="box-title">カロリー計算</span>
             <form class="diet_form">
