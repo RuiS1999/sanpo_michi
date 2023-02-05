@@ -32,8 +32,8 @@
               <div class="p-2 post-body">
                 <%= safe_join("#{@post.body}".split("\n"),tag(:br)) %>
               </div>
-              <div class="p-2 post-body">
-                <%= render_with_hashtags(@post.hashbody) %>
+              <div class="p-2 post-body text-primary">
+                <%= @post.hashbody %>
               </div>
               <% if @post.post_image.attached? %>
                 <div class="p-2">

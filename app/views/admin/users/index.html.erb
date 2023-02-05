@@ -24,7 +24,7 @@
                   <tr>
                     <th class="text-center"><%= user.id %></th>
                     <td>
-                      <%= link_to admin_user_path(user), class: "text-dark" do %>
+                      <%= link_to admin_user_path(user.id), class: "text-dark" do %>
                         <span><%= user.account_name %></span> <span class="a_user_name">@<%= user.user_name %></span>
                       <% end %>
                     </td>
