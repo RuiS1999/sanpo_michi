@@ -29,7 +29,7 @@ URL:**http://13.231.228.65/**<br>
 <br>
 
 ## 実装機能リストのURL
-URL:**https://docs.google.com/spreadsheets/d/1UseO6dKvOUPhvxEOkqwHEwb9zWhOM0RfrtZ39PAqLa0/edit?usp=sharing**<br>
+現在停止中
 <br>
 
 ## 使用素材
